@@ -1,0 +1,16 @@
+#player_action_gauge1_container {
+  background-color: grey;
+  height: 20em;
+  width: 5%;
+
+  position: relative;
+}
+
+#player_action_gauge1_progress {
+  background-color: yellow;
+  height: 10%;
+  width: 100%;
+  /* flip vertically (so that the bar fills from bottom to top). container's position must be set to !static. */
+  position: absolute;
+  bottom: 0%;
+}
