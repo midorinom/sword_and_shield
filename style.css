@@ -1,16 +1,39 @@
+#player_action_gauge_flexbox {
+  display: flex;
+}
+
 #player_action_gauge1_container {
   background-color: grey;
   height: 20em;
   width: 5%;
-
   position: relative;
+  margin-right: 1em;
 }
 
 #player_action_gauge1_progress {
   background-color: yellow;
-  height: 10%;
+  height: 0%;
   width: 100%;
-  /* flip vertically (so that the bar fills from bottom to top). container's position must be set to !static. */
   position: absolute;
   bottom: 0%;
+}
+
+#player_action_gauge2_container {
+  background-color: grey;
+  height: 20em;
+  width: 5%;
+  position: relative;
+}
+
+#player_action_gauge2_progress {
+  background-color: yellow;
+  height: 0%;
+  width: 100%;
+  position: absolute;
+  bottom: 0%;
+  display: flex;
+}
+
+#reset_button {
+  margin-top: 1em;
 }

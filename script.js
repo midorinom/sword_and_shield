@@ -6,6 +6,10 @@ const playerActionGauge1 = document.querySelector(
   "#player_action_gauge1_progress"
 );
 
+const playerActionGauge2 = document.querySelector(
+  "#player_action_gauge2_progress"
+);
+
 function fillActionGauge() {
   playerActionGauge1.style.height = counter + "%";
   counter += 1;
