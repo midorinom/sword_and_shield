@@ -54,7 +54,7 @@ html {
 
 .hp_value {
   position: relative;
-  margin-top: 0.35em;
+  margin-top: 0.44em;
 }
 
 #player_hp_value {
@@ -101,7 +101,7 @@ html {
   border-bottom: none;
 }
 
-#player_kirby {
+#player {
   height: 15em;
   width: 20%;
   position: relative;
@@ -109,7 +109,7 @@ html {
   margin-top: 2.7em;
 }
 
-#enemy_pinkbean {
+#enemy {
   height: 15em;
   width: 20%;
   position: relative;
