@@ -15,29 +15,56 @@ const enemyActionGauge1 = document.querySelector(
   "#enemy_action_gauge1_progress"
 );
 
-// Creating classes for Player and Enemy
+// Creating classes for Enemy and Player
 class Enemy {
-  constructor(hp, strength, armour, agility, actionGaugeCounter = 0, opponentClass) {
-    this.hp = hp, this.strength = strength, this.armour = armour, this.agility = agility, this.actionGaugeCounter = actionGaugeCounter, this.opponent = opponentClass);
+  constructor(
+    hp,
+    strength,
+    armour,
+    agility,
+    opponentClass,
+    actionGaugeCounter = 0
+  ) {
+    (this.hp = hp),
+      (this.strength = strength),
+      (this.armour = armour),
+      (this.agility = agility),
+      (this.opponent = opponentClass),
+      (this.actionGaugeCounter = actionGaugeCounter);
   }
 
-  attack(opponentClass){
-    const modifier = Math.ceil(Math.random()*20);
+  attack(opponentClass) {
+    const modifier = Math.ceil(Math.random() * 20);
     let damage = 0;
-    if (Math.round(Math.random()) === 0){
-      damage = Math.round((this.strength * ((100 - modifier) / 100)) * opponentClass.armour)
+    if (Math.round(Math.random()) === 0) {
+      damage = Math.round(
+        this.strength * ((100 - modifier) / 100) * opponentClass.armour
+      );
     } else {
-      damage = Math.round((this.strength * ((100 + modifier) / 100)) * opponentClass.armour)
+      damage = Math.round(
+        this.strength * ((100 + modifier) / 100) * opponentClass.armour
+      );
     }
     opponentClass.hp -= damage;
   }
 }
 
 class Player extends Enemy {
-  constructor(hp, strength, armour, agility, actionGaugeCounter) {
-    super(hp, strength, armour, agility, actionGaugeCounter);
+  constructor(
+    hp,
+    strength,
+    armour,
+    agility,
+    opponentClass,
+    actionGaugeCounter
+  ) {
+    super(hp, strength, armour, agility, opponentClass, actionGaugeCounter);
   }
 }
+
+// Creating instances for player and enemy
+const player = new Player(100, 5, 1, 50, Enemy, 0);
+const enemy_pinkbean = new Enemy(50, 1, 1, 100, Player, 0);
 
 // Start filling the Action Gauge
 let autoPlayerActionGauge = setInterval(
