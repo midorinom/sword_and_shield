@@ -6,14 +6,16 @@
   background-color: grey;
   height: 20em;
   width: 5%;
-  position: relative;
   margin-right: 1em;
+  caret-color: rgba(0, 0, 0, 0);
+  position: relative;
 }
 
 #player_action_gauge1_progress {
   background-color: yellow;
   height: 0%;
   width: 100%;
+  caret-color: rgba(0, 0, 0, 0);
   position: absolute;
   bottom: 0%;
 }
@@ -22,6 +24,7 @@
   background-color: grey;
   height: 20em;
   width: 5%;
+  caret-color: rgba(0, 0, 0, 0);
   position: relative;
 }
 
@@ -31,9 +34,9 @@
   width: 100%;
   position: absolute;
   bottom: 0%;
-  display: flex;
+  caret-color: rgba(0, 0, 0, 0);
 }
 
-#reset_button {
+#execute_action {
   margin-top: 1em;
 }
