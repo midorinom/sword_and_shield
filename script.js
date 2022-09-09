@@ -1,6 +1,6 @@
 "use strict";
 
-// Defining variables
+// Define variables
 const playerActionGauge1 = document.querySelector(
   "#player_action_gauge1_progress"
 );
@@ -11,7 +11,7 @@ const enemyActionGauge1 = document.querySelector(
   "#enemy_action_gauge1_progress"
 );
 
-// Creating classes for Enemy and Player
+// Create Enemy class
 class Enemy {
   constructor(hp, strength, armour, agility, actionGaugeCounter = 0) {
     (this.hp = hp),
@@ -25,6 +25,7 @@ class Enemy {
     // Execute the attack and reset the gauge to 0
     this.actionGaugeCounter = 0;
     enemyActionGauge1.style.height = 0;
+    // Perform the damage formula
     const modifier = Math.ceil(Math.random() * 20);
     let damage = 0;
     if (Math.round(Math.random()) === 0) {
@@ -36,11 +37,13 @@ class Enemy {
         this.strength * ((100 + modifier) / 100) * Player.armour
       );
     }
+    // Subtract the damage from player hp and update the hp value
     Player.hp -= damage;
     updatePlayerHp(Player.hp);
   }
 }
 
+// Create Player class
 class Player extends Enemy {
   constructor(hp, strength, armour, agility, actionGaugeCounter) {
     super(hp, strength, armour, agility, actionGaugeCounter);
@@ -49,20 +52,16 @@ class Player extends Enemy {
   attack(Enemy) {
     // Check first if there is at least 1 full bar of Action Gauge before executing the function
     if (this.actionGaugeCounter >= 100) {
-      // Subtract 1 bar 's worth (100) from the counter
+      // Subtract from the counter and adjust height of the bars to reflect the deduction
       this.actionGaugeCounter -= 100;
-
-      // Adjust the height of the bars to reflect the deduction from the counter
-      // if the player had only 1 full bar initially:
       if (this.actionGaugeCounter <= 100) {
         playerActionGauge2.style.height = 0;
         playerActionGauge1.style.height = this.actionGaugeCounter + "%";
-      }
-      // if the player had 2 full bars initially:
-      else {
+      } else {
         playerActionGauge1.style.height = "100%";
         playerActionGauge2.style.height = this.actionGaugeCounter - 100 + "%";
       }
+      // Perform the damage formula
       const modifier = Math.ceil(Math.random() * 20);
       let damage = 0;
       if (Math.round(Math.random()) === 0) {
@@ -74,15 +73,14 @@ class Player extends Enemy {
           this.strength * ((100 + modifier) / 100) * Enemy.armour
         );
       }
+      // Subtract the damage from enemy hp and update the hp value
       Enemy.hp -= damage;
       updateEnemyHp(Enemy.hp);
-    } else {
-      console.log("test");
     }
   }
 }
 
-// Creating instances for player and enemy
+// Create instances for player and enemy
 const player = new Player(100, 5, 1, 50, 0);
 const enemy = new Enemy(50, 1, 1, 100, 0);
 
@@ -95,14 +93,14 @@ let autoPlayerActionGauge = setInterval(fillPlayerActionGauge, player.agility);
 
 let autoEnemyActionGauge = setInterval(fillEnemyActionGauge, enemy.agility);
 
-// For testing purposes of simulating an action
-document
-  .querySelector("#attack_button")
-  .addEventListener("click", player.attack(enemy));
+// Event Listeners for the Attack and Defend buttons
+document.querySelector("#attack_button").addEventListener("click", () => {
+  player.attack(enemy);
+});
 
-document
-  .querySelector("#defend_button")
-  .addEventListener("click", executeAttack);
+document.querySelector("#defend_button").addEventListener("click", () => {
+  player.attack(enemy);
+});
 
 // =========================================================================================================
 // Functions
@@ -134,39 +132,5 @@ function fillEnemyActionGauge() {
   } else {
     // Enemy automatically attacks when Action Gauge is full
     enemy.attack(player);
-  }
-}
-
-// For Testing
-function executeAttack() {
-  // Check first if there is at least 1 full bar of Action Gauge before executing the function
-  if (player.actionGaugeCounter >= 100) {
-    // Subtract 1 bar 's worth (100) from the counter
-    player.actionGaugeCounter -= 100;
-
-    // Adjust the height of the bars to reflect the deduction from the counter
-    // if the player had only 1 full bar initially:
-    if (player.actionGaugeCounter <= 100) {
-      playerActionGauge2.style.height = 0;
-      playerActionGauge1.style.height = player.actionGaugeCounter + "%";
-    }
-    // if the player had 2 full bars initially:
-    else {
-      playerActionGauge1.style.height = "100%";
-      playerActionGauge2.style.height = player.actionGaugeCounter - 100 + "%";
-    }
-    const modifier = Math.ceil(Math.random() * 20);
-    let damage = 0;
-    if (Math.round(Math.random()) === 0) {
-      damage = Math.round(
-        this.strength * ((100 - modifier) / 100) * Enemy.armour
-      );
-    } else {
-      damage = Math.round(
-        this.strength * ((100 + modifier) / 100) * Enemy.armour
-      );
-    }
-    Enemy.hp -= damage;
-    updateEnemyHp(Enemy.hp);
   }
 }
