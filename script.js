@@ -2,14 +2,31 @@
 
 // Defining variables
 let playerActionGaugeCounter = 0;
+let playerActionGaugeSpeed = 50;
+let enemyActionGaugeCounter = 0;
+let enemyActionGaugeSpeed = 100;
 const playerActionGauge1 = document.querySelector(
   "#player_action_gauge1_progress"
 );
 const playerActionGauge2 = document.querySelector(
   "#player_action_gauge2_progress"
 );
+const enemyActionGauge1 = document.querySelector(
+  "#enemy_action_gauge1_progress"
+);
 
-function fillActionGauge() {
+// Start filling the Action Gauge
+let autoPlayerActionGauge = setInterval(
+  fillPlayerActionGauge,
+  playerActionGaugeSpeed
+);
+
+let autoEnemyActionGauge = setInterval(
+  fillEnemyActionGauge,
+  enemyActionGaugeSpeed
+);
+
+function fillPlayerActionGauge() {
   // Make the height of the progress bar correspond to the counter value, then increment counter
   if (playerActionGaugeCounter < 100) {
     playerActionGaugeCounter += 1;
@@ -21,10 +38,17 @@ function fillActionGauge() {
   }
 }
 
-// Start filling the Action Gauge
-let autoActionGauge = setInterval(fillActionGauge, 50);
+function fillEnemyActionGauge() {
+  if (enemyActionGaugeCounter < 100) {
+    enemyActionGaugeCounter += 1;
+    enemyActionGauge1.style.height = enemyActionGaugeCounter + "%";
+  } else {
+    // Enemy automatically attacks when Action Gauge is full
+    executeEnemyAttack();
+  }
+}
 
-function executeAction() {
+function executePlayerAttack() {
   // Check first if there is at least 1 full bar of Action Gauge before executing the function
   if (playerActionGaugeCounter >= 100) {
     // Subtract 1 bar 's worth (100) from the counter
@@ -44,7 +68,17 @@ function executeAction() {
   }
 }
 
+// Execute the attack and reset the gauge to 0
+function executeEnemyAttack() {
+  enemyActionGaugeCounter = 0;
+  enemyActionGauge1.style.height = 0;
+}
+
 // For testing purposes of simulating an action
 document
-  .querySelector("#execute_action")
-  .addEventListener("click", executeAction);
+  .querySelector("#attack_button")
+  .addEventListener("click", executePlayerAttack);
+
+document
+  .querySelector("#defend_button")
+  .addEventListener("click", executePlayerAttack);

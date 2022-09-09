@@ -1,42 +1,102 @@
-#player_action_gauge_flexbox {
+html {
+  caret-color: rgba(0, 0, 0, 0);
+}
+
+#main_div {
   display: flex;
 }
 
-#player_action_gauge1_container {
-  background-color: grey;
-  height: 20em;
-  width: 5%;
-  margin-right: 1em;
-  caret-color: rgba(0, 0, 0, 0);
-  position: relative;
-}
-
-#player_action_gauge1_progress {
+.action_gauge_progress_bar {
   background-color: yellow;
   height: 0%;
   width: 100%;
-  caret-color: rgba(0, 0, 0, 0);
   position: absolute;
   bottom: 0%;
+}
+
+.action_gauge_container {
+  background-color: grey;
+  height: 20em;
+  width: 3%;
+  position: relative;
+  left: 1%;
+}
+
+#player_action_gauge1_container {
+  left: 1%;
 }
 
 #player_action_gauge2_container {
-  background-color: grey;
-  height: 20em;
-  width: 5%;
-  caret-color: rgba(0, 0, 0, 0);
+  left: 2.5%;
+}
+
+#enemy_action_gauge1_container {
+  left: 78%;
+}
+
+#hp_bars {
+  display: flex;
+  margin-bottom: 1em;
+}
+
+.hp_bar {
+  background-color: red;
+  height: 2em;
+  width: 30%;
   position: relative;
-}
-
-#player_action_gauge2_progress {
-  background-color: yellow;
-  height: 0%;
-  width: 100%;
-  position: absolute;
-  bottom: 0%;
-  caret-color: rgba(0, 0, 0, 0);
-}
-
-#execute_action {
+  left: 7%;
   margin-top: 1em;
+}
+
+#enemy_hp_bar {
+  left: 10%;
+}
+
+.hp_value {
+  position: relative;
+  margin-top: 0.35em;
+}
+
+#player_hp_value {
+  left: 6%;
+}
+
+#enemy_hp_value {
+  left: 44.5%;
+}
+
+#action_buttons {
+  width: 90%;
+  text-align: center;
+}
+
+.action_button {
+  height: 9em;
+  width: 15%;
+  margin-top: 2.5em;
+  margin-right: 10em;
+}
+
+#attack_button {
+  margin-right: 10em;
+}
+
+#textlog {
+  border-style: solid;
+  border-color: black;
+  border-width: medium;
+  margin-top: 1.5em;
+}
+
+.textlog_line {
+  border-bottom: dotted;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0.4em;
+  padding-bottom: 0.4em;
+  padding-left: 0.4em;
+}
+
+#textlog_line4 {
+  border-bottom: none;
 }
