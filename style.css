@@ -31,7 +31,7 @@ html {
 }
 
 #enemy_action_gauge1_container {
-  left: 78%;
+  left: 37.5%;
 }
 
 #hp_bars {
@@ -99,4 +99,20 @@ html {
 
 #textlog_line4 {
   border-bottom: none;
+}
+
+#player_kirby {
+  height: 15em;
+  width: 20%;
+  position: relative;
+  left: 10%;
+  margin-top: 2.7em;
+}
+
+#enemy_pinkbean {
+  height: 15em;
+  width: 20%;
+  position: relative;
+  left: 27%;
+  margin-top: 2.7em;
 }

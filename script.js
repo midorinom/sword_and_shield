@@ -15,6 +15,30 @@ const enemyActionGauge1 = document.querySelector(
   "#enemy_action_gauge1_progress"
 );
 
+// Creating classes for Player and Enemy
+class Enemy {
+  constructor(hp, strength, armour, agility, actionGaugeCounter = 0, opponentClass) {
+    this.hp = hp, this.strength = strength, this.armour = armour, this.agility = agility, this.actionGaugeCounter = actionGaugeCounter, this.opponent = opponentClass);
+  }
+
+  attack(opponentClass){
+    const modifier = Math.ceil(Math.random()*20);
+    let damage = 0;
+    if (Math.round(Math.random()) === 0){
+      damage = Math.round((this.strength * ((100 - modifier) / 100)) * opponentClass.armour)
+    } else {
+      damage = Math.round((this.strength * ((100 + modifier) / 100)) * opponentClass.armour)
+    }
+    opponentClass.hp -= damage;
+  }
+}
+
+class Player extends Enemy {
+  constructor(hp, strength, armour, agility, actionGaugeCounter) {
+    super(hp, strength, armour, agility, actionGaugeCounter);
+  }
+}
+
 // Start filling the Action Gauge
 let autoPlayerActionGauge = setInterval(
   fillPlayerActionGauge,
