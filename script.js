@@ -28,17 +28,7 @@ class Enemy {
     this.actionGaugeCounter = 0;
     enemyActionGauge1.style.height = 0;
     // Perform the damage formula
-    const modifier = Math.ceil(Math.random() * 20);
-    let damage = 0;
-    if (Math.round(Math.random()) === 0) {
-      damage = Math.round(
-        this.strength * ((100 - modifier) / 100) * Player.armour
-      );
-    } else {
-      damage = Math.round(
-        this.strength * ((100 + modifier) / 100) * Player.armour
-      );
-    }
+    const damage = performDamageFomula(this.strength, Player.armour);
     // Subtract the damage from player hp and update the hp value
     Player.hp -= damage;
     updatePlayerHp(Player.hp);
@@ -76,17 +66,7 @@ class Player extends Enemy {
         playerActionGauge2.style.height = this.actionGaugeCounter - 100 + "%";
       }
       // Perform the damage formula
-      const modifier = Math.ceil(Math.random() * 20);
-      let damage = 0;
-      if (Math.round(Math.random()) === 0) {
-        damage = Math.round(
-          this.strength * ((100 - modifier) / 100) * Enemy.armour
-        );
-      } else {
-        damage = Math.round(
-          this.strength * ((100 + modifier) / 100) * Enemy.armour
-        );
-      }
+      const damage = performDamageFomula(this.strength, Enemy.armour);
       // Subtract the damage from enemy hp and update the hp value
       Enemy.hp -= damage;
       updateEnemyHp(Enemy.hp);
@@ -144,6 +124,17 @@ function updateEnemyHp(hp) {
   document.querySelector("#enemy_hp_value").innerText = hp;
 }
 
+function performDamageFomula(strength, opponentArmour) {
+  const modifier = Math.ceil(Math.random() * 20);
+  let damage = 0;
+  if (Math.round(Math.random()) === 0) {
+    damage = Math.round(strength * ((100 - modifier) / 100) * opponentArmour);
+  } else {
+    damage = Math.round(strength * ((100 + modifier) / 100) * opponentArmour);
+  }
+  return damage;
+}
+
 function fillPlayerActionGauge() {
   // Make the height of the progress bar correspond to the counter value, then increment counter
   if (player.actionGaugeCounter < 100) {
@@ -167,22 +158,39 @@ function fillEnemyActionGauge() {
 }
 
 function attackButtonSelected() {
-  // make button bigger when selected
-  attackButton.style.height = 85 + "%";
-  attackButton.style.width = 15 + "%";
-  // set actionSelected state in the player class to true
-  player.actionSelected.attack = true;
-
+  // check first if the button is already selected
+  if (player.actionSelected.attack === false) {
+    // if Action Gauge is < 100, make button bigger when selected
+    if (player.actionGaugeCounter < 100) {
+      attackButton.style.height = 85 + "%";
+      attackButton.style.width = 15 + "%";
+    }
+    // set actionSelected state in the player class to true
+    player.actionSelected.attack = true;
+  } else {
+    // de-select the button and make the button size small again
+    player.actionSelected.attack = false;
+    attackButton.style.height = 70 + "%";
+    attackButton.style.width = 12 + "%";
+  }
+  // if any other button was selected, set it to false and make it small
   player.actionSelected.defend = false;
   defendButton.style.height = 70 + "%";
   defendButton.style.width = 12 + "%";
 }
 
 function defendButtonSelected() {
-  defendButton.style.height = 85 + "%";
-  defendButton.style.width = 15 + "%";
-  player.actionSelected.defend = true;
-
+  if (player.actionSelected.defend === false) {
+    if (player.actionGaugeCounter < 100) {
+      defendButton.style.height = 85 + "%";
+      defendButton.style.width = 15 + "%";
+    }
+    player.actionSelected.defend = true;
+  } else {
+    player.actionSelected.defend = false;
+    defendButton.style.height = 70 + "%";
+    defendButton.style.width = 12 + "%";
+  }
   player.actionSelected.attack = false;
   attackButton.style.height = 70 + "%";
   attackButton.style.width = 12 + "%";
