@@ -95,6 +95,7 @@ html {
 }
 
 .textlog_line {
+  height: 1.15em;
   border-bottom: dotted;
   margin-top: 0;
   margin-bottom: 0;

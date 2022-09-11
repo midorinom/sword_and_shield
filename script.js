@@ -12,6 +12,7 @@ const enemyActionGauge1 = document.querySelector(
 );
 const attackButton = document.querySelector("#attack_button");
 const defendButton = document.querySelector("#defend_button");
+const textLog = ["", "", "", ""];
 
 // Create Enemy class
 class Enemy {
@@ -32,6 +33,9 @@ class Enemy {
     // Subtract the damage from player hp and update the hp value
     Player.hp -= damage;
     updatePlayerHp(Player.hp);
+    // Update Text Log
+    const text = `The enemy dealt ${damage} damage to you.`;
+    updateTextLog(text);
   }
 }
 
@@ -70,15 +74,20 @@ class Player extends Enemy {
       // Subtract the damage from enemy hp and update the hp value
       Enemy.hp -= damage;
       updateEnemyHp(Enemy.hp);
+      // Update Text Log
+      const text = `You dealt ${damage} damage to the enemy.`;
+      updateTextLog(text);
     }
   }
 
   defend() {
+    // Check first if there is at least 1 full bar of Action Gauge before executing the function
     if (this.actionGaugeCounter >= 100) {
+      // setActionSelected back to false and downsize the defend button back to its original size
       player.actionSelected.defend = false;
       defendButton.style.height = 70 + "%";
       defendButton.style.width = 12 + "%";
-
+      // Subtract from the counter and adjust height of the bars to reflect the deduction
       this.actionGaugeCounter -= 100;
       if (this.actionGaugeCounter <= 100) {
         playerActionGauge2.style.height = 0;
@@ -124,9 +133,21 @@ function updateEnemyHp(hp) {
   document.querySelector("#enemy_hp_value").innerText = hp;
 }
 
+function updateTextLog(newText = "test") {
+  // add new text into textLog[0] then remove textLog[4] so the array doesn't grow infinitely. Then update the css.
+  textLog.unshift(newText);
+  textLog.pop();
+  document.querySelector("#textlog_line1").innerText = textLog[0];
+  document.querySelector("#textlog_line2").innerText = textLog[1];
+  document.querySelector("#textlog_line3").innerText = textLog[2];
+  document.querySelector("#textlog_line4").innerText = textLog[3];
+}
+
 function performDamageFomula(strength, opponentArmour) {
+  // Roll a random number between 1 to 20
   const modifier = Math.ceil(Math.random() * 20);
   let damage = 0;
+  // Coin toss to decide whether to add or subtract that random number from the strength value. Then account for opponent's armour.
   if (Math.round(Math.random()) === 0) {
     damage = Math.round(strength * ((100 - modifier) / 100) * opponentArmour);
   } else {
@@ -196,6 +217,7 @@ function defendButtonSelected() {
   attackButton.style.width = 12 + "%";
 }
 
+// This function will continually run throughout the fight as long as the player is not stunned
 function playerContinuousEvents() {
   fillPlayerActionGauge();
   if (player.actionSelected.attack === true) {
@@ -206,6 +228,7 @@ function playerContinuousEvents() {
   }
 }
 
+// This function will continually run throughout the fight as long as the enemy is not stunned
 function enemyContinuousEvents() {
   fillEnemyActionGauge();
 }
