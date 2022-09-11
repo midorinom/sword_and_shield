@@ -29,13 +29,23 @@ class Enemy {
     this.actionGaugeCounter = 0;
     enemyActionGauge1.style.height = 0;
     // Perform the damage formula
-    const damage = performDamageFomula(this.strength, Player.armour);
+    let damage = performDamageFomula(this.strength, Player.armour);
+    // Check if player is defending and update Text Log accordingly
+    if (player.status.defendStance === true) {
+      // Set defendStance back to false
+      player.status.defendStance = false;
+      // Round the resulting damage to an integer
+      damage = Math.round(damage * 0.3);
+      Player.hp -= damage;
+      const text = `You defended! The enemy only dealt ${damage} damage to you.`;
+      updateTextLog(text);
+    } else {
+      Player.hp -= damage;
+      const text = `The enemy dealt ${damage} damage to you.`;
+      updateTextLog(text);
+    }
     // Subtract the damage from player hp and update the hp value
-    Player.hp -= damage;
     updatePlayerHp(Player.hp);
-    // Update Text Log
-    const text = `The enemy dealt ${damage} damage to you.`;
-    updateTextLog(text);
   }
 }
 
@@ -47,17 +57,20 @@ class Player extends Enemy {
     armour,
     agility,
     actionGaugeCounter,
-    actionSelected = {}
+    actionSelected = {},
+    status = {}
   ) {
     super(hp, strength, armour, agility, actionGaugeCounter),
-      (this.actionSelected = actionSelected);
+      (this.actionSelected = actionSelected),
+      (this.status = status);
   }
 
   attack(Enemy) {
     // Check first if there is at least 1 full bar of Action Gauge before executing the function
     if (this.actionGaugeCounter >= 100) {
-      // setActionSelected back to false and downsize the attack button back to its original size
+      // setActionSelected and defendStance to false, downsize the attack button back to its original size
       player.actionSelected.attack = false;
+      player.status.defendStance = false;
       attackButton.style.height = 70 + "%";
       attackButton.style.width = 12 + "%";
       // Subtract from the counter and adjust height of the bars to reflect the deduction
@@ -70,7 +83,7 @@ class Player extends Enemy {
         playerActionGauge2.style.height = this.actionGaugeCounter - 100 + "%";
       }
       // Perform the damage formula
-      const damage = performDamageFomula(this.strength, Enemy.armour);
+      let damage = performDamageFomula(this.strength, Enemy.armour);
       // Subtract the damage from enemy hp and update the hp value
       Enemy.hp -= damage;
       updateEnemyHp(Enemy.hp);
@@ -83,8 +96,9 @@ class Player extends Enemy {
   defend() {
     // Check first if there is at least 1 full bar of Action Gauge before executing the function
     if (this.actionGaugeCounter >= 100) {
-      // setActionSelected back to false and downsize the defend button back to its original size
+      // set ActionSelected back to false, set defendStance to true, downsize the defend button back to its original size
       player.actionSelected.defend = false;
+      player.status.defendStance = true;
       defendButton.style.height = 70 + "%";
       defendButton.style.width = 12 + "%";
       // Subtract from the counter and adjust height of the bars to reflect the deduction
@@ -101,7 +115,15 @@ class Player extends Enemy {
 }
 
 // Create instances for player and enemy
-const player = new Player(100, 5, 1, 50, 0, { attack: false, defend: false });
+const player = new Player(
+  100,
+  5,
+  1,
+  50,
+  0,
+  { attack: false, defend: false },
+  { defendStance: false }
+);
 const enemy = new Enemy(100, 1, 1, 100, 0);
 
 // Display player and enemy hp values onto the page
