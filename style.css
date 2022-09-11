@@ -44,25 +44,28 @@ html {
   height: 2em;
   width: 30%;
   position: relative;
-  left: 7%;
+  left: 4%;
   margin-top: 1em;
 }
 
 #enemy_hp_bar {
-  left: 10%;
+  left: 5%;
 }
 
 .hp_value {
   position: relative;
+  width: 6%;
   margin-top: 0.44em;
 }
 
 #player_hp_value {
-  left: 6%;
+  left: 3%;
+  text-align: right;
 }
 
 #enemy_hp_value {
-  left: 44.5%;
+  left: 42%;
+  text-align: left;
 }
 
 #action_buttons {

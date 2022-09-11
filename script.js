@@ -82,7 +82,7 @@ class Player extends Enemy {
 
 // Create instances for player and enemy
 const player = new Player(100, 5, 1, 50, 0);
-const enemy = new Enemy(50, 1, 1, 100, 0);
+const enemy = new Enemy(100, 1, 1, 100, 0);
 
 // Display player and enemy hp values onto the page
 updatePlayerHp(player.hp);
