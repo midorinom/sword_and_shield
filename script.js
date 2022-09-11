@@ -10,6 +10,8 @@ const playerActionGauge2 = document.querySelector(
 const enemyActionGauge1 = document.querySelector(
   "#enemy_action_gauge1_progress"
 );
+const attackButton = document.querySelector("#attack_button");
+const defendButton = document.querySelector("#defend_button");
 
 // Create Enemy class
 class Enemy {
@@ -45,13 +47,25 @@ class Enemy {
 
 // Create Player class
 class Player extends Enemy {
-  constructor(hp, strength, armour, agility, actionGaugeCounter) {
-    super(hp, strength, armour, agility, actionGaugeCounter);
+  constructor(
+    hp,
+    strength,
+    armour,
+    agility,
+    actionGaugeCounter,
+    actionSelected = {}
+  ) {
+    super(hp, strength, armour, agility, actionGaugeCounter),
+      (this.actionSelected = actionSelected);
   }
 
   attack(Enemy) {
     // Check first if there is at least 1 full bar of Action Gauge before executing the function
     if (this.actionGaugeCounter >= 100) {
+      // setActionSelected back to false and downsize the attack button back to its original size
+      player.actionSelected.attack = false;
+      attackButton.style.height = 70 + "%";
+      attackButton.style.width = 12 + "%";
       // Subtract from the counter and adjust height of the bars to reflect the deduction
       this.actionGaugeCounter -= 100;
       if (this.actionGaugeCounter <= 100) {
@@ -78,10 +92,27 @@ class Player extends Enemy {
       updateEnemyHp(Enemy.hp);
     }
   }
+
+  defend() {
+    if (this.actionGaugeCounter >= 100) {
+      player.actionSelected.defend = false;
+      defendButton.style.height = 70 + "%";
+      defendButton.style.width = 12 + "%";
+
+      this.actionGaugeCounter -= 100;
+      if (this.actionGaugeCounter <= 100) {
+        playerActionGauge2.style.height = 0;
+        playerActionGauge1.style.height = this.actionGaugeCounter + "%";
+      } else {
+        playerActionGauge1.style.height = "100%";
+        playerActionGauge2.style.height = this.actionGaugeCounter - 100 + "%";
+      }
+    }
+  }
 }
 
 // Create instances for player and enemy
-const player = new Player(100, 5, 1, 50, 0);
+const player = new Player(100, 5, 1, 50, 0, { attack: false, defend: false });
 const enemy = new Enemy(100, 1, 1, 100, 0);
 
 // Display player and enemy hp values onto the page
@@ -89,18 +120,18 @@ updatePlayerHp(player.hp);
 updateEnemyHp(enemy.hp);
 
 // Start filling the Action Gauge
-let autoPlayerActionGauge = setInterval(fillPlayerActionGauge, player.agility);
+let autoPlayerActionGauge = setInterval(playerContinuousEvents, player.agility);
 
-let autoEnemyActionGauge = setInterval(fillEnemyActionGauge, enemy.agility);
+let autoEnemyActionGauge = setInterval(enemyContinuousEvents, enemy.agility);
 
 // Event Listeners for the Attack and Defend buttons
-document.querySelector("#attack_button").addEventListener("click", () => {
-  player.attack(enemy);
-});
+document
+  .querySelector("#attack_button")
+  .addEventListener("click", attackButtonSelected);
 
-document.querySelector("#defend_button").addEventListener("click", () => {
-  player.attack(enemy);
-});
+document
+  .querySelector("#defend_button")
+  .addEventListener("click", defendButtonSelected);
 
 // =========================================================================================================
 // Functions
@@ -133,4 +164,40 @@ function fillEnemyActionGauge() {
     // Enemy automatically attacks when Action Gauge is full
     enemy.attack(player);
   }
+}
+
+function attackButtonSelected() {
+  // make button bigger when selected
+  attackButton.style.height = 85 + "%";
+  attackButton.style.width = 15 + "%";
+  // set actionSelected state in the player class to true
+  player.actionSelected.attack = true;
+
+  player.actionSelected.defend = false;
+  defendButton.style.height = 70 + "%";
+  defendButton.style.width = 12 + "%";
+}
+
+function defendButtonSelected() {
+  defendButton.style.height = 85 + "%";
+  defendButton.style.width = 15 + "%";
+  player.actionSelected.defend = true;
+
+  player.actionSelected.attack = false;
+  attackButton.style.height = 70 + "%";
+  attackButton.style.width = 12 + "%";
+}
+
+function playerContinuousEvents() {
+  fillPlayerActionGauge();
+  if (player.actionSelected.attack === true) {
+    player.attack(enemy);
+  }
+  if (player.actionSelected.defend === true) {
+    player.defend();
+  }
+}
+
+function enemyContinuousEvents() {
+  fillEnemyActionGauge();
 }
