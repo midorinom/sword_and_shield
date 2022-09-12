@@ -128,52 +128,12 @@ function parryMiniGame(thisHp, playerStrength, thisArmour, damage, playerHp) {
       timer.style.width = timerCounter + "%";
       // Success
       if (timerCounter > 0 && arrKeys.length === 6) {
-        clearInterval(timerInterval);
-        timerContainer.remove();
         container.remove();
-
-        const parryDamage = performDamageFomula(playerStrength, thisArmour);
-        const text = `You parried! You took no damage and counterattacked, dealing ${parryDamage} damage to the enemy.`;
-        updateTextLog(text);
-        thisHp -= parryDamage;
-        updateEnemyHp(thisHp);
-        setBackgroundOpacity(1);
-        // Start the gauages and button events again
-        autoPlayerActionGauge = setInterval(
-          playerContinuousEvents,
-          player.agility
-        );
-        autoEnemyActionGauge = setInterval(
-          enemyContinuousEvents,
-          enemy.agility
-        );
-
-        attackButton.addEventListener("click", attackButtonSelected);
-        defendButton.addEventListener("click", defendButtonSelected);
+        success(timerInterval);
       } // Failure
       else if (timerCounter <= 0 && arrKeys.length < 6) {
-        clearInterval(timerInterval);
-        timerContainer.remove();
         container.remove();
-
-        const reducedDamage = Math.round(damage * 0.3);
-        playerHp -= damage;
-        const text = `You defended! The enemy only dealt ${reducedDamage} damage to you.`;
-        updateTextLog(text);
-        updatePlayerHp(playerHp);
-        setBackgroundOpacity(1);
-        // Start the gauges and button events
-        autoPlayerActionGauge = setInterval(
-          playerContinuousEvents,
-          player.agility
-        );
-        autoEnemyActionGauge = setInterval(
-          enemyContinuousEvents,
-          enemy.agility
-        );
-
-        attackButton.addEventListener("click", attackButtonSelected);
-        defendButton.addEventListener("click", defendButtonSelected);
+        fail(timerInterval);
       }
     }, 10);
   } else {
@@ -204,54 +164,51 @@ function parryMiniGame(thisHp, playerStrength, thisArmour, damage, playerHp) {
       timer.style.width = timerCounter + "%";
       // Success
       if (timerCounter > 0 && arrKeys.length === 6) {
-        clearInterval(timerInterval);
-        timerContainer.remove();
-
-        const parryDamage = performDamageFomula(playerStrength, thisArmour);
-        const text = `You parried! You took no damage and counterattacked, dealing ${parryDamage} damage to the enemy.`;
-        updateTextLog(text);
-        thisHp -= parryDamage;
-        updateEnemyHp(thisHp);
-        setBackgroundOpacity(1);
-        // Start the gauages and button events again
-        autoPlayerActionGauge = setInterval(
-          playerContinuousEvents,
-          player.agility
-        );
-        autoEnemyActionGauge = setInterval(
-          enemyContinuousEvents,
-          enemy.agility
-        );
-
-        attackButton.addEventListener("click", attackButtonSelected);
-        defendButton.addEventListener("click", defendButtonSelected);
+        success(timerInterval);
       } // Failure
       else if (timerCounter <= 0 && arrKeys.length < 6) {
-        clearInterval(timerInterval);
-        timerContainer.remove();
         for (let i = 0; i < 3; i++) {
           arrKeys[i].remove();
         }
-
-        const reducedDamage = Math.round(damage * 0.3);
-        playerHp -= damage;
-        const text = `You defended! The enemy only dealt ${reducedDamage} damage to you.`;
-        updateTextLog(text);
-        updatePlayerHp(playerHp);
-        setBackgroundOpacity(1);
-        // Start the gauges and button events
-        autoPlayerActionGauge = setInterval(
-          playerContinuousEvents,
-          player.agility
-        );
-        autoEnemyActionGauge = setInterval(
-          enemyContinuousEvents,
-          enemy.agility
-        );
-
-        attackButton.addEventListener("click", attackButtonSelected);
-        defendButton.addEventListener("click", defendButtonSelected);
+        fail(timerInterval);
       }
     }, 10);
+  }
+
+  // Success and Failure functions
+  function success(timerInterval) {
+    clearInterval(timerInterval);
+    timerContainer.remove();
+
+    const parryDamage = performDamageFomula(playerStrength, thisArmour);
+    const text = `You parried! You took no damage and counterattacked, dealing ${parryDamage} damage to the enemy.`;
+    updateTextLog(text);
+    thisHp -= parryDamage;
+    updateEnemyHp(thisHp);
+    setBackgroundOpacity(1);
+    // Start the gauages and button events again
+    autoPlayerActionGauge = setInterval(playerContinuousEvents, player.agility);
+    autoEnemyActionGauge = setInterval(enemyContinuousEvents, enemy.agility);
+
+    attackButton.addEventListener("click", attackButtonSelected);
+    defendButton.addEventListener("click", defendButtonSelected);
+  }
+
+  function fail(timerInterval) {
+    clearInterval(timerInterval);
+    timerContainer.remove();
+
+    const reducedDamage = Math.round(damage * 0.3);
+    playerHp -= damage;
+    const text = `You defended! The enemy only dealt ${reducedDamage} damage to you.`;
+    updateTextLog(text);
+    updatePlayerHp(playerHp);
+    setBackgroundOpacity(1);
+    // Start the gauges and button events
+    autoPlayerActionGauge = setInterval(playerContinuousEvents, player.agility);
+    autoEnemyActionGauge = setInterval(enemyContinuousEvents, enemy.agility);
+
+    attackButton.addEventListener("click", attackButtonSelected);
+    defendButton.addEventListener("click", defendButtonSelected);
   }
 }
