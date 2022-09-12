@@ -1,9 +1,11 @@
 "use strict";
 
 function parryMiniGame(thisHp, playerStrength, thisArmour, damage, playerHp) {
-  // Stop the Action Gauges from filling
+  // Stop the Action Gauges and button events
   clearInterval(autoPlayerActionGauge);
   clearInterval(autoEnemyActionGauge);
+  attackButton.removeEventListener("click", attackButtonSelected);
+  defendButton.removeEventListener("click", defendButtonSelected);
   // Create container for the keys that will appear on screen
   const container = document.createElement("div");
   container.style.height = "8em";
@@ -96,15 +98,23 @@ function parryMiniGame(thisHp, playerStrength, thisArmour, damage, playerHp) {
     }
   });
 
+  // Create container for the timer
+  const timerContainer = document.createElement("div");
+  timerContainer.style.height = "2em";
+  timerContainer.style.width = "60%";
+  timerContainer.style.position = "absolute";
+  timerContainer.style.top = "30%";
+  timerContainer.style.left = "20%";
+  timerContainer.style.borderStyle = "solid";
+  timerContainer.style.borderColor = "black";
+  timerContainer.style.borderWidth = "medium";
+  document.querySelector("body").append(timerContainer);
+
   // Create timer
   const timer = document.createElement("div");
   timer.style.backgroundColor = "orange";
-  timer.style.height = "2em";
-  timer.style.width = "60%";
-  timer.style.position = "absolute";
-  timer.style.top = "30%";
-  timer.style.left = "20%";
-  document.querySelector("body").append(timer);
+  timer.style.height = "100%";
+  timerContainer.append(timer);
 
   // Timer Interval: 1.6 seconds, also report success/failure
   let timerCounter = 100;
@@ -115,7 +125,7 @@ function parryMiniGame(thisHp, playerStrength, thisArmour, damage, playerHp) {
     // Success
     if (timerCounter > 0 && arrKeys.length === 6) {
       clearInterval(timerInterval);
-      timer.remove();
+      timerContainer.remove();
       container.remove();
 
       const parryDamage = performDamageFomula(playerStrength, thisArmour);
@@ -124,16 +134,19 @@ function parryMiniGame(thisHp, playerStrength, thisArmour, damage, playerHp) {
       thisHp -= parryDamage;
       updateEnemyHp(thisHp);
       setBackgroundOpacity(1);
-      // Start the gauages again
+      // Start the gauages and button events again
       autoPlayerActionGauge = setInterval(
         playerContinuousEvents,
         player.agility
       );
       autoEnemyActionGauge = setInterval(enemyContinuousEvents, enemy.agility);
+
+      attackButton.addEventListener("click", attackButtonSelected);
+      defendButton.addEventListener("click", defendButtonSelected);
     } // Failure
     else if (timerCounter <= 0 && arrKeys.length < 6) {
       clearInterval(timerInterval);
-      timer.remove();
+      timerContainer.remove();
       container.remove();
 
       const reducedDamage = Math.round(damage * 0.3);
@@ -142,12 +155,15 @@ function parryMiniGame(thisHp, playerStrength, thisArmour, damage, playerHp) {
       updateTextLog(text);
       updatePlayerHp(playerHp);
       setBackgroundOpacity(1);
-      // Start the gauges again
+      // Start the gauges and button events
       autoPlayerActionGauge = setInterval(
         playerContinuousEvents,
         player.agility
       );
       autoEnemyActionGauge = setInterval(enemyContinuousEvents, enemy.agility);
+
+      attackButton.addEventListener("click", attackButtonSelected);
+      defendButton.addEventListener("click", defendButtonSelected);
     }
   }, 10);
 }

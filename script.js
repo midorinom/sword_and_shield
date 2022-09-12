@@ -134,10 +134,6 @@ let autoPlayerActionGauge = setInterval(playerContinuousEvents, player.agility);
 let autoEnemyActionGauge = setInterval(enemyContinuousEvents, enemy.agility);
 
 // Event Listeners for the Attack and Defend buttons
-document
-  .querySelector("#attack_button")
-  .addEventListener("click", attackButtonSelected);
+attackButton.addEventListener("click", attackButtonSelected);
 
-document
-  .querySelector("#defend_button")
-  .addEventListener("click", defendButtonSelected);
+defendButton.addEventListener("click", defendButtonSelected);
