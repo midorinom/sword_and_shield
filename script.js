@@ -30,23 +30,19 @@ class Enemy {
     enemyActionGauge1.style.height = 0;
     // Perform the damage formula
     let damage = performDamageFomula(this.strength, Player.armour);
-    // Check if player is defending and update Text Log accordingly
+    // Check if player is defending
     if (player.status.defendStance === true) {
       // Set defendStance back to false
       player.status.defendStance = false;
-      parryMiniGame();
-      // Round the resulting damage to an integer
-      damage = Math.round(damage * 0.3);
-      Player.hp -= damage;
-      const text = `You defended! The enemy only dealt ${damage} damage to you.`;
-      updateTextLog(text);
-    } else {
+      // Play the Parry minigame and check if the player cleared the minigame, update text log + hp values
+      parryMiniGame(this.hp, Player.strength, this.armour, damage, Player.hp);
+    } // Player is not defending
+    else {
       Player.hp -= damage;
       const text = `The enemy dealt ${damage} damage to you.`;
       updateTextLog(text);
+      updatePlayerHp(Player.hp);
     }
-    // Subtract the damage from player hp and update the hp value
-    updatePlayerHp(Player.hp);
   }
 }
 
@@ -120,12 +116,12 @@ const player = new Player(
   100,
   5,
   1,
-  50,
+  20,
   0,
   { attack: false, defend: false },
   { defendStance: false }
 );
-const enemy = new Enemy(100, 1, 1, 100, 0);
+const enemy = new Enemy(100, 1, 1, 30, 0);
 
 // Display player and enemy hp values onto the page
 updatePlayerHp(player.hp);
