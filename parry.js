@@ -6,97 +6,9 @@ function parryMiniGame(thisHp, playerStrength, thisArmour, damage, playerHp) {
   clearInterval(autoEnemyActionGauge);
   attackButton.removeEventListener("click", attackButtonSelected);
   defendButton.removeEventListener("click", defendButtonSelected);
-  // Create container for the keys that will appear on screen
-  const container = document.createElement("div");
-  container.style.height = "8em";
-  container.style.width = "40%";
-  container.style.position = "absolute";
-  container.style.top = "50%";
-  container.style.left = "50%";
-  container.style.transform = `translate(-50%, -50%)`;
-  container.style.textAlign = "center";
-  document.querySelector("body").append(container);
 
-  // Create the keys that need to be pressed
+  // Create an array for the boxes that need to be pressed/clicked
   const arrKeys = [];
-  // All possible keys
-  const allPossibleKeys = [
-    "A",
-    "B",
-    "C",
-    "D",
-    "E",
-    "F",
-    "G",
-    "H",
-    "I",
-    "J",
-    "K",
-    "L",
-    "M",
-    "N",
-    "O",
-    "P",
-    "Q",
-    "R",
-    "S",
-    "T",
-    "U",
-    "V",
-    "W",
-    "X",
-    "Y",
-    "Z",
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "0",
-  ];
-
-  for (let i = 0; i < 3; i++) {
-    const newKey = document.createElement("div");
-    // Styling
-    newKey.style.height = "100%";
-    newKey.style.width = "25%";
-    newKey.style.backgroundColor = "yellow";
-    newKey.style.borderColor = "red";
-    newKey.style.borderStyle = "solid";
-    newKey.style.borderWidth = "thick";
-    newKey.style.fontSize = "2em";
-    newKey.style.textAlign = "center";
-    newKey.style.lineHeight = "4em";
-    newKey.style.marginRight = "1em";
-    newKey.style.color = "black";
-    newKey.style.float = "left";
-    // Randomly assign a key and making the text appear
-    const randomNumber = Math.floor(Math.random() * allPossibleKeys.length);
-    newKey.innerText = allPossibleKeys[randomNumber];
-    container.append(newKey);
-    // Delete from the list of possible keys, to avoid getting duplicates
-    allPossibleKeys.splice(randomNumber, 1);
-    // Put the newKey into the arrKeys array
-    arrKeys.push(newKey);
-  }
-
-  // Event Listener for key presses
-  window.addEventListener("keydown", function (e) {
-    for (let i = 0; i < arrKeys.length; i++) {
-      if (
-        e.code === `Key${arrKeys[i].innerText}` ||
-        e.code === `Digit${arrKeys[i].innerText}`
-      ) {
-        arrKeys[i].style.backgroundColor = "lightgreen";
-        arrKeys[i].style.borderColor = "green";
-        arrKeys.push(i);
-      }
-    }
-  });
 
   // Create container for the timer
   const timerContainer = document.createElement("div");
@@ -119,51 +31,227 @@ function parryMiniGame(thisHp, playerStrength, thisArmour, damage, playerHp) {
   // Timer Interval: 1.6 seconds, also report success/failure
   let timerCounter = 100;
 
-  const timerInterval = setInterval(() => {
-    timerCounter -= 0.625;
-    timer.style.width = timerCounter + "%";
-    // Success
-    if (timerCounter > 0 && arrKeys.length === 6) {
-      clearInterval(timerInterval);
-      timerContainer.remove();
-      container.remove();
+  // Coin Toss to decide whether to play the key pressing or the clicking game
+  if (Math.round(Math.random()) === 0) {
+    // Create container for the keys that will appear on screen
+    const container = document.createElement("div");
+    container.style.height = "8em";
+    container.style.width = "40%";
+    container.style.position = "absolute";
+    container.style.top = "50%";
+    container.style.left = "50%";
+    container.style.transform = `translate(-50%, -50%)`;
+    container.style.textAlign = "center";
+    document.querySelector("body").append(container);
 
-      const parryDamage = performDamageFomula(playerStrength, thisArmour);
-      const text = `You parried! You took no damage and counterattacked, dealing ${parryDamage} damage to the enemy.`;
-      updateTextLog(text);
-      thisHp -= parryDamage;
-      updateEnemyHp(thisHp);
-      setBackgroundOpacity(1);
-      // Start the gauages and button events again
-      autoPlayerActionGauge = setInterval(
-        playerContinuousEvents,
-        player.agility
-      );
-      autoEnemyActionGauge = setInterval(enemyContinuousEvents, enemy.agility);
+    // All possible keys
+    const allPossibleKeys = [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G",
+      "H",
+      "I",
+      "J",
+      "K",
+      "L",
+      "M",
+      "N",
+      "O",
+      "P",
+      "Q",
+      "R",
+      "S",
+      "T",
+      "U",
+      "V",
+      "W",
+      "X",
+      "Y",
+      "Z",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "0",
+    ];
 
-      attackButton.addEventListener("click", attackButtonSelected);
-      defendButton.addEventListener("click", defendButtonSelected);
-    } // Failure
-    else if (timerCounter <= 0 && arrKeys.length < 6) {
-      clearInterval(timerInterval);
-      timerContainer.remove();
-      container.remove();
-
-      const reducedDamage = Math.round(damage * 0.3);
-      playerHp -= damage;
-      const text = `You defended! The enemy only dealt ${reducedDamage} damage to you.`;
-      updateTextLog(text);
-      updatePlayerHp(playerHp);
-      setBackgroundOpacity(1);
-      // Start the gauges and button events
-      autoPlayerActionGauge = setInterval(
-        playerContinuousEvents,
-        player.agility
-      );
-      autoEnemyActionGauge = setInterval(enemyContinuousEvents, enemy.agility);
-
-      attackButton.addEventListener("click", attackButtonSelected);
-      defendButton.addEventListener("click", defendButtonSelected);
+    for (let i = 0; i < 3; i++) {
+      const newKey = document.createElement("div");
+      // Styling
+      newKey.style.height = "100%";
+      newKey.style.width = "25%";
+      newKey.style.backgroundColor = "yellow";
+      newKey.style.borderColor = "red";
+      newKey.style.borderStyle = "solid";
+      newKey.style.borderWidth = "thick";
+      newKey.style.fontSize = "2em";
+      newKey.style.textAlign = "center";
+      newKey.style.lineHeight = "4em";
+      newKey.style.marginRight = "1em";
+      newKey.style.color = "black";
+      newKey.style.float = "left";
+      // Randomly assign a key and making the text appear
+      const randomNumber = Math.floor(Math.random() * allPossibleKeys.length);
+      newKey.innerText = allPossibleKeys[randomNumber];
+      container.append(newKey);
+      // Delete from the list of possible keys, to avoid getting duplicates
+      allPossibleKeys.splice(randomNumber, 1);
+      // Put the newKey into the arrKeys array
+      arrKeys.push(newKey);
     }
-  }, 10);
+
+    // Event Listener for key presses
+    window.addEventListener("keydown", function (e) {
+      for (let i = 0; i < arrKeys.length; i++) {
+        if (
+          e.code === `Key${arrKeys[i].innerText}` ||
+          e.code === `Digit${arrKeys[i].innerText}`
+        ) {
+          arrKeys[i].style.backgroundColor = "lightgreen";
+          arrKeys[i].style.borderColor = "green";
+          arrKeys.push("");
+        }
+      }
+    });
+
+    const timerInterval = setInterval(() => {
+      timerCounter -= 0.625;
+      timer.style.width = timerCounter + "%";
+      // Success
+      if (timerCounter > 0 && arrKeys.length === 6) {
+        clearInterval(timerInterval);
+        timerContainer.remove();
+        container.remove();
+
+        const parryDamage = performDamageFomula(playerStrength, thisArmour);
+        const text = `You parried! You took no damage and counterattacked, dealing ${parryDamage} damage to the enemy.`;
+        updateTextLog(text);
+        thisHp -= parryDamage;
+        updateEnemyHp(thisHp);
+        setBackgroundOpacity(1);
+        // Start the gauages and button events again
+        autoPlayerActionGauge = setInterval(
+          playerContinuousEvents,
+          player.agility
+        );
+        autoEnemyActionGauge = setInterval(
+          enemyContinuousEvents,
+          enemy.agility
+        );
+
+        attackButton.addEventListener("click", attackButtonSelected);
+        defendButton.addEventListener("click", defendButtonSelected);
+      } // Failure
+      else if (timerCounter <= 0 && arrKeys.length < 6) {
+        clearInterval(timerInterval);
+        timerContainer.remove();
+        container.remove();
+
+        const reducedDamage = Math.round(damage * 0.3);
+        playerHp -= damage;
+        const text = `You defended! The enemy only dealt ${reducedDamage} damage to you.`;
+        updateTextLog(text);
+        updatePlayerHp(playerHp);
+        setBackgroundOpacity(1);
+        // Start the gauges and button events
+        autoPlayerActionGauge = setInterval(
+          playerContinuousEvents,
+          player.agility
+        );
+        autoEnemyActionGauge = setInterval(
+          enemyContinuousEvents,
+          enemy.agility
+        );
+
+        attackButton.addEventListener("click", attackButtonSelected);
+        defendButton.addEventListener("click", defendButtonSelected);
+      }
+    }, 10);
+  } else {
+    // ==============
+    // Mouse Event
+    // ==============
+    for (let i = 0; i < 3; i++) {
+      const clickBox = document.createElement("div");
+      clickBox.style.height = "8em";
+      clickBox.style.width = "10%";
+      clickBox.style.backgroundColor = "lightgreen";
+      clickBox.style.borderColor = "orange";
+      clickBox.style.borderStyle = "solid";
+      clickBox.style.borderWidth = "thick";
+      clickBox.style.position = "absolute";
+      clickBox.style.top = Math.floor(Math.random() * 90) + "%";
+      clickBox.style.left = Math.floor(Math.random() * 90) + "%";
+      arrKeys.push(clickBox);
+      clickBox.addEventListener("click", () => {
+        clickBox.remove();
+        arrKeys.push("");
+      });
+      document.querySelector("body").append(clickBox);
+    }
+
+    const timerInterval = setInterval(() => {
+      timerCounter -= 0.625;
+      timer.style.width = timerCounter + "%";
+      // Success
+      if (timerCounter > 0 && arrKeys.length === 6) {
+        clearInterval(timerInterval);
+        timerContainer.remove();
+
+        const parryDamage = performDamageFomula(playerStrength, thisArmour);
+        const text = `You parried! You took no damage and counterattacked, dealing ${parryDamage} damage to the enemy.`;
+        updateTextLog(text);
+        thisHp -= parryDamage;
+        updateEnemyHp(thisHp);
+        setBackgroundOpacity(1);
+        // Start the gauages and button events again
+        autoPlayerActionGauge = setInterval(
+          playerContinuousEvents,
+          player.agility
+        );
+        autoEnemyActionGauge = setInterval(
+          enemyContinuousEvents,
+          enemy.agility
+        );
+
+        attackButton.addEventListener("click", attackButtonSelected);
+        defendButton.addEventListener("click", defendButtonSelected);
+      } // Failure
+      else if (timerCounter <= 0 && arrKeys.length < 6) {
+        clearInterval(timerInterval);
+        timerContainer.remove();
+        for (let i = 0; i < 3; i++) {
+          arrKeys[i].remove();
+        }
+
+        const reducedDamage = Math.round(damage * 0.3);
+        playerHp -= damage;
+        const text = `You defended! The enemy only dealt ${reducedDamage} damage to you.`;
+        updateTextLog(text);
+        updatePlayerHp(playerHp);
+        setBackgroundOpacity(1);
+        // Start the gauges and button events
+        autoPlayerActionGauge = setInterval(
+          playerContinuousEvents,
+          player.agility
+        );
+        autoEnemyActionGauge = setInterval(
+          enemyContinuousEvents,
+          enemy.agility
+        );
+
+        attackButton.addEventListener("click", attackButtonSelected);
+        defendButton.addEventListener("click", defendButtonSelected);
+      }
+    }, 10);
+  }
 }
