@@ -1,6 +1,9 @@
 "use strict";
 
 function parryMiniGame(thisHp, playerStrength, thisArmour, damage, playerHp) {
+  // Stop the Action Gauges from filling
+  clearInterval(autoPlayerActionGauge);
+  clearInterval(autoEnemyActionGauge);
   // Create container for the keys that will appear on screen
   const container = document.createElement("div");
   container.style.height = "8em";
@@ -120,6 +123,13 @@ function parryMiniGame(thisHp, playerStrength, thisArmour, damage, playerHp) {
       updateTextLog(text);
       thisHp -= parryDamage;
       updateEnemyHp(thisHp);
+      setBackgroundOpacity(1);
+      // Start the gauages again
+      autoPlayerActionGauge = setInterval(
+        playerContinuousEvents,
+        player.agility
+      );
+      autoEnemyActionGauge = setInterval(enemyContinuousEvents, enemy.agility);
     } // Failure
     else if (timerCounter <= 0 && arrKeys.length < 6) {
       clearInterval(timerInterval);
@@ -131,6 +141,13 @@ function parryMiniGame(thisHp, playerStrength, thisArmour, damage, playerHp) {
       const text = `You defended! The enemy only dealt ${reducedDamage} damage to you.`;
       updateTextLog(text);
       updatePlayerHp(playerHp);
+      setBackgroundOpacity(1);
+      // Start the gauges again
+      autoPlayerActionGauge = setInterval(
+        playerContinuousEvents,
+        player.agility
+      );
+      autoEnemyActionGauge = setInterval(enemyContinuousEvents, enemy.agility);
     }
   }, 10);
 }

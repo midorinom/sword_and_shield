@@ -107,3 +107,10 @@ function playerContinuousEvents() {
 function enemyContinuousEvents() {
   fillEnemyActionGauge();
 }
+
+function setBackgroundOpacity(opacity) {
+  document.querySelector("#hp_bars").style.opacity = opacity;
+  document.querySelector("#main_div").style.opacity = opacity;
+  document.querySelector("#action_buttons").style.opacity = opacity;
+  document.querySelector("#textlog").style.opacity = opacity;
+}

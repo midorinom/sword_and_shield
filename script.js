@@ -34,7 +34,8 @@ class Enemy {
     if (player.status.defendStance === true) {
       // Set defendStance back to false
       player.status.defendStance = false;
-      // Play the Parry minigame and check if the player cleared the minigame, update text log + hp values
+      // Blur the background then play the Parry minigame
+      setBackgroundOpacity(0.5);
       parryMiniGame(this.hp, Player.strength, this.armour, damage, Player.hp);
     } // Player is not defending
     else {
