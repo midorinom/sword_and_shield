@@ -186,16 +186,13 @@ const enemyQueue1 = document.querySelector("#enemy_queue1");
 const enemyQueue2 = document.querySelector("#enemy_queue2");
 const enemyQueue3 = document.querySelector("#enemy_queue3");
 
-// const enemyQueueImages = document.querySelector(".enemy_queue_images");
-// enemyQueueImages.addEventListener("mouseover");
-
-enemyQueue1.addEventListener("mouseover", () => {
+enemyQueue1.addEventListener("mouseenter", () => {
   showEnemyAttackDescription(enemy, 0);
 });
-enemyQueue2.addEventListener("mouseover", () => {
+enemyQueue2.addEventListener("mouseenter", () => {
   showEnemyAttackDescription(enemy, 1);
 });
-enemyQueue3.addEventListener("mouseover", () => {
+enemyQueue3.addEventListener("mouseenter", () => {
   showEnemyAttackDescription(enemy, 2);
 });
 enemyQueue1.addEventListener("mouseout", () => {

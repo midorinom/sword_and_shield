@@ -185,3 +185,10 @@ html {
 #bottom_container {
   display: flex;
 }
+
+.enemy_queue_description_box {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  font-size: larger;
+}

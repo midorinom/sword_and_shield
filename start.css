@@ -1,0 +1,13 @@
+#mainContainer1 {
+  text-align: center;
+}
+
+#startTitle {
+  margin-left: 5em;
+}
+
+#startButton {
+  margin-left: 8em;
+  height: 5em;
+  width: 20%;
+}
