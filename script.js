@@ -34,11 +34,23 @@ class Enemy {
   }
 
   attack(Player) {
-    // Execute the attack and reset the gauge to 0
+    // Reset the gauge to 0
     this.actionGaugeCounter = 0;
     enemyActionGauge1.style.height = 0;
+    // Determine what is next up in the enemyQueue array and execute the attack. Modify strength accordingly.
+    let attackPower = this.strength;
+    if (enemyQueue[0] === "images/enemy_attack1.png") {
+      attackPower += 0;
+    } else if (enemyQueue[0] === "images/enemy_attack2.webp") {
+      attackPower += 1;
+    } else if (enemyQueue[0] === "images/enemy_attack3.webp") {
+      attackPower += 2;
+    }
+    // Push a new attack into the enemyQueue array, shift out the first one and then update the images
+    moveEnemyQueueAlong(this.attacks);
+    updateEnemyQueue();
     // Perform the damage formula
-    let damage = performDamageFomula(this.strength, Player.armour);
+    let damage = performDamageFomula(attackPower, Player.armour);
     // Check if player is defending
     if (player.status.defendStance === true) {
       // Set defendStance back to false

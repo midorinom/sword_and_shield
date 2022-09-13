@@ -129,3 +129,13 @@ function updateEnemyQueue() {
   document.querySelector("#enemy_queue2").src = enemyQueue[1];
   document.querySelector("#enemy_queue3").src = enemyQueue[2];
 }
+
+function moveEnemyQueueAlong(attacks) {
+  // get rid of the first attack in the queue
+  enemyQueue.shift();
+  // put in a new attack at the end of the queue
+  const allAttacks = Object.values(attacks);
+  const randomAttack =
+    allAttacks[Math.floor(Math.random() * allAttacks.length)];
+  enemyQueue.push(randomAttack);
+}
