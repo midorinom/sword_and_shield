@@ -168,3 +168,47 @@ function moveEnemyQueueAlong(attacks) {
     allAttacks[Math.floor(Math.random() * allAttacks.length)];
   enemyQueue.push(randomAttack);
 }
+
+function showEnemyAttackDescription(Enemy, enemyQueueIndex) {
+  const imageUrl = enemyQueue[enemyQueueIndex];
+  const descriptionText = Enemy.getAttackDescription(imageUrl);
+
+  if (enemyQueueIndex === 0) {
+    const descriptionBox = document.querySelector("#enemy_queue1_description");
+    descriptionBox.innerText = descriptionText;
+    descriptionBox.style.display = "block";
+    const attackImage = document.querySelector("#enemy_queue1");
+    attackImage.style.display = "none";
+  } else if (enemyQueueIndex === 1) {
+    const descriptionBox = document.querySelector("#enemy_queue2_description");
+    descriptionBox.innerText = descriptionText;
+    descriptionBox.style.display = "block";
+    const attackImage = document.querySelector("#enemy_queue2");
+    attackImage.style.display = "none";
+  } else if (enemyQueueIndex === 2) {
+    const descriptionBox = document.querySelector("#enemy_queue3_description");
+    descriptionBox.innerText = descriptionText;
+    descriptionBox.style.display = "block";
+    const attackImage = document.querySelector("#enemy_queue3");
+    attackImage.style.display = "none";
+  }
+}
+
+function hideEnemyAttackDescription(enemyQueueIndex) {
+  if (enemyQueueIndex === 0) {
+    const descriptionBox = document.querySelector("#enemy_queue1_description");
+    descriptionBox.style.display = "none";
+    const attackImage = document.querySelector("#enemy_queue1");
+    attackImage.style.display = "block";
+  } else if (enemyQueueIndex === 1) {
+    const descriptionBox = document.querySelector("#enemy_queue2_description");
+    descriptionBox.style.display = "none";
+    const attackImage = document.querySelector("#enemy_queue2");
+    attackImage.style.display = "block";
+  } else if (enemyQueueIndex === 2) {
+    const descriptionBox = document.querySelector("#enemy_queue3_description");
+    descriptionBox.style.display = "none";
+    const attackImage = document.querySelector("#enemy_queue3");
+    attackImage.style.display = "block";
+  }
+}

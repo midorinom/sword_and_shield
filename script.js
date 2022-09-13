@@ -13,7 +13,6 @@ const enemyActionGauge1 = document.querySelector(
 const attackButton = document.querySelector("#attack_button");
 const defendButton = document.querySelector("#defend_button");
 const textLog = ["", "", "", ""];
-const enemyQueue = [];
 
 // Create Enemy class
 class Enemy {
@@ -66,6 +65,16 @@ class Enemy {
       const text = `The enemy dealt ${damage} damage to you.`;
       updateTextLog(text);
       updateHp(true, Player);
+    }
+  }
+
+  getAttackDescription(imageUrl) {
+    if (imageUrl === "images/enemy_attack1.png") {
+      return "The enemy scratches and does a small amount of damage.";
+    } else if (imageUrl === "images/enemy_attack2.webp") {
+      return "The enemy swipes and does a moderate amount of damage.";
+    } else if (imageUrl === "images/enemy_attack3.webp") {
+      return "The enemy stomps and does a large amount of damage.";
     }
   }
 }
@@ -168,5 +177,33 @@ attackButton.addEventListener("click", attackButtonSelected);
 defendButton.addEventListener("click", defendButtonSelected);
 
 // Start Enemy Queue
+const enemyQueue = [];
 first3EnemyAttacks(enemy);
 updateEnemyQueue();
+
+// Event Listeners for enemy queue to show a description of the attacks
+const enemyQueue1 = document.querySelector("#enemy_queue1");
+const enemyQueue2 = document.querySelector("#enemy_queue2");
+const enemyQueue3 = document.querySelector("#enemy_queue3");
+
+// const enemyQueueImages = document.querySelector(".enemy_queue_images");
+// enemyQueueImages.addEventListener("mouseover");
+
+enemyQueue1.addEventListener("mouseover", () => {
+  showEnemyAttackDescription(enemy, 0);
+});
+enemyQueue2.addEventListener("mouseover", () => {
+  showEnemyAttackDescription(enemy, 1);
+});
+enemyQueue3.addEventListener("mouseover", () => {
+  showEnemyAttackDescription(enemy, 2);
+});
+enemyQueue1.addEventListener("mouseout", () => {
+  hideEnemyAttackDescription(0);
+});
+enemyQueue2.addEventListener("mouseout", () => {
+  hideEnemyAttackDescription(1);
+});
+enemyQueue3.addEventListener("mouseout", () => {
+  hideEnemyAttackDescription(2);
+});

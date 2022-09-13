@@ -156,26 +156,32 @@ html {
   margin-top: 0.3em;
 }
 
-#enemy_queue2 {
+.enemy_queue23_container {
+  height: 8em;
+  width: 100%;
+}
+
+#enemy_queue2_container {
   margin-top: 0.5em;
   border-style: solid;
   border-color: black;
   border-width: medium;
 }
 
-#enemy_queue3 {
-  margin-top: 1em;
+#enemy_queue3_container {
+  margin-top: 1.5em;
   margin-bottom: 1em;
   border-style: solid;
   border-color: black;
   border-width: medium;
 }
 
-#bottom_container {
-  display: flex;
-}
-
-.enemy_attack_images {
+.enemy_queue_images {
+  position: absolute;
   height: 8em;
   width: 100%;
+}
+
+#bottom_container {
+  display: flex;
 }
