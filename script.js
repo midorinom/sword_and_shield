@@ -17,12 +17,20 @@ const enemyQueue = [];
 
 // Create Enemy class
 class Enemy {
-  constructor(hp, strength, armour, agility, actionGaugeCounter = 0) {
+  constructor(
+    hp,
+    strength,
+    armour,
+    agility,
+    actionGaugeCounter = 0,
+    attacks = {}
+  ) {
     (this.hp = hp),
       (this.strength = strength),
       (this.armour = armour),
       (this.agility = agility),
       (this.actionGaugeCounter = actionGaugeCounter);
+    this.attacks = attacks;
   }
 
   attack(Player) {
@@ -123,7 +131,11 @@ const player = new Player(
   { attack: false, defend: false },
   { defendStance: false }
 );
-const enemy = new Enemy(100, 1, 1, 30, 0);
+const enemy = new Enemy(100, 1, 1, 30, 0, {
+  attack1: "images/enemy_attack1.png",
+  attack2: "images/enemy_attack2.webp",
+  attack3: "images/enemy_attack3.webp",
+});
 
 // Display player and enemy hp values onto the page
 updatePlayerHp(player.hp);
@@ -138,3 +150,7 @@ let autoEnemyActionGauge = setInterval(enemyContinuousEvents, enemy.agility);
 attackButton.addEventListener("click", attackButtonSelected);
 
 defendButton.addEventListener("click", defendButtonSelected);
+
+// Start Enemy Queue
+first3EnemyAttacks(enemy);
+updateEnemyQueue();

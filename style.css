@@ -143,6 +143,9 @@ html {
   border-color: black;
   border-width: medium;
 }
+#enemy_queue1 {
+  margin-top: 0.3em;
+}
 
 #enemy_queue2 {
   margin-top: 0.5em;

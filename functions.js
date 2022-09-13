@@ -114,3 +114,18 @@ function setBackgroundOpacity(opacity) {
   document.querySelector("#action_buttons").style.opacity = opacity;
   document.querySelector("#textlog").style.opacity = opacity;
 }
+
+function first3EnemyAttacks(Enemy) {
+  const allAttacks = Object.values(Enemy.attacks);
+  for (let i = 0; i < 3; i++) {
+    const randomAttack =
+      allAttacks[Math.floor(Math.random() * allAttacks.length)];
+    enemyQueue.push(randomAttack);
+  }
+}
+
+function updateEnemyQueue() {
+  document.querySelector("#enemy_queue1").src = enemyQueue[0];
+  document.querySelector("#enemy_queue2").src = enemyQueue[1];
+  document.querySelector("#enemy_queue3").src = enemyQueue[2];
+}
