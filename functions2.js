@@ -37,7 +37,7 @@ function showEnemyAttackDescription(Enemy, enemyQueueIndex) {
     Enemy.actionGaugeCounter = 0;
     enemyActionGauge1.style.height = 0;
     // Push a new attack into the enemyQueue array, shift out the first one and then update the images
-    moveEnemyQueueAlong(Enemy.attacks);
+    moveEnemyQueueAlong(Enemy);
     updateEnemyQueue();
     // Perform the damage formula
     let damage = performDamageFomula(attackPower, Player.armour);
@@ -50,7 +50,7 @@ function showEnemyAttackDescription(Enemy, enemyQueueIndex) {
     } // Player is not defending
     else {
       Player.hp -= damage;
-      const text = `The enemy dealt ${damage} damage to you.`;
+      const text = `The ${Enemy.name} dealt ${damage} damage to you.`;
       updateTextLog(text);
       updateHp(true, Player);
     }

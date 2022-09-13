@@ -4,7 +4,7 @@ attackButton.addEventListener("click", attackButtonSelected);
 defendButton.addEventListener("click", defendButtonSelected);
 
   // Start filling the Action Gauge, also set the interval to variables
-  let currentEnemy = enemy1;
+  let currentEnemy = enemyBalancedEasy;
   
   let autoPlayerActionGauge = setInterval(()=>{playerContinuousEvents(currentEnemy)}, player.agility);
   

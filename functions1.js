@@ -179,10 +179,17 @@ function setBackgroundOpacity(opacity) {
 }
 
 function first3EnemyAttacks(Enemy) {
-  const allAttacks = Object.values(Enemy.attacks);
   for (let i = 0; i < 3; i++) {
-    const randomAttack =
-      allAttacks[Math.floor(Math.random() * allAttacks.length)];
+    // 60%, 30%, 10% probability for the 3 attacks respectively
+    let randomAttack;
+    let randomNumber = Math.floor(Math.random() * 100);
+    if (randomNumber < 10) {
+      randomAttack = Object.values(Enemy.attacks)[2];
+    } else if ((randomNumber < 30) && (randomNumber >= 10)){
+      randomAttack = Object.values(Enemy.attacks)[1];
+    } else {
+      randomAttack = Object.values(Enemy.attacks)[0];
+    }      
     enemyQueue.push(randomAttack);
   }
 }
@@ -193,12 +200,19 @@ function updateEnemyQueue() {
   document.querySelector("#enemy_queue3").src = enemyQueue[2];
 }
 
-function moveEnemyQueueAlong(attacks) {
+function moveEnemyQueueAlong(Enemy) {
   // get rid of the first attack in the queue
   enemyQueue.shift();
   // put in a new attack at the end of the queue
-  const allAttacks = Object.values(attacks);
-  const randomAttack =
-    allAttacks[Math.floor(Math.random() * allAttacks.length)];
+  // 60%, 30%, 10% probability for the 3 attacks respectively
+  let randomAttack;
+    let randomNumber = Math.floor(Math.random() * 100);
+    if (randomNumber < 10) {
+      randomAttack = Object.values(Enemy.attacks)[2];
+    } else if ((randomNumber < 30) && (randomNumber >= 10)){
+      randomAttack = Object.values(Enemy.attacks)[1];
+    } else {
+      randomAttack = Object.values(Enemy.attacks)[0];
+    } 
   enemyQueue.push(randomAttack);
 }

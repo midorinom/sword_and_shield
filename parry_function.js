@@ -184,7 +184,7 @@ function parryMiniGame(Enemy, Player, damage) {
     timerContainer.remove();
 
     const parryDamage = performDamageFomula(Player.strength, Enemy.armour);
-    const text = `You parried! You took no damage and counterattacked, dealing ${parryDamage} damage to the enemy.`;
+    const text = `You parried! You took no damage and counterattacked, dealing ${parryDamage} damage to the ${Enemy.name}.`;
     updateTextLog(text);
     Enemy.hp -= parryDamage;
     updateHp(false, Enemy);
@@ -203,7 +203,7 @@ function parryMiniGame(Enemy, Player, damage) {
 
     const reducedDamage = Math.round(damage * 0.3);
     Player.hp -= damage;
-    const text = `You defended! The enemy only dealt ${reducedDamage} damage to you.`;
+    const text = `You defended! The ${Enemy.name} only dealt ${reducedDamage} damage to you.`;
     updateTextLog(text);
     updateHp(true, Player);
     setBackgroundOpacity(1);

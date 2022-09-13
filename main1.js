@@ -16,7 +16,7 @@ const textLog = ["", "", "", ""];
 const enemyQueue = [];
 
 // Create Enemy class
-class Enemy1 {
+class EnemyBalancedEasy {
   constructor(
     maxHp,
     hp,
@@ -25,7 +25,7 @@ class Enemy1 {
     agility,
     actionGaugeCounter = 0,
     attacks = {},
-    attackDescriptions = []
+    attackDescriptions = [], name
   ) {
     (this.maxHp = maxHp),
       (this.hp = hp),
@@ -34,7 +34,8 @@ class Enemy1 {
       (this.agility = agility),
       (this.actionGaugeCounter = actionGaugeCounter),
     (this.attacks = attacks),
-    (this.attackDescriptions = attackDescriptions)
+    (this.attackDescriptions = attackDescriptions),
+    (this.name = name)
   }
 
   attack(Player) {
@@ -62,7 +63,7 @@ class Enemy1 {
 }
 
 // Create Player class
-class Player extends Enemy1 {
+class Player extends EnemyBalancedEasy {
   constructor(
     maxHp,
     hp,
@@ -101,7 +102,7 @@ class Player extends Enemy1 {
       Enemy.hp -= damage;
       updateHp(false, Enemy);
       // Update Text Log
-      const text = `You dealt ${damage} damage to the enemy.`;
+      const text = `You dealt ${damage} damage to the ${Enemy.name}.`;
       updateTextLog(text);
     }
   }
@@ -139,8 +140,8 @@ const player = new Player(
   { defendStance: false }
 );
 
-const enemy1 = new Enemy1(100, 100, 1, 1, 30, 0, {
+const enemyBalancedEasy = new EnemyBalancedEasy(100, 100, 1, 1, 30, 0, {
   attack1: "images/enemy_attack1.png",
   attack2: "images/enemy_attack2.webp",
   attack3: "images/enemy_attack3.webp",
-}, ["Scratch:\nDamage *", "Swipe:\nDamage **", "Stomp:\nDamage ***"]);
+}, ["Scratch:\nDamage *", "Swipe:\nDamage **", "Stomp:\nDamage ***"], "slime");
