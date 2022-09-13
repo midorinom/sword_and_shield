@@ -70,11 +70,11 @@ class Enemy {
 
   getAttackDescription(imageUrl) {
     if (imageUrl === "images/enemy_attack1.png") {
-      return "The enemy scratches and does a small amount of damage.";
+      return "Scratch:\nDamage *";
     } else if (imageUrl === "images/enemy_attack2.webp") {
-      return "The enemy swipes and does a moderate amount of damage.";
+      return "Swipe:\nDamage **";
     } else if (imageUrl === "images/enemy_attack3.webp") {
-      return "The enemy stomps and does a large amount of damage.";
+      return "Stomp:\nDamage ***";
     }
   }
 }
@@ -182,17 +182,17 @@ first3EnemyAttacks(enemy);
 updateEnemyQueue();
 
 // Event Listeners for enemy queue to show a description of the attacks
-const enemyQueue1 = document.querySelector("#enemy_queue1");
-const enemyQueue2 = document.querySelector("#enemy_queue2");
-const enemyQueue3 = document.querySelector("#enemy_queue3");
+const enemyQueue1 = document.querySelector("#enemy_queue1_container");
+const enemyQueue2 = document.querySelector("#enemy_queue2_container");
+const enemyQueue3 = document.querySelector("#enemy_queue3_container");
 
-enemyQueue1.addEventListener("mouseenter", () => {
+enemyQueue1.addEventListener("mouseover", () => {
   showEnemyAttackDescription(enemy, 0);
 });
-enemyQueue2.addEventListener("mouseenter", () => {
+enemyQueue2.addEventListener("mouseover", () => {
   showEnemyAttackDescription(enemy, 1);
 });
-enemyQueue3.addEventListener("mouseenter", () => {
+enemyQueue3.addEventListener("mouseover", () => {
   showEnemyAttackDescription(enemy, 2);
 });
 enemyQueue1.addEventListener("mouseout", () => {
