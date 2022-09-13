@@ -18,6 +18,7 @@ const enemyQueue = [];
 // Create Enemy class
 class Enemy {
   constructor(
+    maxHp,
     hp,
     strength,
     armour,
@@ -25,7 +26,8 @@ class Enemy {
     actionGaugeCounter = 0,
     attacks = {}
   ) {
-    (this.hp = hp),
+    (this.maxHp = maxHp),
+      (this.hp = hp),
       (this.strength = strength),
       (this.armour = armour),
       (this.agility = agility),
@@ -57,13 +59,13 @@ class Enemy {
       player.status.defendStance = false;
       // Blur the background then play the Parry minigame
       setBackgroundOpacity(0.5);
-      parryMiniGame(this.hp, Player.strength, this.armour, damage, Player.hp);
+      parryMiniGame(this, Player, damage);
     } // Player is not defending
     else {
       Player.hp -= damage;
       const text = `The enemy dealt ${damage} damage to you.`;
       updateTextLog(text);
-      updatePlayerHp(Player.hp);
+      updateHp(true, Player);
     }
   }
 }
@@ -71,6 +73,7 @@ class Enemy {
 // Create Player class
 class Player extends Enemy {
   constructor(
+    maxHp,
     hp,
     strength,
     armour,
@@ -79,7 +82,7 @@ class Player extends Enemy {
     actionSelected = {},
     status = {}
   ) {
-    super(hp, strength, armour, agility, actionGaugeCounter),
+    super(maxHp, hp, strength, armour, agility, actionGaugeCounter),
       (this.actionSelected = actionSelected),
       (this.status = status);
   }
@@ -105,7 +108,7 @@ class Player extends Enemy {
       let damage = performDamageFomula(this.strength, Enemy.armour);
       // Subtract the damage from enemy hp and update the hp value
       Enemy.hp -= damage;
-      updateEnemyHp(Enemy.hp);
+      updateHp(false, Enemy);
       // Update Text Log
       const text = `You dealt ${damage} damage to the enemy.`;
       updateTextLog(text);
@@ -136,6 +139,7 @@ class Player extends Enemy {
 // Create instances for player and enemy
 const player = new Player(
   100,
+  100,
   5,
   1,
   20,
@@ -143,15 +147,15 @@ const player = new Player(
   { attack: false, defend: false },
   { defendStance: false }
 );
-const enemy = new Enemy(100, 1, 1, 30, 0, {
+const enemy = new Enemy(100, 100, 1, 1, 30, 0, {
   attack1: "images/enemy_attack1.png",
   attack2: "images/enemy_attack2.webp",
   attack3: "images/enemy_attack3.webp",
 });
 
 // Display player and enemy hp values onto the page
-updatePlayerHp(player.hp);
-updateEnemyHp(enemy.hp);
+updateHp(true, player);
+updateHp(false, enemy);
 
 // Start filling the Action Gauge
 let autoPlayerActionGauge = setInterval(playerContinuousEvents, player.agility);

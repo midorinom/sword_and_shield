@@ -1,6 +1,6 @@
 "use strict";
 
-function parryMiniGame(thisHp, playerStrength, thisArmour, damage, playerHp) {
+function parryMiniGame(Enemy, Player, damage) {
   // Stop the Action Gauges and button events
   clearInterval(autoPlayerActionGauge);
   clearInterval(autoEnemyActionGauge);
@@ -180,15 +180,15 @@ function parryMiniGame(thisHp, playerStrength, thisArmour, damage, playerHp) {
     clearInterval(timerInterval);
     timerContainer.remove();
 
-    const parryDamage = performDamageFomula(playerStrength, thisArmour);
+    const parryDamage = performDamageFomula(Player.strength, Enemy.armour);
     const text = `You parried! You took no damage and counterattacked, dealing ${parryDamage} damage to the enemy.`;
     updateTextLog(text);
-    thisHp -= parryDamage;
-    updateEnemyHp(thisHp);
+    Enemy.hp -= parryDamage;
+    updateHp(false, Enemy);
     setBackgroundOpacity(1);
     // Start the gauages and button events again
-    autoPlayerActionGauge = setInterval(playerContinuousEvents, player.agility);
-    autoEnemyActionGauge = setInterval(enemyContinuousEvents, enemy.agility);
+    autoPlayerActionGauge = setInterval(playerContinuousEvents, Player.agility);
+    autoEnemyActionGauge = setInterval(enemyContinuousEvents, Enemy.agility);
 
     attackButton.addEventListener("click", attackButtonSelected);
     defendButton.addEventListener("click", defendButtonSelected);
@@ -199,14 +199,14 @@ function parryMiniGame(thisHp, playerStrength, thisArmour, damage, playerHp) {
     timerContainer.remove();
 
     const reducedDamage = Math.round(damage * 0.3);
-    playerHp -= damage;
+    Player.hp -= damage;
     const text = `You defended! The enemy only dealt ${reducedDamage} damage to you.`;
     updateTextLog(text);
-    updatePlayerHp(playerHp);
+    updateHp(true, Player);
     setBackgroundOpacity(1);
     // Start the gauges and button events
-    autoPlayerActionGauge = setInterval(playerContinuousEvents, player.agility);
-    autoEnemyActionGauge = setInterval(enemyContinuousEvents, enemy.agility);
+    autoPlayerActionGauge = setInterval(playerContinuousEvents, Player.agility);
+    autoEnemyActionGauge = setInterval(enemyContinuousEvents, Enemy.agility);
 
     attackButton.addEventListener("click", attackButtonSelected);
     defendButton.addEventListener("click", defendButtonSelected);

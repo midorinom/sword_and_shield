@@ -46,17 +46,28 @@ html {
   margin-bottom: 1em;
 }
 
-.hp_bar {
-  background-color: red;
+.hp_bar_container {
   height: 2em;
   width: 30%;
+  border-style: solid;
+  border-color: black;
+  border-width: thin;
   position: relative;
   left: 4%;
   margin-top: 1em;
 }
 
-#enemy_hp_bar {
+#enemy_hp_bar_container {
   left: 5%;
+}
+
+.hp_bar {
+  height: 100%;
+  position: absolute;
+}
+
+#enemy_hp_bar {
+  right: 0%;
 }
 
 .hp_value {
@@ -91,8 +102,6 @@ html {
 
 #attack_button {
   margin-right: 10em;
-  height: 70%;
-  width: 12%;
 }
 
 #textlog {

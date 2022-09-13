@@ -1,11 +1,40 @@
 "use strict";
 
-function updatePlayerHp(hp) {
-  document.querySelector("#player_hp_value").innerText = hp;
+function updateHp(isPlayer, ClassName) {
+  let hpValue;
+  let hpBar;
+  if (isPlayer === true) {
+    hpValue = "#player_hp_value";
+    hpBar = "#player_hp_bar";
+  } else {
+    hpValue = "#enemy_hp_value";
+    hpBar = "#enemy_hp_bar";
+  }
+  document.querySelector(hpValue).innerText = ClassName.hp;
+  const hpPercentage = (ClassName.hp / ClassName.maxHp) * 100;
+  document.querySelector(hpBar).style.width = hpPercentage + "%";
+
+  if (hpPercentage < 25) {
+    document.querySelector(hpBar).style.backgroundColor = "red";
+  } else if (hpPercentage >= 25 && hpPercentage < 50) {
+    document.querySelector(hpBar).style.backgroundColor = "yellow";
+  } else if (hpPercentage >= 50 && hpPercentage < 75) {
+    document.querySelector(hpBar).style.backgroundColor = "lightgreen";
+  } else {
+    document.querySelector(hpBar).style.backgroundColor = "lightblue";
+  }
 }
 
-function updateEnemyHp(hp) {
-  document.querySelector("#enemy_hp_value").innerText = hp;
+function updatePlayerHp(Player) {
+  document.querySelector("#player_hp_value").innerText = Player.hp;
+  const hpPercentage = (Player.hp / Player.maxHp) * 100;
+  document.querySelector("#player_hp_bar").style.width = hpPercentage + "%";
+}
+
+function updateEnemyHp(Enemy) {
+  document.querySelector("#enemy_hp_value").innerText = Enemy.hp;
+  const hpPercentage = (Enemy.hp / Enemy.maxHp) * 100;
+  document.querySelector("#enemy_hp_bar").style.width = hpPercentage + "%";
 }
 
 function updateTextLog(newText = "test") {
@@ -59,7 +88,7 @@ function attackButtonSelected() {
     // if Action Gauge is < 100, make button bigger when selected
     if (player.actionGaugeCounter < 100) {
       attackButton.style.height = 85 + "%";
-      attackButton.style.width = 15 + "%";
+      attackButton.style.width = 20 + "%";
     }
     // set actionSelected state in the player class to true
     player.actionSelected.attack = true;
@@ -79,7 +108,7 @@ function defendButtonSelected() {
   if (player.actionSelected.defend === false) {
     if (player.actionGaugeCounter < 100) {
       defendButton.style.height = 85 + "%";
-      defendButton.style.width = 15 + "%";
+      defendButton.style.width = 20 + "%";
     }
     player.actionSelected.defend = true;
   } else {
