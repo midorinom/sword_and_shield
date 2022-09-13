@@ -57,8 +57,7 @@ class Enemy {
     if (player.status.defendStance === true) {
       // Set defendStance back to false
       player.status.defendStance = false;
-      // Blur the background then play the Parry minigame
-      setBackgroundOpacity(0.5);
+      // Play the Parry minigame
       parryMiniGame(this, Player, damage);
     } // Player is not defending
     else {

@@ -1,6 +1,9 @@
 "use strict";
 
 function parryMiniGame(Enemy, Player, damage) {
+  // Blur the background
+  setBackgroundOpacity(0.4);
+
   // Stop the Action Gauges and button events
   clearInterval(autoPlayerActionGauge);
   clearInterval(autoEnemyActionGauge);
