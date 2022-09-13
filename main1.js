@@ -1,6 +1,7 @@
 "use strict";
 
 // Define variables
+let currentStage = 1;
 const playerActionGauge1 = document.querySelector(
   "#player_action_gauge1_progress"
 );
@@ -14,8 +15,9 @@ const attackButton = document.querySelector("#attack_button");
 const defendButton = document.querySelector("#defend_button");
 const textLog = ["", "", "", ""];
 const enemyQueue = [];
+let currentEnemy;
 
-// Create Enemy class
+// Create EnemyBalancedEasy class
 class EnemyBalancedEasy {
   constructor(
     maxHp,
@@ -38,19 +40,6 @@ class EnemyBalancedEasy {
     (this.name = name)
   }
 
-  attack(Player) {
-    // Determine what is next up in the enemyQueue array and execute the attack. Modify strength accordingly.
-    let attackPower = this.strength;
-    if (enemyQueue[0] === Object.values(this.attacks)[0]) {
-      attackPower += 0;
-    } else if (enemyQueue[0] === Object.values(this.attacks)[1]) {
-      attackPower += 1;
-    } else if (enemyQueue[0] === Object.values(this.attacks)[2]) {
-      attackPower += 2;
-    }
-    enemyAttackMegaChecker(this, Player, attackPower);
-  }
-
   getAttackDescription(imageUrl) {
     if (imageUrl === Object.values(this.attacks)[0]) {
       return this.attackDescriptions[0];
@@ -59,6 +48,17 @@ class EnemyBalancedEasy {
     } else if (imageUrl === Object.values(this.attacks)[2]) {
       return this.attackDescriptions[2];
     }
+  }
+
+  attack(Player) {
+    // Determine what is next up in the enemyQueue array and execute the attack. Modify strength accordingly.
+    let attackPower = this.strength;
+    if (enemyQueue[0] === Object.values(this.attacks)[1]) {
+      attackPower += 1;
+    } else if (enemyQueue[0] === Object.values(this.attacks)[2]) {
+      attackPower += 2;
+    }
+    enemyAttackMegaChecker(this, Player, attackPower);
   }
 }
 
@@ -128,20 +128,59 @@ class Player extends EnemyBalancedEasy {
   }
 }
 
-// Create instances for player and enemy
-const player = new Player(
-  100,
-  100,
-  5,
-  1,
-  20,
-  0,
-  { attack: false, defend: false },
-  { defendStance: false }
-);
+// Create EnemyFastEasy class
+ class EnemyFastEasy extends EnemyBalancedEasy {
+  constructor(
+    maxHp,
+    hp,
+    strength,
+    armour,
+    agility,
+    actionGaugeCounter = 0,
+    attacks = {},
+    attackDescriptions = [], name
+  ) {
+    super(maxHp, hp, strength, armour, agility, actionGaugeCounter, attacks, attackDescriptions, name);
+  }
 
-const enemyBalancedEasy = new EnemyBalancedEasy(100, 100, 1, 1, 30, 0, {
-  attack1: "images/enemy_attack1.png",
-  attack2: "images/enemy_attack2.webp",
-  attack3: "images/enemy_attack3.webp",
-}, ["Scratch:\nDamage *", "Swipe:\nDamage **", "Stomp:\nDamage ***"], "slime");
+  attack(Player) {
+    // Determine what is next up in the enemyQueue array and execute the attack. Modify strength accordingly.
+    let attackPower = this.strength;
+    if (enemyQueue[0] === Object.values(this.attacks)[0]) {
+      attackPower += 1;
+    } else if (enemyQueue[0] === Object.values(this.attacks)[1]) {
+      attackPower += 2;
+    } else if (enemyQueue[0] === Object.values(this.attacks)[2]) {
+      attackPower += 1;
+    }
+    enemyAttackMegaChecker(this, Player, attackPower);
+  }
+}
+
+class EnemySlowEasy extends EnemyBalancedEasy {
+  constructor(
+    maxHp,
+    hp,
+    strength,
+    armour,
+    agility,
+    actionGaugeCounter = 0,
+    attacks = {},
+    attackDescriptions = [], name
+  ) {
+    super(maxHp, hp, strength, armour, agility, actionGaugeCounter, attacks, attackDescriptions, name);
+  }
+
+  attack(Player) {
+    // Determine what is next up in the enemyQueue array and execute the attack. Modify strength accordingly.
+    let attackPower = this.strength;
+    if (enemyQueue[0] === Object.values(this.attacks)[0]) {
+      attackPower += 2;
+    } else if (enemyQueue[0] === Object.values(this.attacks)[1]) {
+      attackPower += 3;
+    } else if (enemyQueue[0] === Object.values(this.attacks)[2]) {
+      attackPower += 2;
+    }
+    enemyAttackMegaChecker(this, Player, attackPower);
+  }
+}
