@@ -34,6 +34,13 @@ html {
   left: 37.5%;
 }
 
+#enemy_queue_container {
+  height: 19em;
+  width: 11.5%;
+  position: relative;
+  left: 38.5%;
+}
+
 #hp_bars {
   display: flex;
   margin-bottom: 1em;
@@ -69,7 +76,7 @@ html {
 }
 
 #action_buttons {
-  width: 90%;
+  width: 80%;
   height: 10em;
   text-align: center;
 }
@@ -122,4 +129,38 @@ html {
   position: relative;
   left: 27%;
   margin-top: 2.7em;
+}
+
+#enemy_queue1 {
+  height: 8.5em;
+  width: 15%;
+  margin-top: 1em;
+  margin-left: 4em;
+  border-style: solid;
+  border-color: black;
+  border-width: medium;
+}
+
+#enemy_queue2 {
+  margin-top: 0.5em;
+  border-style: solid;
+  border-color: black;
+  border-width: medium;
+}
+
+#enemy_queue3 {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  border-style: solid;
+  border-color: black;
+  border-width: medium;
+}
+
+#bottom_container {
+  display: flex;
+}
+
+.enemy_attack_images {
+  height: 8em;
+  width: 100%;
 }
