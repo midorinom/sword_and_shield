@@ -1,5 +1,39 @@
 "use strict";
 
+function startStage(Player, Enemy){
+  // Display player and enemy hp values onto the page
+updateHp(true, Player);
+updateHp(false, Enemy);
+
+// Start Enemy Queue
+first3EnemyAttacks(Enemy);
+updateEnemyQueue();
+
+// Event Listeners for enemy queue to show a description of the attacks
+const enemyQueue1 = document.querySelector("#enemy_queue1_container");
+const enemyQueue2 = document.querySelector("#enemy_queue2_container");
+const enemyQueue3 = document.querySelector("#enemy_queue3_container");
+
+enemyQueue1.addEventListener("mouseover", () => {
+  showEnemyAttackDescription(Enemy, 0);
+});
+enemyQueue2.addEventListener("mouseover", () => {
+  showEnemyAttackDescription(Enemy, 1);
+});
+enemyQueue3.addEventListener("mouseover", () => {
+  showEnemyAttackDescription(Enemy, 2);
+});
+enemyQueue1.addEventListener("mouseout", () => {
+  hideEnemyAttackDescription(0);
+});
+enemyQueue2.addEventListener("mouseout", () => {
+  hideEnemyAttackDescription(1);
+});
+enemyQueue3.addEventListener("mouseout", () => {
+  hideEnemyAttackDescription(2);
+});
+}
+
 function updateHp(isPlayer, ClassName) {
   let hpValue;
   let hpBar;
@@ -72,13 +106,13 @@ function fillPlayerActionGauge() {
   }
 }
 
-function fillEnemyActionGauge() {
-  if (enemy.actionGaugeCounter < 100) {
-    enemy.actionGaugeCounter += 1;
-    enemyActionGauge1.style.height = enemy.actionGaugeCounter + "%";
+function fillEnemyActionGauge(Enemy) {
+  if (Enemy.actionGaugeCounter < 100) {
+    Enemy.actionGaugeCounter += 1;
+    enemyActionGauge1.style.height = Enemy.actionGaugeCounter + "%";
   } else {
     // Enemy automatically attacks when Action Gauge is full
-    enemy.attack(player);
+    Enemy.attack(player);
   }
 }
 
@@ -122,10 +156,10 @@ function defendButtonSelected() {
 }
 
 // This function will continually run throughout the fight as long as the player is not stunned
-function playerContinuousEvents() {
+function playerContinuousEvents(Enemy) {
   fillPlayerActionGauge();
   if (player.actionSelected.attack === true) {
-    player.attack(enemy);
+    player.attack(Enemy);
   }
   if (player.actionSelected.defend === true) {
     player.defend();
@@ -133,8 +167,8 @@ function playerContinuousEvents() {
 }
 
 // This function will continually run throughout the fight as long as the enemy is not stunned
-function enemyContinuousEvents() {
-  fillEnemyActionGauge();
+function enemyContinuousEvents(Enemy) {
+  fillEnemyActionGauge(Enemy);
 }
 
 function setBackgroundOpacity(opacity) {
@@ -174,41 +208,29 @@ function showEnemyAttackDescription(Enemy, enemyQueueIndex) {
   const descriptionText = Enemy.getAttackDescription(imageUrl);
 
   if (enemyQueueIndex === 0) {
-    const descriptionBox = document.querySelector("#enemy_queue1_description");
-    descriptionBox.innerText = descriptionText;
-    descriptionBox.style.display = "block";
-    const attackImage = document.querySelector("#enemy_queue1");
-    attackImage.style.display = "none";
+    document.querySelector("#enemy_queue1_description").innerText = descriptionText;
+    document.querySelector("#enemy_queue1_description").style.display = "block";
+    document.querySelector("#enemy_queue1").style.display = "none";
   } else if (enemyQueueIndex === 1) {
-    const descriptionBox = document.querySelector("#enemy_queue2_description");
-    descriptionBox.innerText = descriptionText;
-    descriptionBox.style.display = "block";
-    const attackImage = document.querySelector("#enemy_queue2");
-    attackImage.style.display = "none";
+    document.querySelector("#enemy_queue2_description").innerText = descriptionText;
+    document.querySelector("#enemy_queue2_description").style.display = "block";
+    document.querySelector("#enemy_queue2").style.display = "none";
   } else if (enemyQueueIndex === 2) {
-    const descriptionBox = document.querySelector("#enemy_queue3_description");
-    descriptionBox.innerText = descriptionText;
-    descriptionBox.style.display = "block";
-    const attackImage = document.querySelector("#enemy_queue3");
-    attackImage.style.display = "none";
+    document.querySelector("#enemy_queue3_description").innerText = descriptionText;
+    document.querySelector("#enemy_queue3_description").style.display = "block";
+    document.querySelector("#enemy_queue3").style.display = "none";
   }
 }
 
 function hideEnemyAttackDescription(enemyQueueIndex) {
   if (enemyQueueIndex === 0) {
-    const descriptionBox = document.querySelector("#enemy_queue1_description");
-    descriptionBox.style.display = "none";
-    const attackImage = document.querySelector("#enemy_queue1");
-    attackImage.style.display = "block";
+    document.querySelector("#enemy_queue1_description").style.display = "none";
+    document.querySelector("#enemy_queue1").style.display = "block";
   } else if (enemyQueueIndex === 1) {
-    const descriptionBox = document.querySelector("#enemy_queue2_description");
-    descriptionBox.style.display = "none";
-    const attackImage = document.querySelector("#enemy_queue2");
-    attackImage.style.display = "block";
+    document.querySelector("#enemy_queue2_description").style.display = "none";
+    document.querySelector("#enemy_queue2").style.display = "block";
   } else if (enemyQueueIndex === 2) {
-    const descriptionBox = document.querySelector("#enemy_queue3_description");
-    descriptionBox.style.display = "none";
-    const attackImage = document.querySelector("#enemy_queue3");
-    attackImage.style.display = "block";
+    document.querySelector("#enemy_queue3_description").style.display = "none";
+    document.querySelector("#enemy_queue3").style.display = "block";
   }
 }

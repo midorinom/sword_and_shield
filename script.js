@@ -13,6 +13,7 @@ const enemyActionGauge1 = document.querySelector(
 const attackButton = document.querySelector("#attack_button");
 const defendButton = document.querySelector("#defend_button");
 const textLog = ["", "", "", ""];
+const enemyQueue = [];
 
 // Create Enemy class
 class Enemy {
@@ -156,51 +157,22 @@ const player = new Player(
   { attack: false, defend: false },
   { defendStance: false }
 );
-const enemy = new Enemy(100, 100, 1, 1, 30, 0, {
+const enemy1 = new Enemy(100, 100, 1, 1, 30, 0, {
   attack1: "images/enemy_attack1.png",
   attack2: "images/enemy_attack2.webp",
   attack3: "images/enemy_attack3.webp",
 });
-
-// Display player and enemy hp values onto the page
-updateHp(true, player);
-updateHp(false, enemy);
-
-// Start filling the Action Gauge
-let autoPlayerActionGauge = setInterval(playerContinuousEvents, player.agility);
-
-let autoEnemyActionGauge = setInterval(enemyContinuousEvents, enemy.agility);
 
 // Event Listeners for the Attack and Defend buttons
 attackButton.addEventListener("click", attackButtonSelected);
 
 defendButton.addEventListener("click", defendButtonSelected);
 
-// Start Enemy Queue
-const enemyQueue = [];
-first3EnemyAttacks(enemy);
-updateEnemyQueue();
+// Start filling the Action Gauge, also set the interval to variables
+let currentEnemy = enemy1;
 
-// Event Listeners for enemy queue to show a description of the attacks
-const enemyQueue1 = document.querySelector("#enemy_queue1_container");
-const enemyQueue2 = document.querySelector("#enemy_queue2_container");
-const enemyQueue3 = document.querySelector("#enemy_queue3_container");
+let autoPlayerActionGauge = setInterval(()=>{playerContinuousEvents(currentEnemy)}, player.agility);
 
-enemyQueue1.addEventListener("mouseover", () => {
-  showEnemyAttackDescription(enemy, 0);
-});
-enemyQueue2.addEventListener("mouseover", () => {
-  showEnemyAttackDescription(enemy, 1);
-});
-enemyQueue3.addEventListener("mouseover", () => {
-  showEnemyAttackDescription(enemy, 2);
-});
-enemyQueue1.addEventListener("mouseout", () => {
-  hideEnemyAttackDescription(0);
-});
-enemyQueue2.addEventListener("mouseout", () => {
-  hideEnemyAttackDescription(1);
-});
-enemyQueue3.addEventListener("mouseout", () => {
-  hideEnemyAttackDescription(2);
-});
+let autoEnemyActionGauge = setInterval(()=>{enemyContinuousEvents(currentEnemy)}, currentEnemy.agility);
+
+startStage(player, currentEnemy);

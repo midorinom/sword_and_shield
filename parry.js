@@ -187,8 +187,8 @@ function parryMiniGame(Enemy, Player, damage) {
     updateHp(false, Enemy);
     setBackgroundOpacity(1);
     // Start the gauages and button events again
-    autoPlayerActionGauge = setInterval(playerContinuousEvents, Player.agility);
-    autoEnemyActionGauge = setInterval(enemyContinuousEvents, Enemy.agility);
+    autoPlayerActionGauge = setInterval(()=>{playerContinuousEvents(Enemy)}, Player.agility);
+    autoEnemyActionGauge = setInterval(()=>{enemyContinuousEvents(Enemy)}, Enemy.agility);
 
     attackButton.addEventListener("click", attackButtonSelected);
     defendButton.addEventListener("click", defendButtonSelected);
@@ -205,8 +205,8 @@ function parryMiniGame(Enemy, Player, damage) {
     updateHp(true, Player);
     setBackgroundOpacity(1);
     // Start the gauges and button events
-    autoPlayerActionGauge = setInterval(playerContinuousEvents, Player.agility);
-    autoEnemyActionGauge = setInterval(enemyContinuousEvents, Enemy.agility);
+    autoPlayerActionGauge = setInterval(()=>{playerContinuousEvents(Enemy)}, Player.agility);
+    autoEnemyActionGauge = setInterval(()=>{enemyContinuousEvents(Enemy)}, Enemy.agility);
 
     attackButton.addEventListener("click", attackButtonSelected);
     defendButton.addEventListener("click", defendButtonSelected);
