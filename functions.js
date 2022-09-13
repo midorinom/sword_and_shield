@@ -234,3 +234,27 @@ function hideEnemyAttackDescription(enemyQueueIndex) {
     document.querySelector("#enemy_queue3").style.display = "block";
   }
 }
+
+function enemyAttackMegaChecker(Enemy, Player, attackPower){
+  // Reset the gauge to 0
+  Enemy.actionGaugeCounter = 0;
+  enemyActionGauge1.style.height = 0;
+  // Push a new attack into the enemyQueue array, shift out the first one and then update the images
+  moveEnemyQueueAlong(Enemy.attacks);
+  updateEnemyQueue();
+  // Perform the damage formula
+  let damage = performDamageFomula(attackPower, Player.armour);
+  // Check if player is defending
+  if (player.status.defendStance === true) {
+    // Set defendStance back to false
+    player.status.defendStance = false;
+    // Play the Parry minigame
+    parryMiniGame(this, Player, damage);
+  } // Player is not defending
+  else {
+    Player.hp -= damage;
+    const text = `The enemy dealt ${damage} damage to you.`;
+    updateTextLog(text);
+    updateHp(true, Player);
+  }
+}

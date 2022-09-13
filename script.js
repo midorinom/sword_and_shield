@@ -16,7 +16,7 @@ const textLog = ["", "", "", ""];
 const enemyQueue = [];
 
 // Create Enemy class
-class Enemy {
+class Enemy1 {
   constructor(
     maxHp,
     hp,
@@ -24,63 +24,45 @@ class Enemy {
     armour,
     agility,
     actionGaugeCounter = 0,
-    attacks = {}
+    attacks = {},
+    attackDescriptions = []
   ) {
     (this.maxHp = maxHp),
       (this.hp = hp),
       (this.strength = strength),
       (this.armour = armour),
       (this.agility = agility),
-      (this.actionGaugeCounter = actionGaugeCounter);
-    this.attacks = attacks;
+      (this.actionGaugeCounter = actionGaugeCounter),
+    (this.attacks = attacks),
+    (this.attackDescriptions = attackDescriptions)
   }
 
   attack(Player) {
-    // Reset the gauge to 0
-    this.actionGaugeCounter = 0;
-    enemyActionGauge1.style.height = 0;
     // Determine what is next up in the enemyQueue array and execute the attack. Modify strength accordingly.
     let attackPower = this.strength;
-    if (enemyQueue[0] === "images/enemy_attack1.png") {
+    if (enemyQueue[0] === Object.values(this.attacks)[0]) {
       attackPower += 0;
-    } else if (enemyQueue[0] === "images/enemy_attack2.webp") {
+    } else if (enemyQueue[0] === Object.values(this.attacks)[1]) {
       attackPower += 1;
-    } else if (enemyQueue[0] === "images/enemy_attack3.webp") {
+    } else if (enemyQueue[0] === Object.values(this.attacks)[2]) {
       attackPower += 2;
     }
-    // Push a new attack into the enemyQueue array, shift out the first one and then update the images
-    moveEnemyQueueAlong(this.attacks);
-    updateEnemyQueue();
-    // Perform the damage formula
-    let damage = performDamageFomula(attackPower, Player.armour);
-    // Check if player is defending
-    if (player.status.defendStance === true) {
-      // Set defendStance back to false
-      player.status.defendStance = false;
-      // Play the Parry minigame
-      parryMiniGame(this, Player, damage);
-    } // Player is not defending
-    else {
-      Player.hp -= damage;
-      const text = `The enemy dealt ${damage} damage to you.`;
-      updateTextLog(text);
-      updateHp(true, Player);
-    }
+    enemyAttackMegaChecker(this, Player, attackPower);
   }
 
   getAttackDescription(imageUrl) {
-    if (imageUrl === "images/enemy_attack1.png") {
-      return "Scratch:\nDamage *";
-    } else if (imageUrl === "images/enemy_attack2.webp") {
-      return "Swipe:\nDamage **";
-    } else if (imageUrl === "images/enemy_attack3.webp") {
-      return "Stomp:\nDamage ***";
+    if (imageUrl === Object.values(this.attacks)[0]) {
+      return this.attackDescriptions[0];
+    } else if (imageUrl === Object.values(this.attacks)[1]) {
+      return this.attackDescriptions[1];
+    } else if (imageUrl === Object.values(this.attacks)[2]) {
+      return this.attackDescriptions[2];
     }
   }
 }
 
 // Create Player class
-class Player extends Enemy {
+class Player extends Enemy1 {
   constructor(
     maxHp,
     hp,
@@ -156,11 +138,12 @@ const player = new Player(
   { attack: false, defend: false },
   { defendStance: false }
 );
-const enemy1 = new Enemy(100, 100, 1, 1, 30, 0, {
+
+const enemy1 = new Enemy1(100, 100, 1, 1, 30, 0, {
   attack1: "images/enemy_attack1.png",
   attack2: "images/enemy_attack2.webp",
   attack3: "images/enemy_attack3.webp",
-});
+}, ["Scratch:\nDamage *", "Swipe:\nDamage **", "Stomp:\nDamage ***"]);
 
 // Event Listeners for the Attack and Defend buttons
 attackButton.addEventListener("click", attackButtonSelected);
