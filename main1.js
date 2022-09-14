@@ -20,6 +20,8 @@ const enemyQueue2 = document.querySelector("#enemy_queue2_container");
 const enemyQueue3 = document.querySelector("#enemy_queue3_container");
 let currentEnemy;
 let chosenUpgrade = "notSelected";
+let randomUpgrade1, randomUpgrade2;
+const upgradesContainer = document.querySelector("#upgrades_container");
 let upgrades1Selected = false;
 let upgrades2Selected = false;
 const upgradesImage1 = document.querySelector("#upgrades_image1");
@@ -30,7 +32,6 @@ const upgradesImage1Container = document.querySelector(
 const upgradesImage2Container = document.querySelector(
   "#upgrades_image2_container"
 );
-const arrCurrentUpgrades = [];
 
 // Create EnemyBalancedEasy class
 class EnemyBalancedEasy {
@@ -95,8 +96,8 @@ class Player extends EnemyBalancedEasy {
     // Check first if there is at least 1 full bar of Action Gauge before executing the function
     if (this.actionGaugeCounter >= 100) {
       // setActionSelected and defendStance to false, downsize the attack button back to its original size
-      player.actionSelected.attack = false;
-      player.status.defendStance = false;
+      this.actionSelected.attack = false;
+      this.status.defendStance = false;
       attackButton.style.height = 70 + "%";
       attackButton.style.width = 12 + "%";
       // Subtract from the counter and adjust height of the bars to reflect the deduction
@@ -123,8 +124,8 @@ class Player extends EnemyBalancedEasy {
     // Check first if there is at least 1 full bar of Action Gauge before executing the function
     if (this.actionGaugeCounter >= 100) {
       // set ActionSelected back to false, set defendStance to true, downsize the defend button back to its original size
-      player.actionSelected.defend = false;
-      player.status.defendStance = true;
+      this.actionSelected.defend = false;
+      this.status.defendStance = true;
       defendButton.style.height = 70 + "%";
       defendButton.style.width = 12 + "%";
       // Subtract from the counter and adjust height of the bars to reflect the deduction

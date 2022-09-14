@@ -239,7 +239,7 @@ function selectUpgrade1Image() {
     upgradesImage1Container.style.height = 70 + "%";
     upgradesImage1Container.style.width = 30 + "%";
     upgrades1Selected = true;
-    chosenUpgrade = upgradesImage1.src;
+    chosenUpgrade = randomUpgrade1;
   } else {
     hideUpgradesDescription1();
     upgradesImage1Container.style.height = 50 + "%";
@@ -259,7 +259,7 @@ function selectUpgrade2Image() {
     upgradesImage2Container.style.height = 70 + "%";
     upgradesImage2Container.style.width = 30 + "%";
     upgrades2Selected = true;
-    chosenUpgrade = upgradesImage2.src;
+    chosenUpgrade = randomUpgrade2;
   } else {
     hideUpgradesDescription2();
     upgradesImage2Container.style.height = 50 + "%";
@@ -271,8 +271,6 @@ function selectUpgrade2Image() {
 function determineTwoRandomUpgrades() {
   const rollForAgility1 = Math.floor(Math.random() * 100);
   const rollForAgility2 = Math.floor(Math.random() * 100);
-  let randomUpgrade1;
-  let randomUpgrade2;
 
   if (rollForAgility1 < 16 || rollForAgility2 < 16) {
     randomUpgrade1 = Object.keys(upgrades.stages12Upgrades)[0];
@@ -308,7 +306,7 @@ function determineTwoRandomUpgrades() {
 function stageLoop() {
   pause();
   // Show Upgrade Screen
-  document.querySelector("#upgrades_container").style.display = "block";
+  upgradesContainer.style.display = "block";
   // Pick 2 random upgrades
   determineTwoRandomUpgrades();
   // Add Click Events for the upgrades
@@ -321,12 +319,32 @@ function stageLoop() {
       if (chosenUpgrade === "notSelected") {
         alert("Please select an upgrade");
       } else {
-        arrCurrentUpgrades.push(chosenUpgrade);
-        upgrades.activateUpgrade(chosenUpgrade);
-        chosenUpgrade = "notSelected";
+        upgrades.activateUpgrade(chosenUpgrade, player);
+        console.log(chosenUpgrade);
+        //chosenUpgrade = "notSelected";
+
         currentStage += 1;
+
         generateEnemy(currentStage);
+
+        upgradesImage1Container.removeEventListener(
+          "click",
+          selectUpgrade1Image
+        );
+        upgradesImage2Container.removeEventListener(
+          "click",
+          selectUpgrade2Image
+        );
+        upgradesContainer.style.display = "none";
+
         startStage(player, currentEnemy);
+
+        autoPlayerActionGauge = setInterval(() => {
+          playerContinuousEvents(currentEnemy);
+        }, player.agility);
+        autoEnemyActionGauge = setInterval(() => {
+          enemyContinuousEvents(currentEnemy);
+        }, currentEnemy.agility);
       }
     });
 }

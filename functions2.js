@@ -132,8 +132,8 @@ function generateEnemy() {
           break;
         case 2:
           currentEnemy = new EnemyBalancedEasy(
-            10,
-            10,
+            100,
+            100,
             1,
             1,
             30,
@@ -167,8 +167,8 @@ function generateEnemy() {
           break;
         case 2:
           currentEnemy = new EnemyFastEasy(
-            10,
-            10,
+            100,
+            100,
             1,
             1,
             30,
@@ -202,8 +202,8 @@ function generateEnemy() {
           break;
         case 2:
           currentEnemy = new EnemySlowEasy(
-            10,
-            10,
+            100,
+            100,
             1,
             1,
             30,
