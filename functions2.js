@@ -44,15 +44,15 @@ function moveEnemyQueueAlong(Enemy) {
 
 function updateEnemyAttackDescriptions(Enemy) {
   for (let i = 0; i < 3; i++) {
-    const imageUrl = arrEnemyQueue[i];
-    const descriptionText = Enemy.getAttackDescription(imageUrl);
+    const imageLink = arrEnemyQueue[i];
+    const descriptionText = Enemy.getAttackDescription(imageLink);
     if (i === 0) {
       document.querySelector("#enemy_queue1_description").innerText =
         descriptionText;
     } else if (i === 1) {
       document.querySelector("#enemy_queue2_description").innerText =
         descriptionText;
-    } else {
+    } else if (i === 2) {
       document.querySelector("#enemy_queue3_description").innerText =
         descriptionText;
     }
@@ -132,8 +132,24 @@ function generateEnemy() {
           break;
         case 2:
           currentEnemy = new EnemyBalancedEasy(
-            100,
-            100,
+            30,
+            30,
+            1,
+            1,
+            30,
+            0,
+            {
+              "images/enemy_attack1.png": "Scratch:\nDamage *",
+              "images/enemy_attack2.webp": "Swipe:\nDamage **",
+              "images/enemy_attack3.webp": "Stomp:\nDamage ***",
+            },
+            "Mushroom"
+          );
+          break;
+        case 3:
+          currentEnemy = new EnemyBalancedHard(
+            50,
+            50,
             1,
             1,
             30,
@@ -147,6 +163,7 @@ function generateEnemy() {
           );
       }
       break;
+
     case 1:
       switch (currentStage) {
         case 1:
@@ -167,8 +184,24 @@ function generateEnemy() {
           break;
         case 2:
           currentEnemy = new EnemyFastEasy(
-            100,
-            100,
+            30,
+            30,
+            1,
+            1,
+            30,
+            0,
+            {
+              "images/enemy_attack1.png": "Scratch:\nDamage *",
+              "images/enemy_attack2.webp": "Swipe:\nDamage **",
+              "images/enemy_attack1.png": "Scratch:\nDamage *",
+            },
+            "Slime"
+          );
+          break;
+        case 3:
+          currentEnemy = new EnemyFastHard(
+            50,
+            50,
             1,
             1,
             30,
@@ -182,6 +215,7 @@ function generateEnemy() {
           );
       }
       break;
+
     case 2:
       switch (currentStage) {
         case 1:
@@ -202,8 +236,24 @@ function generateEnemy() {
           break;
         case 2:
           currentEnemy = new EnemySlowEasy(
-            100,
-            100,
+            30,
+            30,
+            1,
+            1,
+            30,
+            0,
+            {
+              "images/enemy_attack2.webp": "Swipe:\nDamage **",
+              "images/enemy_attack3.webp": "Stomp:\nDamage ***",
+              "images/enemy_attack2.webp": "Swipe:\nDamage **",
+            },
+            "Snail"
+          );
+          break;
+        case 3:
+          currentEnemy = new EnemySlowHard(
+            50,
+            50,
             1,
             1,
             30,

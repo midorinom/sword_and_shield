@@ -7,31 +7,28 @@ class Upgrades {
       (this.stages34Upgrades = stages34Upgrades);
   }
 
-  getUpgradeDescription(imageUrl) {
+  getUpgradeDescription(imageLink) {
     if (currentStage < 3) {
       for (let i = 0; i < 4; i++) {
-        if (imageUrl === Object.keys(this.stages12Upgrades)[i]) {
+        if (imageLink === Object.keys(this.stages12Upgrades)[i]) {
           return Object.values(this.stages12Upgrades)[i];
         }
       }
     }
   }
 
-  activateUpgrade(imageUrl, Player) {
-    console.log(Object.keys(this.stages12Upgrades));
-    if (imageUrl === Object.keys(this.stages12Upgrades)[0]) {
-      Player.agility -= 60;
-      console.log("agility upgrade");
-    } else if (imageUrl === Object.keys(this.stages12Upgrades)[1]) {
-      Player.strength += 10;
-      console.log("strength upgrade");
-    } else if (imageUrl === Object.keys(this.stages12Upgrades)[2]) {
-      Player.hp += 50;
-      Player.maxHp += 50;
-      console.log("hp upgrade");
-    } else if (imageUrl === Object.keys(this.stages12Upgrades)[3]) {
-      Player.armour -= 0.5;
-      console.log("armour upgrade");
+  activateUpgrade(imageLink, Player) {
+    if (currentStage < 3) {
+      if (imageLink === Object.keys(this.stages12Upgrades)[0]) {
+        Player.agility -= 60;
+      } else if (imageLink === Object.keys(this.stages12Upgrades)[1]) {
+        Player.strength += 10;
+      } else if (imageLink === Object.keys(this.stages12Upgrades)[2]) {
+        Player.hp += 50;
+        Player.maxHp += 50;
+      } else if (imageLink === Object.keys(this.stages12Upgrades)[3]) {
+        Player.armour -= 0.5;
+      }
     }
   }
 }
@@ -56,7 +53,12 @@ const upgrades = new Upgrades(
     "images/stages12_upgrade3.png": "upgrade 3",
     "images/stages12_upgrade4.png": "upgrade 4",
   },
-  { "nothing yet": "nothing yet" }
+  {
+    "images/stages12_upgrade1.png": "Stages 34 - upgrade 1",
+    "images/stages12_upgrade2.png": "Stages 34 - upgrade 2",
+    "images/stages12_upgrade3.png": "Stages 34 - upgrade 3",
+    "images/stages12_upgrade4.png": "Stages 34 - upgrade 4",
+  }
 );
 
 // Randomly select an enemy and create instance

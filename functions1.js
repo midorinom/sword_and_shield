@@ -1,6 +1,9 @@
 "use strict";
 
 function startStage(Player, Enemy) {
+  document
+    .querySelector("#upgrades_submit_button")
+    .removeEventListener("click", upgradesSubmitButton);
   // Display player and enemy hp values onto the page
   updateHp(true, Player);
   updateHp(false, Enemy);
@@ -200,6 +203,9 @@ function playerContinuousEvents(Enemy) {
   if (player.actionSelected.defend === true) {
     player.defend();
   }
+  if (player.hp <= 0) {
+    endgameScreen(false);
+  }
 }
 
 // This function will continually run throughout the fight as long as the enemy is not stunned
@@ -207,7 +213,11 @@ function enemyContinuousEvents(Enemy) {
   fillEnemyActionGauge(Enemy);
   updateEnemyAttackDescriptions(Enemy);
   if (Enemy.hp <= 0) {
-    stageLoop();
+    if (currentStage === 3) {
+      endgameScreen(true);
+    } else {
+      stageLoop();
+    }
   }
 }
 
@@ -303,6 +313,42 @@ function determineTwoRandomUpgrades() {
     upgrades.getUpgradeDescription(randomUpgrade2);
 }
 
+function upgradesSubmitButton() {
+  if (chosenUpgrade === "notSelected") {
+    alert("Please select an upgrade");
+  } else {
+    upgrades.activateUpgrade(chosenUpgrade, player);
+
+    hideUpgradesDescription1();
+    upgrades1Selected = false;
+    upgradesImage1Container.style.height = 50 + "%";
+    upgradesImage1Container.style.width = 20 + "%";
+    hideUpgradesDescription2();
+    upgrades2Selected = false;
+    upgradesImage2Container.style.height = 50 + "%";
+    upgradesImage2Container.style.width = 20 + "%";
+
+    chosenUpgrade = "notSelected";
+
+    currentStage += 1;
+
+    generateEnemy();
+
+    upgradesImage1Container.removeEventListener("click", selectUpgrade1Image);
+    upgradesImage2Container.removeEventListener("click", selectUpgrade2Image);
+    upgradesContainer.style.display = "none";
+
+    startStage(player, currentEnemy);
+
+    autoPlayerActionGauge = setInterval(() => {
+      playerContinuousEvents(currentEnemy);
+    }, player.agility);
+    autoEnemyActionGauge = setInterval(() => {
+      enemyContinuousEvents(currentEnemy);
+    }, currentEnemy.agility);
+  }
+}
+
 function stageLoop() {
   pause();
   // Show Upgrade Screen
@@ -315,36 +361,30 @@ function stageLoop() {
   // Add click event for submit button
   document
     .querySelector("#upgrades_submit_button")
-    .addEventListener("click", () => {
-      if (chosenUpgrade === "notSelected") {
-        alert("Please select an upgrade");
-      } else {
-        upgrades.activateUpgrade(chosenUpgrade, player);
-        console.log(chosenUpgrade);
-        //chosenUpgrade = "notSelected";
+    .addEventListener("click", upgradesSubmitButton);
+}
 
-        currentStage += 1;
+function endgameScreen(won = false) {
+  pause();
+  document.querySelector("#endgame_container").style.display = "block";
+  document
+    .querySelector("#endgame_restart_button")
+    .addEventListener("click", restartButton);
+  document
+    .querySelector("#endgame_home_button")
+    .addEventListener("click", homeButton);
 
-        generateEnemy(currentStage);
+  if (won === false) {
+    document.querySelector("#endgame_title").innerText = "You lost";
+  } else {
+    document.querySelector("#endgame_title").innerText = "You won!";
+  }
+}
 
-        upgradesImage1Container.removeEventListener(
-          "click",
-          selectUpgrade1Image
-        );
-        upgradesImage2Container.removeEventListener(
-          "click",
-          selectUpgrade2Image
-        );
-        upgradesContainer.style.display = "none";
+function restartButton() {
+  location.reload();
+}
 
-        startStage(player, currentEnemy);
-
-        autoPlayerActionGauge = setInterval(() => {
-          playerContinuousEvents(currentEnemy);
-        }, player.agility);
-        autoEnemyActionGauge = setInterval(() => {
-          enemyContinuousEvents(currentEnemy);
-        }, currentEnemy.agility);
-      }
-    });
+function homeButton() {
+  location.href = "index.html";
 }

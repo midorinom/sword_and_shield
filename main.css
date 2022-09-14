@@ -249,3 +249,38 @@ html {
   border-color: black;
   border-width: medium;
 }
+
+#endgame_container {
+  display: none;
+  background-color: red;
+  height: 70%;
+  width: 60%;
+  position: absolute;
+  left: 20%;
+  top: 8%;
+  z-index: 10;
+}
+
+#endgame_title {
+  text-align: center;
+}
+
+#endgame_home_button {
+  height: 20%;
+  width: 30%;
+  position: absolute;
+  left: 13%;
+  bottom: 15%;
+  font-size: xx-large;
+  background-color: lightcoral;
+}
+
+#endgame_restart_button {
+  height: 20%;
+  width: 30%;
+  position: absolute;
+  left: 56%;
+  bottom: 15%;
+  font-size: xx-large;
+  background-color: lightcoral;
+}

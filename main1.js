@@ -55,9 +55,9 @@ class EnemyBalancedEasy {
       (this.name = name);
   }
 
-  getAttackDescription(imageUrl) {
+  getAttackDescription(imageLink) {
     for (let i = 0; i < 3; i++) {
-      if (imageUrl === Object.keys(this.attacks)[i]) {
+      if (imageLink === Object.keys(this.attacks)[i]) {
         return Object.values(this.attacks)[i];
       }
     }
@@ -213,5 +213,77 @@ class EnemySlowEasy extends EnemyBalancedEasy {
       attackPower += 2;
     }
     enemyAttackMegaChecker(this, Player, attackPower);
+  }
+}
+
+class EnemyBalancedHard extends EnemyBalancedEasy {
+  constructor(
+    maxHp,
+    hp,
+    strength,
+    armour,
+    agility,
+    actionGaugeCounter = 0,
+    attacks = {},
+    name
+  ) {
+    super(
+      maxHp,
+      hp,
+      strength,
+      armour,
+      agility,
+      actionGaugeCounter,
+      attacks,
+      name
+    );
+  }
+}
+
+class EnemyFastHard extends EnemyFastEasy {
+  constructor(
+    maxHp,
+    hp,
+    strength,
+    armour,
+    agility,
+    actionGaugeCounter = 0,
+    attacks = {},
+    name
+  ) {
+    super(
+      maxHp,
+      hp,
+      strength,
+      armour,
+      agility,
+      actionGaugeCounter,
+      attacks,
+      name
+    );
+  }
+}
+
+class EnemySlowHard extends EnemySlowEasy {
+  constructor(
+    maxHp,
+    hp,
+    strength,
+    armour,
+    agility,
+    actionGaugeCounter = 0,
+    attacks = {},
+    name
+  ) {
+    super(
+      maxHp,
+      hp,
+      strength,
+      armour,
+      agility,
+      actionGaugeCounter,
+      attacks,
+      name
+    );
   }
 }
