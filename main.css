@@ -194,3 +194,37 @@ html {
   margin-left: 0.2em;
   display: none;
 }
+
+#upgrades_container {
+  background-color: red;
+  height: 70%;
+  width: 80%;
+  position: absolute;
+  left: 10%;
+  top: 5%;
+  z-index: 10;
+}
+
+#upgrades_title {
+  text-align: center;
+}
+
+#upgrades_submit_button {
+  position: absolute;
+  height: 20%;
+  width: 30%;
+  left: 35%;
+  bottom: 0%;
+}
+
+.upgrades_choice {
+  position: absolute;
+  height: 40%;
+  width: 30%;
+  left: 10%;
+}
+
+#upgrades_choice2 {
+  position: absolute;
+  left: 60%;
+}
