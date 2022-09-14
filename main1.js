@@ -30,6 +30,7 @@ const upgradesImage1Container = document.querySelector(
 const upgradesImage2Container = document.querySelector(
   "#upgrades_image2_container"
 );
+const arrCurrentUpgrades = [];
 
 // Create EnemyBalancedEasy class
 class EnemyBalancedEasy {
@@ -56,12 +57,10 @@ class EnemyBalancedEasy {
   }
 
   getAttackDescription(imageUrl) {
-    if (imageUrl === Object.values(this.attacks)[0]) {
-      return this.attackDescriptions[0];
-    } else if (imageUrl === Object.values(this.attacks)[1]) {
-      return this.attackDescriptions[1];
-    } else if (imageUrl === Object.values(this.attacks)[2]) {
-      return this.attackDescriptions[2];
+    for (let i = 0; i < 3; i++) {
+      if (imageUrl === Object.values(this.attacks)[i]) {
+        return this.attackDescriptions[i];
+      }
     }
   }
 

@@ -211,6 +211,42 @@ function enemyContinuousEvents(Enemy) {
   }
 }
 
+function resizeUpgrade1Image() {
+  chosenUpgrade = upgradesImage1.src;
+
+  upgradesImage2Container.style.height = 50 + "%";
+  upgradesImage2Container.style.width = 20 + "%";
+  upgrades2Selected = false;
+
+  if (upgrades1Selected === false) {
+    upgradesImage1Container.style.height = 70 + "%";
+    upgradesImage1Container.style.width = 30 + "%";
+    upgrades1Selected = true;
+  } else {
+    upgradesImage1Container.style.height = 50 + "%";
+    upgradesImage1Container.style.width = 20 + "%";
+    upgrades1Selected = false;
+  }
+}
+
+function resizeUpgrade2Image() {
+  chosenUpgrade = upgradesImage2.src;
+
+  upgradesImage1Container.style.height = 50 + "%";
+  upgradesImage1Container.style.width = 20 + "%";
+  upgrades1Selected = false;
+
+  if (upgrades2Selected === false) {
+    upgradesImage2Container.style.height = 70 + "%";
+    upgradesImage2Container.style.width = 30 + "%";
+    upgrades2Selected = true;
+  } else {
+    upgradesImage2Container.style.height = 50 + "%";
+    upgradesImage2Container.style.width = 20 + "%";
+    upgrades2Selected = false;
+  }
+}
+
 function stageLoop() {
   pause();
   // Show Upgrade Screen
@@ -222,6 +258,9 @@ function stageLoop() {
       if (chosenUpgrade === "notSelected") {
         alert("Please select an upgrade");
       } else {
+        arrCurrentUpgrades.push(chosenUpgrade);
+        upgrades.activateUpgrade(chosenUpgrade);
+        chosenUpgrade = "notSelected";
         currentStage += 1;
         generateEnemy(currentStage);
         startStage(player, currentEnemy);
@@ -229,27 +268,6 @@ function stageLoop() {
     });
 
   // Add events for upgrade images
-  upgradesImage1.addEventListener("click", () => {
-    if (upgrades1Selected === false) {
-      upgradesImage1Container.style.height = 70 + "%";
-      upgradesImage1Container.style.width = 30 + "%";
-      upgrades1Selected = true;
-    } else {
-      upgradesImage1Container.style.height = 50 + "%";
-      upgradesImage1Container.style.width = 20 + "%";
-      upgrades1Selected = false;
-    }
-  });
-
-  upgradesImage2.addEventListener("click", () => {
-    if (upgrades2Selected === false) {
-      upgradesImage2Container.style.height = 70 + "%";
-      upgradesImage2Container.style.width = 30 + "%";
-      upgrades2Selected = true;
-    } else {
-      upgradesImage2Container.style.height = 50 + "%";
-      upgradesImage2Container.style.width = 20 + "%";
-      upgrades2Selected = false;
-    }
-  });
+  upgradesImage1.addEventListener("click", resizeUpgrade1Image);
+  upgradesImage2.addEventListener("click", resizeUpgrade2Image);
 }
