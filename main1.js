@@ -19,6 +19,17 @@ const enemyQueue1 = document.querySelector("#enemy_queue1_container");
 const enemyQueue2 = document.querySelector("#enemy_queue2_container");
 const enemyQueue3 = document.querySelector("#enemy_queue3_container");
 let currentEnemy;
+let chosenUpgrade = "notSelected";
+let upgrades1Selected = false;
+let upgrades2Selected = false;
+const upgradesImage1 = document.querySelector("#upgrades_image1");
+const upgradesImage2 = document.querySelector("#upgrades_image2");
+const upgradesImage1Container = document.querySelector(
+  "#upgrades_image1_container"
+);
+const upgradesImage2Container = document.querySelector(
+  "#upgrades_image2_container"
+);
 
 // Create EnemyBalancedEasy class
 class EnemyBalancedEasy {

@@ -9,7 +9,7 @@ function startStage(Player, Enemy) {
   first3EnemyAttacks(Enemy);
   updateEnemyQueue();
 
-  unpause(Player, Enemy);
+  unpause();
 }
 
 function unpause() {
@@ -207,6 +207,49 @@ function enemyContinuousEvents(Enemy) {
   fillEnemyActionGauge(Enemy);
   updateEnemyAttackDescriptions(Enemy);
   if (Enemy.hp <= 0) {
-    pause();
+    stageLoop();
   }
+}
+
+function stageLoop() {
+  pause();
+  // Show Upgrade Screen
+  document.querySelector("#upgrades_container").style.display = "block";
+  // Add click event for submit button
+  document
+    .querySelector("#upgrades_submit_button")
+    .addEventListener("click", () => {
+      if (chosenUpgrade === "notSelected") {
+        alert("Please select an upgrade");
+      } else {
+        currentStage += 1;
+        generateEnemy(currentStage);
+        startStage(player, currentEnemy);
+      }
+    });
+
+  // Add events for upgrade images
+  upgradesImage1.addEventListener("click", () => {
+    if (upgrades1Selected === false) {
+      upgradesImage1Container.style.height = 70 + "%";
+      upgradesImage1Container.style.width = 30 + "%";
+      upgrades1Selected = true;
+    } else {
+      upgradesImage1Container.style.height = 50 + "%";
+      upgradesImage1Container.style.width = 20 + "%";
+      upgrades1Selected = false;
+    }
+  });
+
+  upgradesImage2.addEventListener("click", () => {
+    if (upgrades2Selected === false) {
+      upgradesImage2Container.style.height = 70 + "%";
+      upgradesImage2Container.style.width = 30 + "%";
+      upgrades2Selected = true;
+    } else {
+      upgradesImage2Container.style.height = 50 + "%";
+      upgradesImage2Container.style.width = 20 + "%";
+      upgrades2Selected = false;
+    }
+  });
 }

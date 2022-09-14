@@ -24,4 +24,4 @@ let autoEnemyActionGauge = setInterval(() => {
 }, currentEnemy.agility);
 
 startStage(player, currentEnemy);
-pause();
+stageLoop();

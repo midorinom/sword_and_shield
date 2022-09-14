@@ -10,9 +10,15 @@
   <body>
     <div id = upgrades_container>
       <h1 id = upgrades_title>You won! Pick an upgrade: </h1>
-      <button class = "upgrades_choice" id = "upgrades_choice1"></button>
-      <button class = "upgrades_choice" id = "upgrades_choice2"></button>
-      <button id = upgrades_submit_button></button>
+      <div id = "upgrades_choice_container">
+        <div class = "upgrades_image_container" id = "upgrades_image1_container">
+          <img src = "images/enemy_attack1.png" class = "upgrades_image" id = "upgrades_image1">
+        </div>
+        <div class = "upgrades_image_container" id = "upgrades_image2_container">
+          <img src = "images/enemy_attack2.webp" class = "upgrades_image" id = "upgrades_image2">
+        </div>
+      </div>
+      <button id = upgrades_submit_button>OK</button>
     </div>
     <div id="hp_bars">
       <h1 class = "hp_value" id="player_hp_value"></h1>
