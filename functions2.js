@@ -109,7 +109,7 @@ function enemyAttackMegaChecker(Enemy, Player, attackPower) {
   }
 }
 
-function generateEnemy(currentStage) {
+function generateEnemy() {
   const randomNumber = Math.floor(Math.random() * 3);
   switch (randomNumber) {
     case 0:

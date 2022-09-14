@@ -211,46 +211,109 @@ function enemyContinuousEvents(Enemy) {
   }
 }
 
-function resizeUpgrade1Image() {
-  chosenUpgrade = upgradesImage1.src;
+function showUpgradesDescription1() {
+  document.querySelector("#upgrades_description1").style.display = "block";
+  document.querySelector("#upgrades_image1").style.display = "none";
+}
+function hideUpgradesDescription1() {
+  document.querySelector("#upgrades_image1").style.display = "block";
+  document.querySelector("#upgrades_description1").style.display = "none";
+}
+function showUpgradesDescription2() {
+  document.querySelector("#upgrades_description2").style.display = "block";
+  document.querySelector("#upgrades_image2").style.display = "none";
+}
+function hideUpgradesDescription2() {
+  document.querySelector("#upgrades_image2").style.display = "block";
+  document.querySelector("#upgrades_description2").style.display = "none";
+}
 
+function selectUpgrade1Image() {
   upgradesImage2Container.style.height = 50 + "%";
   upgradesImage2Container.style.width = 20 + "%";
   upgrades2Selected = false;
+  hideUpgradesDescription2();
 
   if (upgrades1Selected === false) {
+    showUpgradesDescription1();
     upgradesImage1Container.style.height = 70 + "%";
     upgradesImage1Container.style.width = 30 + "%";
     upgrades1Selected = true;
+    chosenUpgrade = upgradesImage1.src;
   } else {
+    hideUpgradesDescription1();
     upgradesImage1Container.style.height = 50 + "%";
     upgradesImage1Container.style.width = 20 + "%";
     upgrades1Selected = false;
   }
 }
 
-function resizeUpgrade2Image() {
-  chosenUpgrade = upgradesImage2.src;
-
+function selectUpgrade2Image() {
   upgradesImage1Container.style.height = 50 + "%";
   upgradesImage1Container.style.width = 20 + "%";
   upgrades1Selected = false;
+  hideUpgradesDescription1();
 
   if (upgrades2Selected === false) {
+    showUpgradesDescription2();
     upgradesImage2Container.style.height = 70 + "%";
     upgradesImage2Container.style.width = 30 + "%";
     upgrades2Selected = true;
+    chosenUpgrade = upgradesImage2.src;
   } else {
+    hideUpgradesDescription2();
     upgradesImage2Container.style.height = 50 + "%";
     upgradesImage2Container.style.width = 20 + "%";
     upgrades2Selected = false;
   }
 }
 
+function determineTwoRandomUpgrades() {
+  const rollForAgility1 = Math.floor(Math.random() * 100);
+  const rollForAgility2 = Math.floor(Math.random() * 100);
+  let randomUpgrade1;
+  let randomUpgrade2;
+
+  if (rollForAgility1 < 16 || rollForAgility2 < 16) {
+    randomUpgrade1 = Object.keys(upgrades.stages12Upgrades)[0];
+    randomUpgrade2 = Object.keys(upgrades.stages12Upgrades)[
+      Math.ceil(Math.random() * 3)
+    ];
+  } else {
+    const randomNumber = Math.floor(Math.random() * 3);
+    switch (randomNumber) {
+      case 0:
+        randomUpgrade1 = Object.keys(upgrades.stages12Upgrades)[1];
+        randomUpgrade2 = Object.keys(upgrades.stages12Upgrades)[2];
+        break;
+      case 1:
+        randomUpgrade1 = Object.keys(upgrades.stages12Upgrades)[1];
+        randomUpgrade2 = Object.keys(upgrades.stages12Upgrades)[3];
+        break;
+      case 2:
+        randomUpgrade1 = Object.keys(upgrades.stages12Upgrades)[2];
+        randomUpgrade2 = Object.keys(upgrades.stages12Upgrades)[3];
+    }
+  }
+  // Update the images
+  upgradesImage1.src = randomUpgrade1;
+  upgradesImage2.src = randomUpgrade2;
+  // Update the description
+  document.querySelector("#upgrades_description1").innerText =
+    upgrades.getUpgradeDescription(randomUpgrade1);
+  document.querySelector("#upgrades_description2").innerText =
+    upgrades.getUpgradeDescription(randomUpgrade2);
+}
+
 function stageLoop() {
   pause();
   // Show Upgrade Screen
   document.querySelector("#upgrades_container").style.display = "block";
+  // Pick 2 random upgrades
+  determineTwoRandomUpgrades();
+  // Add Click Events for the upgrades
+  upgradesImage1Container.addEventListener("click", selectUpgrade1Image);
+  upgradesImage2Container.addEventListener("click", selectUpgrade2Image);
   // Add click event for submit button
   document
     .querySelector("#upgrades_submit_button")
@@ -266,8 +329,4 @@ function stageLoop() {
         startStage(player, currentEnemy);
       }
     });
-
-  // Add events for upgrade images
-  upgradesImage1.addEventListener("click", resizeUpgrade1Image);
-  upgradesImage2.addEventListener("click", resizeUpgrade2Image);
 }
