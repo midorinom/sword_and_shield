@@ -1,37 +1,73 @@
 "use strict";
 
-function startStage(Player, Enemy){
+function startStage(Player, Enemy) {
   // Display player and enemy hp values onto the page
-updateHp(true, Player);
-updateHp(false, Enemy);
+  updateHp(true, Player);
+  updateHp(false, Enemy);
 
-// Start Enemy Queue
-first3EnemyAttacks(Enemy);
-updateEnemyQueue();
+  // Start Enemy Queue
+  first3EnemyAttacks(Enemy);
+  updateEnemyQueue();
 
-// Event Listeners for enemy queue to show a description of the attacks
-const enemyQueue1 = document.querySelector("#enemy_queue1_container");
-const enemyQueue2 = document.querySelector("#enemy_queue2_container");
-const enemyQueue3 = document.querySelector("#enemy_queue3_container");
+  unpause(Player, Enemy);
+}
 
-enemyQueue1.addEventListener("mouseover", () => {
-  showEnemyAttackDescription(Enemy, 0);
-});
-enemyQueue2.addEventListener("mouseover", () => {
-  showEnemyAttackDescription(Enemy, 1);
-});
-enemyQueue3.addEventListener("mouseover", () => {
-  showEnemyAttackDescription(Enemy, 2);
-});
-enemyQueue1.addEventListener("mouseout", () => {
+function unpause() {
+  setBackgroundOpacity(1);
+
+  attackButton.addEventListener("click", attackButtonSelected);
+  defendButton.addEventListener("click", defendButtonSelected);
+
+  enemyQueue1.addEventListener("mouseover", showEnemyAttackDescription1);
+  enemyQueue2.addEventListener("mouseover", showEnemyAttackDescription2);
+  enemyQueue3.addEventListener("mouseover", showEnemyAttackDescription3);
+  enemyQueue1.addEventListener("mouseout", hideEnemyAttackDescription1);
+  enemyQueue2.addEventListener("mouseout", hideEnemyAttackDescription2);
+  enemyQueue3.addEventListener("mouseout", hideEnemyAttackDescription3);
+}
+
+function pause() {
+  setBackgroundOpacity(0.4);
+
+  clearInterval(autoPlayerActionGauge);
+  clearInterval(autoEnemyActionGauge);
+
+  attackButton.removeEventListener("click", attackButtonSelected);
+  defendButton.removeEventListener("click", defendButtonSelected);
+
+  enemyQueue1.removeEventListener("mouseover", showEnemyAttackDescription1);
+  enemyQueue2.removeEventListener("mouseover", showEnemyAttackDescription2);
+  enemyQueue3.removeEventListener("mouseover", showEnemyAttackDescription3);
+  enemyQueue1.removeEventListener("mouseout", hideEnemyAttackDescription1);
+  enemyQueue2.removeEventListener("mouseout", hideEnemyAttackDescription2);
+  enemyQueue3.removeEventListener("mouseout", hideEnemyAttackDescription3);
+}
+
+// Defining functions for showing/hiding enemy attack descriptions
+function showEnemyAttackDescription1() {
+  showEnemyAttackDescription(0);
+}
+function showEnemyAttackDescription2() {
+  showEnemyAttackDescription(1);
+}
+function showEnemyAttackDescription3() {
+  showEnemyAttackDescription(2);
+}
+function hideEnemyAttackDescription1() {
   hideEnemyAttackDescription(0);
-});
-enemyQueue2.addEventListener("mouseout", () => {
+}
+function hideEnemyAttackDescription2() {
   hideEnemyAttackDescription(1);
-});
-enemyQueue3.addEventListener("mouseout", () => {
+}
+function hideEnemyAttackDescription3() {
   hideEnemyAttackDescription(2);
-});
+}
+
+function setBackgroundOpacity(opacity) {
+  document.querySelector("#hp_bars").style.opacity = opacity;
+  document.querySelector("#main_div").style.opacity = opacity;
+  document.querySelector("#bottom_container").style.opacity = opacity;
+  document.querySelector("#textlog").style.opacity = opacity;
 }
 
 function updateHp(isPlayer, ClassName) {
@@ -169,50 +205,8 @@ function playerContinuousEvents(Enemy) {
 // This function will continually run throughout the fight as long as the enemy is not stunned
 function enemyContinuousEvents(Enemy) {
   fillEnemyActionGauge(Enemy);
-}
-
-function setBackgroundOpacity(opacity) {
-  document.querySelector("#hp_bars").style.opacity = opacity;
-  document.querySelector("#main_div").style.opacity = opacity;
-  document.querySelector("#bottom_container").style.opacity = opacity;
-  document.querySelector("#textlog").style.opacity = opacity;
-}
-
-function first3EnemyAttacks(Enemy) {
-  for (let i = 0; i < 3; i++) {
-    // 60%, 30%, 10% probability for the 3 attacks respectively
-    let randomAttack;
-    let randomNumber = Math.floor(Math.random() * 100);
-    if (randomNumber < 10) {
-      randomAttack = Object.values(Enemy.attacks)[2];
-    } else if ((randomNumber < 30) && (randomNumber >= 10)){
-      randomAttack = Object.values(Enemy.attacks)[1];
-    } else {
-      randomAttack = Object.values(Enemy.attacks)[0];
-    }      
-    enemyQueue.push(randomAttack);
+  updateEnemyAttackDescriptions(Enemy);
+  if (Enemy.hp <= 0) {
+    pause();
   }
-}
-
-function updateEnemyQueue() {
-  document.querySelector("#enemy_queue1").src = enemyQueue[0];
-  document.querySelector("#enemy_queue2").src = enemyQueue[1];
-  document.querySelector("#enemy_queue3").src = enemyQueue[2];
-}
-
-function moveEnemyQueueAlong(Enemy) {
-  // get rid of the first attack in the queue
-  enemyQueue.shift();
-  // put in a new attack at the end of the queue
-  // 60%, 30%, 10% probability for the 3 attacks respectively
-  let randomAttack;
-    let randomNumber = Math.floor(Math.random() * 100);
-    if (randomNumber < 10) {
-      randomAttack = Object.values(Enemy.attacks)[2];
-    } else if ((randomNumber < 30) && (randomNumber >= 10)){
-      randomAttack = Object.values(Enemy.attacks)[1];
-    } else {
-      randomAttack = Object.values(Enemy.attacks)[0];
-    } 
-  enemyQueue.push(randomAttack);
 }

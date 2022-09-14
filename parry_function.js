@@ -1,14 +1,7 @@
 "use strict";
 
 function parryMiniGame(Enemy, Player, damage) {
-  // Blur the background
-  setBackgroundOpacity(0.4);
-
-  // Stop the Action Gauges and button events
-  clearInterval(autoPlayerActionGauge);
-  clearInterval(autoEnemyActionGauge);
-  attackButton.removeEventListener("click", attackButtonSelected);
-  defendButton.removeEventListener("click", defendButtonSelected);
+  pause();
 
   // Create an array for the boxes that need to be pressed/clicked
   const arrKeys = [];
@@ -188,13 +181,14 @@ function parryMiniGame(Enemy, Player, damage) {
     updateTextLog(text);
     Enemy.hp -= parryDamage;
     updateHp(false, Enemy);
-    setBackgroundOpacity(1);
-    // Start the gauages and button events again
-    autoPlayerActionGauge = setInterval(()=>{playerContinuousEvents(Enemy)}, Player.agility);
-    autoEnemyActionGauge = setInterval(()=>{enemyContinuousEvents(Enemy)}, Enemy.agility);
 
-    attackButton.addEventListener("click", attackButtonSelected);
-    defendButton.addEventListener("click", defendButtonSelected);
+    autoPlayerActionGauge = setInterval(() => {
+      playerContinuousEvents(Enemy);
+    }, Player.agility);
+    autoEnemyActionGauge = setInterval(() => {
+      enemyContinuousEvents(Enemy);
+    }, Enemy.agility);
+    unpause();
   }
 
   function fail(timerInterval) {
@@ -206,12 +200,13 @@ function parryMiniGame(Enemy, Player, damage) {
     const text = `You defended! The ${Enemy.name} only dealt ${reducedDamage} damage to you.`;
     updateTextLog(text);
     updateHp(true, Player);
-    setBackgroundOpacity(1);
-    // Start the gauges and button events
-    autoPlayerActionGauge = setInterval(()=>{playerContinuousEvents(Enemy)}, Player.agility);
-    autoEnemyActionGauge = setInterval(()=>{enemyContinuousEvents(Enemy)}, Enemy.agility);
 
-    attackButton.addEventListener("click", attackButtonSelected);
-    defendButton.addEventListener("click", defendButtonSelected);
+    autoPlayerActionGauge = setInterval(() => {
+      playerContinuousEvents(Enemy);
+    }, Player.agility);
+    autoEnemyActionGauge = setInterval(() => {
+      enemyContinuousEvents(Enemy);
+    }, Enemy.agility);
+    unpause();
   }
 }

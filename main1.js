@@ -14,7 +14,10 @@ const enemyActionGauge1 = document.querySelector(
 const attackButton = document.querySelector("#attack_button");
 const defendButton = document.querySelector("#defend_button");
 const textLog = ["", "", "", ""];
-const enemyQueue = [];
+const arrEnemyQueue = [];
+const enemyQueue1 = document.querySelector("#enemy_queue1_container");
+const enemyQueue2 = document.querySelector("#enemy_queue2_container");
+const enemyQueue3 = document.querySelector("#enemy_queue3_container");
 let currentEnemy;
 
 // Create EnemyBalancedEasy class
@@ -27,7 +30,8 @@ class EnemyBalancedEasy {
     agility,
     actionGaugeCounter = 0,
     attacks = {},
-    attackDescriptions = [], name
+    attackDescriptions = [],
+    name
   ) {
     (this.maxHp = maxHp),
       (this.hp = hp),
@@ -35,9 +39,9 @@ class EnemyBalancedEasy {
       (this.armour = armour),
       (this.agility = agility),
       (this.actionGaugeCounter = actionGaugeCounter),
-    (this.attacks = attacks),
-    (this.attackDescriptions = attackDescriptions),
-    (this.name = name)
+      (this.attacks = attacks),
+      (this.attackDescriptions = attackDescriptions),
+      (this.name = name);
   }
 
   getAttackDescription(imageUrl) {
@@ -53,9 +57,9 @@ class EnemyBalancedEasy {
   attack(Player) {
     // Determine what is next up in the enemyQueue array and execute the attack. Modify strength accordingly.
     let attackPower = this.strength;
-    if (enemyQueue[0] === Object.values(this.attacks)[1]) {
+    if (arrEnemyQueue[0] === Object.values(this.attacks)[1]) {
       attackPower += 1;
-    } else if (enemyQueue[0] === Object.values(this.attacks)[2]) {
+    } else if (arrEnemyQueue[0] === Object.values(this.attacks)[2]) {
       attackPower += 2;
     }
     enemyAttackMegaChecker(this, Player, attackPower);
@@ -129,7 +133,7 @@ class Player extends EnemyBalancedEasy {
 }
 
 // Create EnemyFastEasy class
- class EnemyFastEasy extends EnemyBalancedEasy {
+class EnemyFastEasy extends EnemyBalancedEasy {
   constructor(
     maxHp,
     hp,
@@ -138,19 +142,30 @@ class Player extends EnemyBalancedEasy {
     agility,
     actionGaugeCounter = 0,
     attacks = {},
-    attackDescriptions = [], name
+    attackDescriptions = [],
+    name
   ) {
-    super(maxHp, hp, strength, armour, agility, actionGaugeCounter, attacks, attackDescriptions, name);
+    super(
+      maxHp,
+      hp,
+      strength,
+      armour,
+      agility,
+      actionGaugeCounter,
+      attacks,
+      attackDescriptions,
+      name
+    );
   }
 
   attack(Player) {
     // Determine what is next up in the enemyQueue array and execute the attack. Modify strength accordingly.
     let attackPower = this.strength;
-    if (enemyQueue[0] === Object.values(this.attacks)[0]) {
+    if (arrEnemyQueue[0] === Object.values(this.attacks)[0]) {
       attackPower += 1;
-    } else if (enemyQueue[0] === Object.values(this.attacks)[1]) {
+    } else if (arrEnemyQueue[0] === Object.values(this.attacks)[1]) {
       attackPower += 2;
-    } else if (enemyQueue[0] === Object.values(this.attacks)[2]) {
+    } else if (arrEnemyQueue[0] === Object.values(this.attacks)[2]) {
       attackPower += 1;
     }
     enemyAttackMegaChecker(this, Player, attackPower);
@@ -166,19 +181,30 @@ class EnemySlowEasy extends EnemyBalancedEasy {
     agility,
     actionGaugeCounter = 0,
     attacks = {},
-    attackDescriptions = [], name
+    attackDescriptions = [],
+    name
   ) {
-    super(maxHp, hp, strength, armour, agility, actionGaugeCounter, attacks, attackDescriptions, name);
+    super(
+      maxHp,
+      hp,
+      strength,
+      armour,
+      agility,
+      actionGaugeCounter,
+      attacks,
+      attackDescriptions,
+      name
+    );
   }
 
   attack(Player) {
     // Determine what is next up in the enemyQueue array and execute the attack. Modify strength accordingly.
     let attackPower = this.strength;
-    if (enemyQueue[0] === Object.values(this.attacks)[0]) {
+    if (arrEnemyQueue[0] === Object.values(this.attacks)[0]) {
       attackPower += 2;
-    } else if (enemyQueue[0] === Object.values(this.attacks)[1]) {
+    } else if (arrEnemyQueue[0] === Object.values(this.attacks)[1]) {
       attackPower += 3;
-    } else if (enemyQueue[0] === Object.values(this.attacks)[2]) {
+    } else if (arrEnemyQueue[0] === Object.values(this.attacks)[2]) {
       attackPower += 2;
     }
     enemyAttackMegaChecker(this, Player, attackPower);
