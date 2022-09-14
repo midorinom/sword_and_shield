@@ -6,11 +6,11 @@ function first3EnemyAttacks(Enemy) {
     let randomAttack;
     let randomNumber = Math.floor(Math.random() * 100);
     if (randomNumber < 10) {
-      randomAttack = Object.values(Enemy.attacks)[2];
+      randomAttack = Object.keys(Enemy.attacks)[2];
     } else if (randomNumber < 30 && randomNumber >= 10) {
-      randomAttack = Object.values(Enemy.attacks)[1];
+      randomAttack = Object.keys(Enemy.attacks)[1];
     } else {
-      randomAttack = Object.values(Enemy.attacks)[0];
+      randomAttack = Object.keys(Enemy.attacks)[0];
     }
     arrEnemyQueue.push(randomAttack);
   }
@@ -30,11 +30,11 @@ function moveEnemyQueueAlong(Enemy) {
   let randomAttack;
   let randomNumber = Math.floor(Math.random() * 100);
   if (randomNumber < 10) {
-    randomAttack = Object.values(Enemy.attacks)[2];
+    randomAttack = Object.keys(Enemy.attacks)[2];
   } else if (randomNumber < 30 && randomNumber >= 10) {
-    randomAttack = Object.values(Enemy.attacks)[1];
+    randomAttack = Object.keys(Enemy.attacks)[1];
   } else {
-    randomAttack = Object.values(Enemy.attacks)[0];
+    randomAttack = Object.keys(Enemy.attacks)[0];
   }
   // Push into the array
   arrEnemyQueue.push(randomAttack);
@@ -123,11 +123,10 @@ function generateEnemy(currentStage) {
             30,
             0,
             {
-              commonAttack: "images/enemy_attack1.png",
-              uncommonAttack: "images/enemy_attack2.webp",
-              rareAttack: "images/enemy_attack3.webp",
+              "images/enemy_attack1.png": "Scratch:\nDamage *",
+              "images/enemy_attack2.webp": "Swipe:\nDamage **",
+              "images/enemy_attack3.webp": "Stomp:\nDamage ***",
             },
-            ["Scratch:\nDamage *", "Swipe:\nDamage **", "Stomp:\nDamage ***"],
             "Mushroom"
           );
           break;
@@ -140,11 +139,10 @@ function generateEnemy(currentStage) {
             30,
             0,
             {
-              commonAttack: "images/enemy_attack1.png",
-              uncommonAttack: "images/enemy_attack2.webp",
-              rareAttack: "images/enemy_attack3.webp",
+              "images/enemy_attack1.png": "Scratch:\nDamage *",
+              "images/enemy_attack2.webp": "Swipe:\nDamage **",
+              "images/enemy_attack3.webp": "Stomp:\nDamage ***",
             },
-            ["Scratch:\nDamage *", "Swipe:\nDamage **", "Stomp:\nDamage ***"],
             "Mushroom"
           );
       }
@@ -160,11 +158,10 @@ function generateEnemy(currentStage) {
             30,
             0,
             {
-              commonAttack: "images/enemy_attack1.png",
-              uncommonAttack: "images/enemy_attack2.webp",
-              rareAttack: "images/enemy_attack1.png",
+              "images/enemy_attack1.png": "Scratch:\nDamage *",
+              "images/enemy_attack2.webp": "Swipe:\nDamage **",
+              "images/enemy_attack1.png": "Scratch:\nDamage *",
             },
-            ["Scratch:\nDamage *", "Swipe:\nDamage **", "Scratch:\nDamage *"],
             "Slime"
           );
           break;
@@ -177,11 +174,10 @@ function generateEnemy(currentStage) {
             30,
             0,
             {
-              commonAttack: "images/enemy_attack1.png",
-              uncommonAttack: "images/enemy_attack2.webp",
-              rareAttack: "images/enemy_attack1.png",
+              "images/enemy_attack1.png": "Scratch:\nDamage *",
+              "images/enemy_attack2.webp": "Swipe:\nDamage **",
+              "images/enemy_attack1.png": "Scratch:\nDamage *",
             },
-            ["Scratch:\nDamage *", "Swipe:\nDamage **", "Scratch:\nDamage *"],
             "Slime"
           );
       }
@@ -197,11 +193,10 @@ function generateEnemy(currentStage) {
             30,
             0,
             {
-              commonAttack: "images/enemy_attack2.webp",
-              uncommonAttack: "images/enemy_attack3.webp",
-              rareAttack: "images/enemy_attack2.webp",
+              "images/enemy_attack2.webp": "Swipe:\nDamage **",
+              "images/enemy_attack3.webp": "Stomp:\nDamage ***",
+              "images/enemy_attack2.webp": "Swipe:\nDamage **",
             },
-            ["Swipe:\nDamage **", "Stomp:\nDamage ***", "Swipe:\nDamage **"],
             "Snail"
           );
           break;
@@ -214,11 +209,10 @@ function generateEnemy(currentStage) {
             30,
             0,
             {
-              commonAttack: "images/enemy_attack2.webp",
-              uncommonAttack: "images/enemy_attack3.webp",
-              rareAttack: "images/enemy_attack2.webp",
+              "images/enemy_attack2.webp": "Swipe:\nDamage **",
+              "images/enemy_attack3.webp": "Stomp:\nDamage ***",
+              "images/enemy_attack2.webp": "Swipe:\nDamage **",
             },
-            ["Swipe:\nDamage **", "Stomp:\nDamage ***", "Swipe:\nDamage **"],
             "Snail"
           );
       }
