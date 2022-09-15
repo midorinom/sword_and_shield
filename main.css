@@ -2,6 +2,12 @@ html {
   caret-color: rgba(0, 0, 0, 0);
 }
 
+#background {
+  background-image: url("images/background1.png");
+  background-size: cover;
+  padding-bottom: 1em;
+}
+
 #main_div {
   display: flex;
 }
@@ -102,13 +108,23 @@ html {
 
 #attack_button {
   margin-right: 10em;
+  background-image: url("images/attack_icon.webp");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#defend_button {
+  background-image: url("images/shield_icon.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 #textlog {
   border-style: solid;
   border-color: black;
   border-width: medium;
-  margin-top: 1em;
 }
 
 .textlog_line {

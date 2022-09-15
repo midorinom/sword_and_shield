@@ -8,74 +8,77 @@
     <title>Sword and Shield</title>
   </head>
   <body>
-    <div id = endgame_container>
-      <h1 id = endgame_title></h1>
-      <button id = endgame_home_button>Home</button>
-      <button id = endgame_restart_button>Play Again</button>
-    </div>
-    <div id = upgrades_container>
-      <h1 id = upgrades_title>You won! Pick an upgrade: </h1>
-      <div id = "upgrades_choice_container">
-        <div class = "upgrades_image_container" id = "upgrades_image1_container">
-          <img class = "upgrades_image" id = "upgrades_image1">
-          <div class = "upgrades_description" id = "upgrades_description1"></div>
+    <div id = "background">
+      <div id = "endgame_container">
+        <h1 id = "endgame_title"></h1>
+        <button id = "endgame_home_button">Home</button>
+        <button id = "endgame_restart_button">Play Again</button>
+      </div>
+      <div id = "upgrades_container">
+        <h1 id = "upgrades_title">You won! Pick an upgrade: </h1>
+        <div id = "upgrades_choice_container">
+          <div class = "upgrades_image_container" id = "upgrades_image1_container">
+            <img class = "upgrades_image" id = "upgrades_image1">
+            <div class = "upgrades_description" id = "upgrades_description1"></div>
+          </div>
+          <div class = "upgrades_image_container" id = "upgrades_image2_container">
+            <img class = "upgrades_image" id = "upgrades_image2">
+            <div class = "upgrades_description" id = "upgrades_description2"></div>
+          </div>
         </div>
-        <div class = "upgrades_image_container" id = "upgrades_image2_container">
-          <img class = "upgrades_image" id = "upgrades_image2">
-          <div class = "upgrades_description" id = "upgrades_description2"></div>
+        <button id = "upgrades_submit_button">OK</button>
+      </div>
+      <div id="hp_bars">
+        <h1 class = "hp_value" id="player_hp_value"></h1>
+        <div class = "hp_bar_container" id="player_hp_bar_container">
+          <div class = "hp_bar" id = "player_hp_bar"></div>
         </div>
-      </div>
-      <button id = upgrades_submit_button>OK</button>
-    </div>
-    <div id="hp_bars">
-      <h1 class = "hp_value" id="player_hp_value"></h1>
-      <div class = "hp_bar_container" id="player_hp_bar_container">
-        <div class = "hp_bar" id = "player_hp_bar"></div>
-      </div>
-      <h1 class = "hp_value" id="enemy_hp_value"></h1>
-      <div class = "hp_bar_container" id="enemy_hp_bar_container">
-        <div class = "hp_bar" id = "enemy_hp_bar"></div>
-      </div>
-    </div>
-    <div id="main_div">
-      <div class = "action_gauge_container" id="player_action_gauge1_container">
-        <div class = "action_gauge_progress_bar" id="player_action_gauge1_progress"></div>
-      </div>
-      <div class = "action_gauge_container" id="player_action_gauge2_container">
-        <div class = "action_gauge_progress_bar" id="player_action_gauge2_progress"></div>
-      </div>
-      <img src = "images/player_kirby.png" alt = "Player" id="player">
-      <img src = "images/stage4_fast.gif" alt = "Enemy" id="enemy">
-      <div class = "action_gauge_container" id="enemy_action_gauge1_container">
-        <div class = "action_gauge_progress_bar" id="enemy_action_gauge1_progress"></div>
-      </div>
-      <div id = "enemy_queue_container">
-        <div class = "enemy_queue23_container" id = "enemy_queue3_container">
-          <div class = "enemy_queue_description_box" id = "enemy_queue3_description"></div>
-          <img class = "enemy_queue_images" id = "enemy_queue3"></img>
-        </div>
-        <div class = "enemy_queue23_container" id = "enemy_queue2_container">
-          <div class = "enemy_queue_description_box" id = "enemy_queue2_description"></div>
-          <img class = "enemy_queue_images" id = "enemy_queue2"></img>
+        <h1 class = "hp_value" id="enemy_hp_value"></h1>
+        <div class = "hp_bar_container" id="enemy_hp_bar_container">
+          <div class = "hp_bar" id = "enemy_hp_bar"></div>
         </div>
       </div>
-    </div>
-    <div id = "upgrades_inventory_container">
-      <img class = "upgrades_inventory_image" id = "upgrades_inventory_image1">
-      <img class = "upgrades_inventory_image" id = "upgrades_inventory_image2">
-      <img class = "upgrades_inventory_image" id = "upgrades_inventory_image3">
-      <img class = "upgrades_inventory_image" id = "upgrades_inventory_image4">
-    </div>
-    <div id = "bottom_container">
-      <div id="action_buttons">
-        <button class = "action_button" id="attack_button">Attack</button>
-        <button class = "action_button" id="defend_button">Defend</button>
+      <div id="main_div">
+        <div class = "action_gauge_container" id="player_action_gauge1_container">
+          <div class = "action_gauge_progress_bar" id="player_action_gauge1_progress"></div>
+        </div>
+        <div class = "action_gauge_container" id="player_action_gauge2_container">
+          <div class = "action_gauge_progress_bar" id="player_action_gauge2_progress"></div>
+        </div>
+        <img src = "images/player_kirby.png" alt = "Player" id="player">
+        <img alt = "Enemy" id="enemy">
+        <div class = "action_gauge_container" id="enemy_action_gauge1_container">
+          <div class = "action_gauge_progress_bar" id="enemy_action_gauge1_progress"></div>
+        </div>
+        <div id = "enemy_queue_container">
+          <div class = "enemy_queue23_container" id = "enemy_queue3_container">
+            <div class = "enemy_queue_description_box" id = "enemy_queue3_description"></div>
+            <img class = "enemy_queue_images" id = "enemy_queue3"></img>
+          </div>
+          <div class = "enemy_queue23_container" id = "enemy_queue2_container">
+            <div class = "enemy_queue_description_box" id = "enemy_queue2_description"></div>
+            <img class = "enemy_queue_images" id = "enemy_queue2"></img>
+          </div>
+        </div>
       </div>
-      <div id = "enemy_queue1_container">
-        <div class = "enemy_queue_description_box" id = "enemy_queue1_description"></div>
-        <img class = "enemy_queue_images" id = "enemy_queue1">
+      <div id = "upgrades_inventory_container">
+        <img class = "upgrades_inventory_image" id = "upgrades_inventory_image1">
+        <img class = "upgrades_inventory_image" id = "upgrades_inventory_image2">
+        <img class = "upgrades_inventory_image" id = "upgrades_inventory_image3">
+        <img class = "upgrades_inventory_image" id = "upgrades_inventory_image4">
+      </div>
+      <div id = "bottom_container">
+        <div id="action_buttons">
+          <button class = "action_button" id="attack_button"></button>
+          <button class = "action_button" id="defend_button"></button>
+        </div>
+        <div id = "enemy_queue1_container">
+          <div class = "enemy_queue_description_box" id = "enemy_queue1_description"></div>
+          <img class = "enemy_queue_images" id = "enemy_queue1">
+        </div>
       </div>
     </div>
+    
     <div id="textlog">
       <h2 class = "textlog_line" id = "textlog_line1"></h2>
       <h2 class = "textlog_line" id = "textlog_line2"></h2>

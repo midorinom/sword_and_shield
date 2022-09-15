@@ -127,7 +127,8 @@ function generateEnemy() {
               "images/enemy_attack2.webp": "Swipe:\nDamage **",
               "images/enemy_attack3.webp": "Stomp:\nDamage ***",
             },
-            "Mushroom"
+            "Mole",
+            "images/stage1_balanced.gif"
           );
           break;
         case 2:
@@ -143,7 +144,8 @@ function generateEnemy() {
               "images/enemy_attack2.webp": "Swipe:\nDamage **",
               "images/enemy_attack3.webp": "Stomp:\nDamage ***",
             },
-            "Mushroom"
+            "Skull Spider",
+            "images/stage2_balanced.gif"
           );
           break;
         case 3:
@@ -159,7 +161,8 @@ function generateEnemy() {
               "images/enemy_attack2.webp": "Swipe:\nDamage **",
               "images/enemy_attack3.webp": "Stomp:\nDamage ***",
             },
-            "Mushroom"
+            "Arch Fiend",
+            "images/stage3_balanced.gif"
           );
           break;
         case 4:
@@ -175,7 +178,8 @@ function generateEnemy() {
               "images/enemy_attack2.webp": "Swipe:\nDamage **",
               "images/enemy_attack3.webp": "Stomp:\nDamage ***",
             },
-            "Mushroom"
+            "Red Wyrm",
+            "images/stage4_balanced.gif"
           );
           break;
         case 5:
@@ -191,7 +195,8 @@ function generateEnemy() {
               "images/enemy_attack2.webp": "Swipe:\nDamage **",
               "images/enemy_attack3.webp": "Stomp:\nDamage ***",
             },
-            "Mushroom"
+            "Red Wyrm",
+            "images/stage4_balanced.gif"
           );
       }
       break;
@@ -211,7 +216,8 @@ function generateEnemy() {
               "images/enemy_attack2.webp": "Swipe:\nDamage **",
               "images/enemy_attack1.png": "Scratch:\nDamage *",
             },
-            "Slime"
+            "Bat",
+            "images/stage1_fast.gif"
           );
           break;
         case 2:
@@ -227,7 +233,8 @@ function generateEnemy() {
               "images/enemy_attack2.webp": "Swipe:\nDamage **",
               "images/enemy_attack1.png": "Scratch:\nDamage *",
             },
-            "Slime"
+            "Night Mare",
+            "images/stage2_fast.gif"
           );
           break;
         case 3:
@@ -243,11 +250,12 @@ function generateEnemy() {
               "images/enemy_attack2.webp": "Swipe:\nDamage **",
               "images/enemy_attack1.png": "Scratch:\nDamage *",
             },
-            "Slime"
+            "Abyss Worm",
+            "images/stage3_fast.gif"
           );
           break;
         case 4:
-          currentEnemy = new EnemyFastEasy(
+          currentEnemy = new EnemyFastHard(
             40,
             40,
             1,
@@ -259,11 +267,12 @@ function generateEnemy() {
               "images/enemy_attack2.webp": "Swipe:\nDamage **",
               "images/enemy_attack1.png": "Scratch:\nDamage *",
             },
-            "Slime"
+            "Poison Drake",
+            "images/stage4_fast.gif"
           );
           break;
         case 5:
-          currentEnemy = new EnemyFastEasy(
+          currentEnemy = new EnemyFastHard(
             50,
             50,
             1,
@@ -275,7 +284,8 @@ function generateEnemy() {
               "images/enemy_attack2.webp": "Swipe:\nDamage **",
               "images/enemy_attack1.png": "Scratch:\nDamage *",
             },
-            "Slime"
+            "Poison Drake",
+            "images/stage4_fast.gif"
           );
       }
       break;
@@ -295,7 +305,8 @@ function generateEnemy() {
               "images/enemy_attack3.webp": "Stomp:\nDamage ***",
               "images/enemy_attack2.webp": "Swipe:\nDamage **",
             },
-            "Snail"
+            "Rat",
+            "images/stage1_slow.gif"
           );
           break;
         case 2:
@@ -311,7 +322,8 @@ function generateEnemy() {
               "images/enemy_attack3.webp": "Stomp:\nDamage ***",
               "images/enemy_attack2.webp": "Swipe:\nDamage **",
             },
-            "Snail"
+            "Giant",
+            "images/stage2_slow.gif"
           );
           break;
         case 3:
@@ -327,11 +339,12 @@ function generateEnemy() {
               "images/enemy_attack3.webp": "Stomp:\nDamage ***",
               "images/enemy_attack2.webp": "Swipe:\nDamage **",
             },
-            "Snail"
+            "Overlord",
+            "images/stage3_slow.gif"
           );
           break;
         case 4:
-          currentEnemy = new EnemySlowEasy(
+          currentEnemy = new EnemySlowHard(
             40,
             40,
             1,
@@ -343,11 +356,12 @@ function generateEnemy() {
               "images/enemy_attack3.webp": "Stomp:\nDamage ***",
               "images/enemy_attack2.webp": "Swipe:\nDamage **",
             },
-            "Snail"
+            "Golden Wyrm",
+            "images/stage4_slow.gif"
           );
           break;
         case 5:
-          currentEnemy = new EnemySlowEasy(
+          currentEnemy = new EnemySlowHard(
             50,
             50,
             1,
@@ -359,7 +373,8 @@ function generateEnemy() {
               "images/enemy_attack3.webp": "Stomp:\nDamage ***",
               "images/enemy_attack2.webp": "Swipe:\nDamage **",
             },
-            "Snail"
+            "Golden Wyrm",
+            "images/stage4_slow.gif"
           );
       }
   }

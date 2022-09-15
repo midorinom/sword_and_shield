@@ -8,6 +8,9 @@ function startStage(Player, Enemy) {
   updateHp(true, Player);
   updateHp(false, Enemy);
 
+  // Update Enemy Image
+  document.querySelector("#enemy").src = Enemy.image;
+
   // Start Enemy Queue
   first3EnemyAttacks(Enemy);
   updateEnemyQueue();

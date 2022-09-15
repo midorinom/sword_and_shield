@@ -44,7 +44,8 @@ class EnemyBalancedEasy {
     agility,
     actionGaugeCounter = 0,
     attacks = {},
-    name
+    name,
+    image
   ) {
     (this.maxHp = maxHp),
       (this.hp = hp),
@@ -53,7 +54,8 @@ class EnemyBalancedEasy {
       (this.agility = agility),
       (this.actionGaugeCounter = actionGaugeCounter),
       (this.attacks = attacks),
-      (this.name = name);
+      (this.name = name),
+      (this.image = image);
   }
 
   getAttackDescription(imageLink) {
@@ -152,7 +154,8 @@ class EnemyFastEasy extends EnemyBalancedEasy {
     agility,
     actionGaugeCounter = 0,
     attacks = {},
-    name
+    name,
+    image
   ) {
     super(
       maxHp,
@@ -162,7 +165,8 @@ class EnemyFastEasy extends EnemyBalancedEasy {
       agility,
       actionGaugeCounter,
       attacks,
-      name
+      name,
+      image
     );
   }
 
@@ -189,7 +193,8 @@ class EnemySlowEasy extends EnemyBalancedEasy {
     agility,
     actionGaugeCounter = 0,
     attacks = {},
-    name
+    name,
+    image
   ) {
     super(
       maxHp,
@@ -199,7 +204,8 @@ class EnemySlowEasy extends EnemyBalancedEasy {
       agility,
       actionGaugeCounter,
       attacks,
-      name
+      name,
+      image
     );
   }
 
@@ -226,7 +232,8 @@ class EnemyBalancedHard extends EnemyBalancedEasy {
     agility,
     actionGaugeCounter = 0,
     attacks = {},
-    name
+    name,
+    image
   ) {
     super(
       maxHp,
@@ -236,7 +243,8 @@ class EnemyBalancedHard extends EnemyBalancedEasy {
       agility,
       actionGaugeCounter,
       attacks,
-      name
+      name,
+      image
     );
   }
 }
@@ -250,7 +258,8 @@ class EnemyFastHard extends EnemyFastEasy {
     agility,
     actionGaugeCounter = 0,
     attacks = {},
-    name
+    name,
+    image
   ) {
     super(
       maxHp,
@@ -260,7 +269,8 @@ class EnemyFastHard extends EnemyFastEasy {
       agility,
       actionGaugeCounter,
       attacks,
-      name
+      name,
+      image
     );
   }
 }
@@ -274,7 +284,8 @@ class EnemySlowHard extends EnemySlowEasy {
     agility,
     actionGaugeCounter = 0,
     attacks = {},
-    name
+    name,
+    image
   ) {
     super(
       maxHp,
@@ -284,7 +295,8 @@ class EnemySlowHard extends EnemySlowEasy {
       agility,
       actionGaugeCounter,
       attacks,
-      name
+      name,
+      image
     );
   }
 }
