@@ -132,6 +132,22 @@ function generateEnemy() {
           break;
         case 2:
           currentEnemy = new EnemyBalancedEasy(
+            20,
+            20,
+            1,
+            1,
+            30,
+            0,
+            {
+              "images/enemy_attack1.png": "Scratch:\nDamage *",
+              "images/enemy_attack2.webp": "Swipe:\nDamage **",
+              "images/enemy_attack3.webp": "Stomp:\nDamage ***",
+            },
+            "Mushroom"
+          );
+          break;
+        case 3:
+          currentEnemy = new EnemyBalancedHard(
             30,
             30,
             1,
@@ -146,7 +162,23 @@ function generateEnemy() {
             "Mushroom"
           );
           break;
-        case 3:
+        case 4:
+          currentEnemy = new EnemyBalancedHard(
+            40,
+            40,
+            1,
+            1,
+            30,
+            0,
+            {
+              "images/enemy_attack1.png": "Scratch:\nDamage *",
+              "images/enemy_attack2.webp": "Swipe:\nDamage **",
+              "images/enemy_attack3.webp": "Stomp:\nDamage ***",
+            },
+            "Mushroom"
+          );
+          break;
+        case 5:
           currentEnemy = new EnemyBalancedHard(
             50,
             50,
@@ -184,8 +216,8 @@ function generateEnemy() {
           break;
         case 2:
           currentEnemy = new EnemyFastEasy(
-            30,
-            30,
+            20,
+            20,
             1,
             1,
             30,
@@ -200,6 +232,38 @@ function generateEnemy() {
           break;
         case 3:
           currentEnemy = new EnemyFastHard(
+            30,
+            30,
+            1,
+            1,
+            30,
+            0,
+            {
+              "images/enemy_attack1.png": "Scratch:\nDamage *",
+              "images/enemy_attack2.webp": "Swipe:\nDamage **",
+              "images/enemy_attack1.png": "Scratch:\nDamage *",
+            },
+            "Slime"
+          );
+          break;
+        case 4:
+          currentEnemy = new EnemyFastEasy(
+            40,
+            40,
+            1,
+            1,
+            30,
+            0,
+            {
+              "images/enemy_attack1.png": "Scratch:\nDamage *",
+              "images/enemy_attack2.webp": "Swipe:\nDamage **",
+              "images/enemy_attack1.png": "Scratch:\nDamage *",
+            },
+            "Slime"
+          );
+          break;
+        case 5:
+          currentEnemy = new EnemyFastEasy(
             50,
             50,
             1,
@@ -236,8 +300,8 @@ function generateEnemy() {
           break;
         case 2:
           currentEnemy = new EnemySlowEasy(
-            30,
-            30,
+            20,
+            20,
             1,
             1,
             30,
@@ -252,6 +316,38 @@ function generateEnemy() {
           break;
         case 3:
           currentEnemy = new EnemySlowHard(
+            30,
+            30,
+            1,
+            1,
+            30,
+            0,
+            {
+              "images/enemy_attack2.webp": "Swipe:\nDamage **",
+              "images/enemy_attack3.webp": "Stomp:\nDamage ***",
+              "images/enemy_attack2.webp": "Swipe:\nDamage **",
+            },
+            "Snail"
+          );
+          break;
+        case 4:
+          currentEnemy = new EnemySlowEasy(
+            40,
+            40,
+            1,
+            1,
+            30,
+            0,
+            {
+              "images/enemy_attack2.webp": "Swipe:\nDamage **",
+              "images/enemy_attack3.webp": "Stomp:\nDamage ***",
+              "images/enemy_attack2.webp": "Swipe:\nDamage **",
+            },
+            "Snail"
+          );
+          break;
+        case 5:
+          currentEnemy = new EnemySlowEasy(
             50,
             50,
             1,

@@ -213,7 +213,7 @@ function enemyContinuousEvents(Enemy) {
   fillEnemyActionGauge(Enemy);
   updateEnemyAttackDescriptions(Enemy);
   if (Enemy.hp <= 0) {
-    if (currentStage === 3) {
+    if (currentStage === 5) {
       endgameScreen(true);
     } else {
       stageLoop();
@@ -317,8 +317,40 @@ function upgradesSubmitButton() {
   if (chosenUpgrade === "notSelected") {
     alert("Please select an upgrade");
   } else {
+    // Activate the upgrade
     upgrades.activateUpgrade(chosenUpgrade, player);
 
+    // Add the chosenUpgrade into the arrUpgrades
+    arrUpgrades.push(chosenUpgrade);
+
+    // Update the inventory images
+    switch (currentStage) {
+      case 1:
+        document.querySelector("#upgrades_inventory_image1").src =
+          chosenUpgrade;
+        document.querySelector("#upgrades_inventory_image1").style.display =
+          "block";
+        break;
+      case 2:
+        document.querySelector("#upgrades_inventory_image2").src =
+          chosenUpgrade;
+        document.querySelector("#upgrades_inventory_image2").style.display =
+          "block";
+        break;
+      case 3:
+        document.querySelector("#upgrades_inventory_image3").src =
+          chosenUpgrade;
+        document.querySelector("#upgrades_inventory_image3").style.display =
+          "block";
+        break;
+      case 4:
+        document.querySelector("#upgrades_inventory_image4").src =
+          chosenUpgrade;
+        document.querySelector("#upgrades_inventory_image4").style.display =
+          "block";
+    }
+
+    // Reset the state
     hideUpgradesDescription1();
     upgrades1Selected = false;
     upgradesImage1Container.style.height = 50 + "%";

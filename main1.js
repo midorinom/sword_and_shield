@@ -32,6 +32,7 @@ const upgradesImage1Container = document.querySelector(
 const upgradesImage2Container = document.querySelector(
   "#upgrades_image2_container"
 );
+const arrUpgrades = [];
 
 // Create EnemyBalancedEasy class
 class EnemyBalancedEasy {
