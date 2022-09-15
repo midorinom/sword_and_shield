@@ -172,20 +172,26 @@ function hideEnemyAttackDescription3() {
   hideEnemyAttackDescription(2);
 }
 
-function playerIsStunned(duration) {
-  clearInterval(autoPlayerActionGauge);
+function playerGotStunned(stunDuration) {
+  if (player.status.stun === false){
+    player.status.stun = true;
+
+    clearInterval(autoPlayerActionGauge);
   setTimeout(() => {
+    player.status.stun = false;
+
     autoPlayerActionGauge = setInterval(() => {
       playerContinuousEvents(currentEnemy);
     }, player.agility);
-  }, duration);
+  }, stunDuration);
+  }
 }
 
-function enemyIsStunned(duration) {
+function enemyGotStunned(stunDuration) {
   clearInterval(autoEnemyActionGauge);
   setTimeout(() => {
     autoEnemyActionGauge = setInterval(() => {
       enemyContinuousEvents(currentEnemy);
     }, currentEnemy.agility);
-  }, duration);
+  }, stunDuration);
 }

@@ -148,6 +148,7 @@ html {
   position: relative;
   left: 10%;
   margin-top: 2.7em;
+  image-rendering: pixelated;
 }
 
 #enemy {
@@ -217,7 +218,10 @@ html {
 
 #upgrades_container {
   display: none;
-  background-color: red;
+  background-image: url("images/upgrades_background.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   height: 70%;
   width: 60%;
   position: absolute;

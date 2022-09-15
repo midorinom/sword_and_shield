@@ -56,7 +56,7 @@ const player = new Player(
   20,
   0,
   { attack: false, defend: false },
-  { defendStance: false }
+  { defendStance: false, stun: false}
 );
 
 // Create instance for upgrades
@@ -69,13 +69,13 @@ const upgrades = new Upgrades(
   },
   {
     "images/stages34_upgrade1.png":
-      "\nParrying will stun the enemy for 1 second",
+      "\nParrying will stun the enemy for 2 seconds",
     "images/stages34_upgrade2.png":
       "\nEach attack will have a 30% chance to deal 1.5x damage",
     "images/stages34_upgrade3.png":
       "\nAttacks will now hit twice, each attack does 55% damage",
     "images/stages34_upgrade4.png":
-      "\nWhen you are attacked, there is a 50% chance to defend.",
+      "\nWhen you are attacked, there is a 50% chance to defend",
   }
 );
 

@@ -1,12 +1,6 @@
 "use strict";
 
 function startStage(Player, Enemy) {
-  // In case of stun
-  if (currentStage !== 1) {
-    clearInterval(autoPlayerActionGauge);
-    clearInterval(autoEnemyActionGauge);
-  }
-
   document
     .querySelector("#upgrades_submit_button")
     .removeEventListener("click", upgradesSubmitButton);
