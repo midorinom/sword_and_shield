@@ -102,9 +102,9 @@ function enemyAttackMegaChecker(Enemy, Player, attackPower) {
     parryMiniGame(Enemy, Player, damage);
   } // Player is not defending
   else {
-    Player.hp -= damage;
     const text = `The ${Enemy.name} dealt ${damage} damage to you.`;
     updateTextLog(text);
+    Player.hp -= damage;
     updateHp(true, Player);
   }
 }

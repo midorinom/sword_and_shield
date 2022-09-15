@@ -105,6 +105,8 @@ class Player extends EnemyBalancedEasy {
   }
 
   attack(Enemy) {
+    let text = "";
+    let damage;
     // Check first if there is at least 1 full bar of Action Gauge before executing the function
     if (this.actionGaugeCounter >= 100) {
       // setActionSelected and defendStance to false, downsize the attack button back to its original size
@@ -121,14 +123,47 @@ class Player extends EnemyBalancedEasy {
         playerActionGauge1.style.height = "100%";
         playerActionGauge2.style.height = this.actionGaugeCounter - 100 + "%";
       }
-      // Perform the damage formula
-      let damage = performDamageFomula(this.strength, Enemy.armour);
-      // Subtract the damage from enemy hp and update the hp value
-      Enemy.hp -= damage;
-      updateHp(false, Enemy);
-      // Update Text Log
-      const text = `You dealt ${damage} damage to the ${Enemy.name}.`;
-      updateTextLog(text);
+      // If the player has Double Hit
+      if (arrUpgrades.includes("images/stages34_upgrade3.png") === true) {
+        for (let i = 0; i < 2; i++) {
+          damage = Math.round(
+            0.55 * performDamageFomula(this.strength, Enemy.armour)
+          );
+          // If the player has Crit
+          if (arrUpgrades.includes("images/stages34_upgrade2.png") === true) {
+            if (Math.floor(Math.random() * 100) < 30) {
+              damage = Math.round(damage * 1.5);
+              text = `Critical hit! You dealt ${damage} damage to the ${Enemy.name}.`;
+            } else {
+              text = `You dealt ${damage} damage to the ${Enemy.name}.`;
+            }
+            updateTextLog(text);
+            Enemy.hp -= damage;
+            updateHp(false, Enemy);
+          } else {
+            text = `You dealt ${damage} damage to the ${Enemy.name}.`;
+            updateTextLog(text);
+            Enemy.hp -= damage;
+            updateHp(false, Enemy);
+          }
+        }
+      } else {
+        damage = performDamageFomula(this.strength, Enemy.armour);
+        // If the player has Crit
+        if (arrUpgrades.includes("images/stages34_upgrade2.png") === true) {
+          if (Math.floor(Math.random() * 100) < 30) {
+            damage = Math.round(damage * 1.5);
+            text = `Critical hit! You dealt ${damage} damage to the ${Enemy.name}.`;
+          } else {
+            text = `You dealt ${damage} damage to the ${Enemy.name}.`;
+          }
+        } else {
+          text = `You dealt ${damage} damage to the ${Enemy.name}.`;
+        }
+        updateTextLog(text);
+        Enemy.hp -= damage;
+        updateHp(false, Enemy);
+      }
     }
   }
 

@@ -196,9 +196,9 @@ function parryMiniGame(Enemy, Player, damage) {
     timerContainer.remove();
 
     const reducedDamage = Math.round(damage * 0.3);
-    Player.hp -= damage;
     const text = `You defended! The ${Enemy.name} only dealt ${reducedDamage} damage to you.`;
     updateTextLog(text);
+    Player.hp -= damage;
     updateHp(true, Player);
 
     autoPlayerActionGauge = setInterval(() => {
