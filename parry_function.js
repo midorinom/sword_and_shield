@@ -1,6 +1,6 @@
 "use strict";
 
-function parryMiniGame(Enemy, Player, damage) {
+function parryMiniGame(Enemy, Player, damage, stun, stunDuration) {
   pause();
 
   // Create an array for the boxes that need to be pressed/clicked
@@ -198,7 +198,7 @@ function parryMiniGame(Enemy, Player, damage) {
     autoPlayerActionGauge = setInterval(() => {
       playerContinuousEvents(Enemy);
     }, Player.agility);
-    
+
     unpause();
   }
 
@@ -216,12 +216,18 @@ function parryMiniGame(Enemy, Player, damage) {
     Player.hp -= damage;
     updateHp(true, Player);
 
-    autoPlayerActionGauge = setInterval(() => {
-      playerContinuousEvents(Enemy);
-    }, Player.agility);
-    autoEnemyActionGauge = setInterval(() => {
-      enemyContinuousEvents(Enemy);
-    }, Enemy.agility);
-    unpause();
+    if (stun === true) {
+      playerGotStunned(stunDuration);
+      const seconds = stunDuration / 1000;
+      updateTextLog(`You got stunned for ${seconds} seconds.`);
+    } else {
+      autoPlayerActionGauge = setInterval(() => {
+        playerContinuousEvents(Enemy);
+      }, Player.agility);
+      autoEnemyActionGauge = setInterval(() => {
+        enemyContinuousEvents(Enemy);
+      }, Enemy.agility);
+      unpause();
+    }
   }
 }

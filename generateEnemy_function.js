@@ -40,7 +40,7 @@ function generateEnemy() {
           );
           break;
         case 3:
-          currentEnemy = new EnemyBalancedHard(
+          currentEnemy = new EnemyBalanced3(
             30,
             30,
             1,
@@ -57,7 +57,7 @@ function generateEnemy() {
           );
           break;
         case 4:
-          currentEnemy = new EnemyBalancedHard(
+          currentEnemy = new EnemyBalanced4(
             40,
             40,
             1,
@@ -75,7 +75,7 @@ function generateEnemy() {
           );
           break;
         case 5:
-          currentEnemy = new EnemyBalancedHard(
+          currentEnemy = new EnemyBalanced5(
             50,
             50,
             1,
@@ -131,7 +131,7 @@ function generateEnemy() {
           );
           break;
         case 3:
-          currentEnemy = new EnemyFastHard(
+          currentEnemy = new EnemyFast3(
             30,
             30,
             1,
@@ -148,7 +148,7 @@ function generateEnemy() {
           );
           break;
         case 4:
-          currentEnemy = new EnemyFastHard(
+          currentEnemy = new EnemyFast4(
             40,
             40,
             1,
@@ -166,7 +166,7 @@ function generateEnemy() {
           );
           break;
         case 5:
-          currentEnemy = new EnemyFastHard(
+          currentEnemy = new EnemyFast5(
             50,
             50,
             1,
@@ -222,7 +222,7 @@ function generateEnemy() {
           );
           break;
         case 3:
-          currentEnemy = new EnemySlowHard(
+          currentEnemy = new EnemySlow3(
             30,
             30,
             1,
@@ -239,7 +239,7 @@ function generateEnemy() {
           );
           break;
         case 4:
-          currentEnemy = new EnemySlowHard(
+          currentEnemy = new EnemySlow4(
             40,
             40,
             1,
@@ -257,7 +257,7 @@ function generateEnemy() {
           );
           break;
         case 5:
-          currentEnemy = new EnemySlowHard(
+          currentEnemy = new EnemySlow5(
             50,
             50,
             1,

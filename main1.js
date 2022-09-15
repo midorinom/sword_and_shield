@@ -38,7 +38,7 @@ const backgroundImages = [
   "url('images/background2.png')",
   "url('images/background3.png')",
   "url('images/background4.png')",
-  "url('images/background5.png')"
+  "url('images/background5.png')",
 ];
 const upgradesDescription1 = document.querySelector("#upgrades_description1");
 const upgradesDescription2 = document.querySelector("#upgrades_description2");
@@ -102,22 +102,18 @@ class Player {
             } else {
               text = `You dealt ${damage} damage to the ${Enemy.name}.`;
             }
-            updateTextLog(text);
-            Enemy.hp -= damage;
-            updateHp(false, Enemy);
+            delayEnemyTakingDamage(1300, Enemy, damage, text);
           } else {
             text = `You dealt ${damage} damage to the ${Enemy.name}.`;
-            updateTextLog(text);
-            Enemy.hp -= damage;
-            updateHp(false, Enemy);
+            delayEnemyTakingDamage(1300, Enemy, damage, text);
           }
         }
         if (crit === true) {
-        playerSprite.src = "images/player_crit.gif";
-        setPlayerToIdle(1000);
+          playerSprite.src = "images/player_crit.gif";
+          setPlayerToIdle(1000);
         } else {
-        playerSprite.src = "images/player_doublehit.gif";
-        setPlayerToIdle(1600);
+          playerSprite.src = "images/player_doublehit.gif";
+          setPlayerToIdle(1600);
         }
 
         // No Double Hit
@@ -140,9 +136,7 @@ class Player {
           setPlayerToIdle(1100);
           text = `You dealt ${damage} damage to the ${Enemy.name}.`;
         }
-        updateTextLog(text);
-        Enemy.hp -= damage;
-        updateHp(false, Enemy);
+        delayEnemyTakingDamage(1100, Enemy, damage, text);
       }
     }
   }
@@ -151,7 +145,7 @@ class Player {
     // Check first if there is at least 1 full bar of Action Gauge before executing the function
     if (this.actionGaugeCounter >= 100) {
       // Play animation
-      playerSprite.src = "images/player_defend.gif"
+      playerSprite.src = "images/player_defend.gif";
       // set ActionSelected back to false, set defendStance to true, downsize the defend button back to its original size
       this.actionSelected.defend = false;
       this.status.defendStance = true;

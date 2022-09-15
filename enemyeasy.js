@@ -78,7 +78,7 @@ class EnemyFastEasy extends EnemyBalancedEasy {
     } else if (arrEnemyQueue[0] === Object.keys(this.attacks)[1]) {
       attackPower += 2;
     } else if (arrEnemyQueue[0] === Object.keys(this.attacks)[2]) {
-      attackPower += 1;
+      attackPower += 2;
     }
     enemyAttackMegaChecker(this, Player, attackPower);
   }
@@ -120,85 +120,5 @@ class EnemySlowEasy extends EnemyBalancedEasy {
       attackPower += 2;
     }
     enemyAttackMegaChecker(this, Player, attackPower);
-  }
-}
-
-class EnemyBalancedHard extends EnemyBalancedEasy {
-  constructor(
-    maxHp,
-    hp,
-    strength,
-    armour,
-    agility,
-    actionGaugeCounter = 0,
-    attacks = {},
-    name,
-    image,
-    status = {}
-  ) {
-    super(
-      maxHp,
-      hp,
-      strength,
-      armour,
-      agility,
-      actionGaugeCounter,
-      attacks,
-      name,
-      image
-    ), (this.status = status);
-  }
-}
-
-class EnemyFastHard extends EnemyFastEasy {
-  constructor(
-    maxHp,
-    hp,
-    strength,
-    armour,
-    agility,
-    actionGaugeCounter = 0,
-    attacks = {},
-    name,
-    image,
-    status = {}
-  ) {
-    super(
-      maxHp,
-      hp,
-      strength,
-      armour,
-      agility,
-      actionGaugeCounter,
-      attacks,
-      name,
-      image
-    ), (this.status = status);
-  }
-}
-
-class EnemySlowHard extends EnemySlowEasy {
-  constructor(
-    maxHp,
-    hp,
-    strength,
-    armour,
-    agility,
-    actionGaugeCounter = 0,
-    attacks = {},
-    name,
-    image, status = {}
-  ) {
-    super(
-      maxHp,
-      hp,
-      strength,
-      armour,
-      agility,
-      actionGaugeCounter,
-      attacks,
-      name,
-      image
-    ), (this.status = status);
   }
 }

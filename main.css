@@ -56,7 +56,7 @@ html {
   width: 30%;
   border-style: solid;
   border-color: black;
-  border-width: thin;
+  border-width: medium;
   position: relative;
   left: 4%;
   margin-top: 1em;
@@ -127,6 +127,7 @@ html {
   border-style: solid;
   border-color: black;
   border-width: medium;
+  border-radius: 1em;
 }
 
 .textlog_line {
@@ -143,11 +144,18 @@ html {
   border-bottom: none;
 }
 
-#player {
+#player_container {
   height: 20em;
   width: 20%;
   position: relative;
   left: 10%;
+}
+
+#player {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  bottom: 14%;
   image-rendering: pixelated;
 }
 

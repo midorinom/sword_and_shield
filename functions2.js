@@ -86,7 +86,13 @@ function hideEnemyAttackDescription(enemyQueueIndex) {
   }
 }
 
-function enemyAttackMegaChecker(Enemy, Player, attackPower) {
+function enemyAttackMegaChecker(
+  Enemy,
+  Player,
+  attackPower,
+  stun,
+  stunDuration
+) {
   // Reset the gauge to 0
   Enemy.actionGaugeCounter = 0;
   enemyActionGauge1.style.height = 0;
@@ -100,9 +106,15 @@ function enemyAttackMegaChecker(Enemy, Player, attackPower) {
     // Set defendStance back to false
     player.status.defendStance = false;
     // Play the Parry minigame
-    parryMiniGame(Enemy, Player, damage);
+    parryMiniGame(Enemy, Player, damage, stun, stunDuration);
   } // Player is not defending
   else {
+    if (stun === true) {
+      playerGotStunned(stunDuration);
+      const seconds = stunDuration / 1000;
+      updateTextLog(`You got stunned for ${seconds} seconds.`);
+    }
+
     let text = "";
     // If player has Lucky Block
     if (arrUpgrades.includes("images/stages34_upgrade4.png") === true) {
@@ -174,17 +186,17 @@ function hideEnemyAttackDescription3() {
 }
 
 function playerGotStunned(stunDuration) {
-  if (player.status.stun === false){
+  if (player.status.stun === false) {
     player.status.stun = true;
 
     clearInterval(autoPlayerActionGauge);
-  setTimeout(() => {
-    player.status.stun = false;
+    setTimeout(() => {
+      player.status.stun = false;
 
-    autoPlayerActionGauge = setInterval(() => {
-      playerContinuousEvents(currentEnemy);
-    }, player.agility);
-  }, stunDuration);
+      autoPlayerActionGauge = setInterval(() => {
+        playerContinuousEvents(currentEnemy);
+      }, player.agility);
+    }, stunDuration);
   }
 }
 
@@ -197,8 +209,16 @@ function enemyGotStunned(stunDuration) {
   }, stunDuration);
 }
 
-function setPlayerToIdle(delay){
-  setTimeout(()=>{
+function setPlayerToIdle(delay) {
+  setTimeout(() => {
     playerSprite.src = "images/player_idle.gif";
+  }, delay);
+}
+
+function delayEnemyTakingDamage(delay, Enemy, damage, text) {
+  setTimeout(() => {
+    updateTextLog(text);
+    Enemy.hp -= damage;
+    updateHp(false, Enemy);
   }, delay);
 }
