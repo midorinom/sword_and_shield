@@ -294,35 +294,61 @@ function selectUpgrade2Image() {
 }
 
 function determineTwoRandomUpgrades() {
-  const rollForAgility1 = Math.floor(Math.random() * 100);
-  const rollForAgility2 = Math.floor(Math.random() * 100);
+  const randomNumber1 = Math.floor(Math.random() * 100);
+  const randomNumber2 = Math.floor(Math.random() * 100);
 
-  if (rollForAgility1 < 16 || rollForAgility2 < 16) {
-    randomUpgrade1 = Object.keys(upgrades.stages12Upgrades)[0];
-    randomUpgrade2 = Object.keys(upgrades.stages12Upgrades)[
-      Math.ceil(Math.random() * 3)
-    ];
-  } else {
-    const randomNumber = Math.floor(Math.random() * 3);
-    switch (randomNumber) {
-      case 0:
-        randomUpgrade1 = Object.keys(upgrades.stages12Upgrades)[1];
-        randomUpgrade2 = Object.keys(upgrades.stages12Upgrades)[2];
-        break;
-      case 1:
-        randomUpgrade1 = Object.keys(upgrades.stages12Upgrades)[1];
-        randomUpgrade2 = Object.keys(upgrades.stages12Upgrades)[3];
-        break;
-      case 2:
-        randomUpgrade1 = Object.keys(upgrades.stages12Upgrades)[2];
-        randomUpgrade2 = Object.keys(upgrades.stages12Upgrades)[3];
+  if (currentStage < 3) {
+    if (randomNumber1 < 16 || randomNumber2 < 16) {
+      randomUpgrade1 = Object.keys(upgrades.stages12Upgrades)[0];
+      randomUpgrade2 = Object.keys(upgrades.stages12Upgrades)[
+        Math.ceil(Math.random() * 3)
+      ];
+    } else {
+      const randomNumber3 = Math.floor(Math.random() * 3);
+      switch (randomNumber3) {
+        case 0:
+          randomUpgrade1 = Object.keys(upgrades.stages12Upgrades)[1];
+          randomUpgrade2 = Object.keys(upgrades.stages12Upgrades)[2];
+          break;
+        case 1:
+          randomUpgrade1 = Object.keys(upgrades.stages12Upgrades)[1];
+          randomUpgrade2 = Object.keys(upgrades.stages12Upgrades)[3];
+          break;
+        case 2:
+          randomUpgrade1 = Object.keys(upgrades.stages12Upgrades)[2];
+          randomUpgrade2 = Object.keys(upgrades.stages12Upgrades)[3];
+      }
     }
+  } else {
+    // First upgrade is taken from the stages12 pool
+    if (randomNumber1 < 16) {
+      randomUpgrade1 = Object.keys(upgrades.stages12Upgrades)[0];
+    } else {
+      randomUpgrade1 = Object.keys(upgrades.stages12Upgrades)[
+        Math.ceil(Math.random() * 3)
+      ];
+    }
+    // Second upgrade is taken from the stages34 pool
+    if (currentStage === 3) {
+      randomUpgrade2 = Object.keys(upgrades.stages34Upgrades)[
+        Math.floor(Math.random() * 4)
+      ];
+    } else if (currentStage === 4) {
+      const poolOfUpgrades = [...Object.keys(upgrades.stages34Upgrades)];
+      for (let i = 0; i < 4; i++) {
+        if (poolOfUpgrades[i] === arrUpgrades[2]) {
+          poolOfUpgrades.splice(i, 1);
+        }
+      }
+      randomUpgrade2 = poolOfUpgrades[Math.floor(Math.random() * 3)];
+    }
+    upgradesDescription2.style.color = "lightpink";
   }
   // Update the images
   upgradesImage1.src = randomUpgrade1;
   upgradesImage2.src = randomUpgrade2;
-  // Update the description
 
+  // Update the description
   upgradesDescription1.innerText =
     upgrades.getUpgradeDescription(randomUpgrade1);
   upgradesDescription1.style.background = `url(${randomUpgrade1})`;
@@ -430,7 +456,7 @@ function endgameScreen(won = false) {
   if (won === false) {
     document.querySelector("#endgame_title").innerText = "You lost";
   } else {
-    document.querySelector("#endgame_title").innerText = "You won!";
+    document.querySelector("#endgame_title").innerText = "You beat the game!";
   }
 }
 
