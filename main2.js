@@ -14,6 +14,12 @@ class Upgrades {
           return Object.values(this.stages12Upgrades)[i];
         }
       }
+    } else {
+      for (let i = 0; i < 4; i++) {
+        if (imageLink === Object.keys(this.stages34Upgrades)[i]) {
+          return Object.values(this.stages34Upgrades)[i];
+        }
+      }
     }
   }
 
@@ -48,10 +54,10 @@ const player = new Player(
 // Create instance for upgrades
 const upgrades = new Upgrades(
   {
-    "images/stages12_upgrade1.png": "upgrade 1",
-    "images/stages12_upgrade2.png": "upgrade 2",
-    "images/stages12_upgrade3.png": "upgrade 3",
-    "images/stages12_upgrade4.png": "upgrade 4",
+    "images/stages12_upgrade1.png": "\nAction Gauge Speed +",
+    "images/stages12_upgrade2.png": "\nStrength +",
+    "images/stages12_upgrade3.png": "\nHealth +",
+    "images/stages12_upgrade4.png": "\nArmour +",
   },
   {
     "images/stages12_upgrade1.png": "Stages 34 - upgrade 1",

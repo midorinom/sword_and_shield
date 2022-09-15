@@ -1,5 +1,6 @@
 html {
   caret-color: rgba(0, 0, 0, 0);
+  user-select: none;
 }
 
 #background {
@@ -103,6 +104,7 @@ html {
   height: 70%;
   width: 12%;
   margin-top: 2.5%;
+  border-radius: 1em;
 }
 
 #attack_button {
@@ -167,6 +169,7 @@ html {
   border-style: solid;
   border-color: black;
   border-width: medium;
+  border-radius: 1em;
 }
 #enemy_queue1 {
   margin-top: 0.3em;
@@ -175,6 +178,7 @@ html {
 .enemy_queue23_container {
   height: 8em;
   width: 100%;
+  border-radius: 1em;
 }
 
 #enemy_queue2_container {
@@ -234,6 +238,7 @@ html {
   bottom: 5%;
   font-size: xx-large;
   background-color: lightcoral;
+  border-radius: 1em;
 }
 
 #upgrades_choice_container {
@@ -247,11 +252,13 @@ html {
   top: 10%;
   height: 50%;
   width: 20%;
+  text-align: center;
 }
 
 .upgrades_image {
-  max-width: 100%;
-  max-height: 100%;
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
 }
 
 .upgrades_description {
@@ -259,11 +266,10 @@ html {
   width: 100%;
   height: 100%;
   font-size: xx-large;
+  font-weight: bolder;
   display: none;
-  text-align: center;
-  border-style: solid;
-  border-color: black;
-  border-width: medium;
+  color: black;
+  image-rendering: pixelated;
 }
 
 #endgame_container {
@@ -289,6 +295,7 @@ html {
   bottom: 15%;
   font-size: xx-large;
   background-color: lightcoral;
+  border-radius: 1em;
 }
 
 #endgame_restart_button {
@@ -299,6 +306,7 @@ html {
   bottom: 15%;
   font-size: xx-large;
   background-color: lightcoral;
+  border-radius: 1em;
 }
 
 #upgrades_inventory_container {
@@ -319,4 +327,5 @@ html {
   height: 40%;
   width: 40%;
   margin-top: 0.3em;
+  image-rendering: pixelated;
 }

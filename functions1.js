@@ -235,20 +235,20 @@ function enemyContinuousEvents(Enemy) {
 }
 
 function showUpgradesDescription1() {
-  document.querySelector("#upgrades_description1").style.display = "block";
-  document.querySelector("#upgrades_image1").style.display = "none";
+  upgradesDescription1.style.display = "block";
+  upgradesImage1.style.display = "none";
 }
 function hideUpgradesDescription1() {
-  document.querySelector("#upgrades_image1").style.display = "block";
-  document.querySelector("#upgrades_description1").style.display = "none";
+  upgradesImage1.style.display = "block";
+  upgradesDescription1.style.display = "none";
 }
 function showUpgradesDescription2() {
-  document.querySelector("#upgrades_description2").style.display = "block";
-  document.querySelector("#upgrades_image2").style.display = "none";
+  upgradesDescription2.style.display = "block";
+  upgradesImage2.style.display = "none";
 }
 function hideUpgradesDescription2() {
-  document.querySelector("#upgrades_image2").style.display = "block";
-  document.querySelector("#upgrades_description2").style.display = "none";
+  upgradesImage2.style.display = "block";
+  upgradesDescription2.style.display = "none";
 }
 
 function selectUpgrade1Image() {
@@ -268,6 +268,7 @@ function selectUpgrade1Image() {
     upgradesImage1Container.style.height = 50 + "%";
     upgradesImage1Container.style.width = 20 + "%";
     upgrades1Selected = false;
+    chosenUpgrade = "notSelected";
   }
 }
 
@@ -288,6 +289,7 @@ function selectUpgrade2Image() {
     upgradesImage2Container.style.height = 50 + "%";
     upgradesImage2Container.style.width = 20 + "%";
     upgrades2Selected = false;
+    chosenUpgrade = "notSelected";
   }
 }
 
@@ -320,10 +322,16 @@ function determineTwoRandomUpgrades() {
   upgradesImage1.src = randomUpgrade1;
   upgradesImage2.src = randomUpgrade2;
   // Update the description
-  document.querySelector("#upgrades_description1").innerText =
+
+  upgradesDescription1.innerText =
     upgrades.getUpgradeDescription(randomUpgrade1);
-  document.querySelector("#upgrades_description2").innerText =
+  upgradesDescription1.style.background = `url(${randomUpgrade1})`;
+  upgradesDescription1.style.backgroundSize = "cover";
+
+  upgradesDescription2.innerText =
     upgrades.getUpgradeDescription(randomUpgrade2);
+  upgradesDescription2.style.background = `url(${randomUpgrade2})`;
+  upgradesDescription2.style.backgroundSize = "cover";
 }
 
 function upgradesSubmitButton() {

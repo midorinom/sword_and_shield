@@ -40,6 +40,8 @@ const backgroundImages = [
   "url('images/background4.png')",
   "url('images/background4.png')",
 ];
+const upgradesDescription1 = document.querySelector("#upgrades_description1");
+const upgradesDescription2 = document.querySelector("#upgrades_description2");
 
 // Create EnemyBalancedEasy class
 class EnemyBalancedEasy {
