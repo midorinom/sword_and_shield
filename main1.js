@@ -33,6 +33,13 @@ const upgradesImage2Container = document.querySelector(
   "#upgrades_image2_container"
 );
 const arrUpgrades = [];
+const backgroundImages = [
+  "url('images/background1.png')",
+  "url('images/background2.png')",
+  "url('images/background3.png')",
+  "url('images/background4.png')",
+  "url('images/background4.png')",
+];
 
 // Create EnemyBalancedEasy class
 class EnemyBalancedEasy {

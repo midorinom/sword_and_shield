@@ -8,6 +8,11 @@ function startStage(Player, Enemy) {
   updateHp(true, Player);
   updateHp(false, Enemy);
 
+  // Update background image
+  document.querySelector("#background").style.background =
+    backgroundImages[currentStage - 1];
+  document.querySelector("#background").style.backgroundSize = "cover";
+
   // Update Enemy Image
   document.querySelector("#enemy").src = Enemy.image;
 
@@ -16,6 +21,11 @@ function startStage(Player, Enemy) {
   updateEnemyQueue();
 
   unpause();
+}
+
+function updateBackgroundImage() {
+  const background = document.querySelector("#background");
+  background.src = "";
 }
 
 function unpause() {
