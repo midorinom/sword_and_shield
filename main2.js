@@ -22,27 +22,15 @@ class Upgrades {
   }
 
   activateUpgrade(imageLink, Player) {
-    // Stages12 Pool
     if (imageLink === Object.keys(this.stages12Upgrades)[0]) {
-      Player.agility -= 60;
+      Player.agility -= 10;
     } else if (imageLink === Object.keys(this.stages12Upgrades)[1]) {
-      Player.strength += 10;
+      Player.strength += 3;
     } else if (imageLink === Object.keys(this.stages12Upgrades)[2]) {
       Player.hp += 50;
       Player.maxHp += 50;
     } else if (imageLink === Object.keys(this.stages12Upgrades)[3]) {
-      Player.armour -= 0.5;
-    }
-    // Stages34 Pool
-    if (imageLink === Object.keys(this.stages34Upgrades)[0]) {
-      Player.agility -= 60;
-    } else if (imageLink === Object.keys(this.stages34Upgrades)[1]) {
-      Player.strength += 10;
-    } else if (imageLink === Object.keys(this.stages34Upgrades)[2]) {
-      Player.hp += 50;
-      Player.maxHp += 50;
-    } else if (imageLink === Object.keys(this.stages34Upgrades)[3]) {
-      Player.armour -= 0.5;
+      Player.armour -= 0.25;
     }
   }
 }
@@ -53,7 +41,7 @@ const player = new Player(
   100,
   5,
   1,
-  20,
+  50,
   0,
   { attack: false, defend: false },
   { defendStance: false, stun: false }

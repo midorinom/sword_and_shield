@@ -128,6 +128,7 @@ html {
   border-color: black;
   border-width: medium;
   border-radius: 1em;
+  margin-top: 0.3em;
 }
 
 .textlog_line {

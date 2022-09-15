@@ -13,7 +13,7 @@ const enemyActionGauge1 = document.querySelector(
 );
 const attackButton = document.querySelector("#attack_button");
 const defendButton = document.querySelector("#defend_button");
-const textLog = ["", "", "", ""];
+let textLog = ["", "", "", ""];
 const arrEnemyQueue = [];
 const enemyQueue1 = document.querySelector("#enemy_queue1_container");
 const enemyQueue2 = document.querySelector("#enemy_queue2_container");

@@ -7,11 +7,11 @@ function generateEnemy() {
       switch (currentStage) {
         case 1:
           currentEnemy = new EnemyBalancedEasy(
-            10,
-            10,
-            1,
-            1,
-            30,
+            20,
+            20,
+            2,
+            0.9,
+            80,
             0,
             {
               "images/enemy_attack1a.png": "\nDamage *",
@@ -24,11 +24,11 @@ function generateEnemy() {
           break;
         case 2:
           currentEnemy = new EnemyBalancedEasy(
-            20,
-            20,
-            1,
-            1,
-            30,
+            25,
+            25,
+            3,
+            0.9,
+            75,
             0,
             {
               "images/enemy_attack1a.png": "\nDamage *",
@@ -41,11 +41,11 @@ function generateEnemy() {
           break;
         case 3:
           currentEnemy = new EnemyBalanced3(
-            30,
-            30,
-            1,
-            1,
-            30,
+            35,
+            35,
+            4,
+            0.9,
+            70,
             0,
             {
               "images/enemy_attack2a.png": "\nDamage **",
@@ -58,11 +58,11 @@ function generateEnemy() {
           break;
         case 4:
           currentEnemy = new EnemyBalanced4(
-            40,
-            40,
-            1,
-            1,
-            30,
+            45,
+            45,
+            6,
+            0.9,
+            65,
             0,
             {
               "images/enemy_attack2a.png": "\nDamage **",
@@ -76,11 +76,11 @@ function generateEnemy() {
           break;
         case 5:
           currentEnemy = new EnemyBalanced5(
-            50,
-            50,
-            1,
-            1,
-            30,
+            65,
+            65,
+            7,
+            0.7,
+            60,
             0,
             {
               "images/enemy_attackstun2a.png": "\nDamage **\nStun 2s",
@@ -98,11 +98,11 @@ function generateEnemy() {
       switch (currentStage) {
         case 1:
           currentEnemy = new EnemyFastEasy(
-            10,
-            10,
+            15,
+            15,
             1,
             1,
-            30,
+            60,
             0,
             {
               "images/enemy_attack1a.png": "\nDamage *",
@@ -117,9 +117,9 @@ function generateEnemy() {
           currentEnemy = new EnemyFastEasy(
             20,
             20,
+            2,
             1,
-            1,
-            30,
+            55,
             0,
             {
               "images/enemy_attack1a.png": "\nDamage *",
@@ -134,9 +134,9 @@ function generateEnemy() {
           currentEnemy = new EnemyFast3(
             30,
             30,
+            3,
             1,
-            1,
-            30,
+            50,
             0,
             {
               "images/enemy_attack2a.png": "\nDamage **",
@@ -151,9 +151,9 @@ function generateEnemy() {
           currentEnemy = new EnemyFast4(
             40,
             40,
+            5,
             1,
-            1,
-            30,
+            45,
             0,
             {
               "images/enemy_attackstun2a.png": "\nDamage **\nStun 2s",
@@ -167,11 +167,11 @@ function generateEnemy() {
           break;
         case 5:
           currentEnemy = new EnemyFast5(
-            50,
-            50,
-            1,
-            1,
-            30,
+            60,
+            60,
+            6,
+            0.8,
+            40,
             0,
             {
               "images/enemy_attackstun2a.png": "\nDamage **\nStun 2s",
@@ -189,11 +189,11 @@ function generateEnemy() {
       switch (currentStage) {
         case 1:
           currentEnemy = new EnemySlowEasy(
-            10,
-            10,
-            1,
-            1,
-            30,
+            25,
+            25,
+            5,
+            0.8,
+            100,
             0,
             {
               "images/enemy_attack2a.png": "\nDamage **",
@@ -206,11 +206,11 @@ function generateEnemy() {
           break;
         case 2:
           currentEnemy = new EnemySlowEasy(
-            20,
-            20,
-            1,
-            1,
             30,
+            30,
+            6,
+            0.8,
+            95,
             0,
             {
               "images/enemy_attack2a.png": "\nDamage **",
@@ -223,11 +223,11 @@ function generateEnemy() {
           break;
         case 3:
           currentEnemy = new EnemySlow3(
-            30,
-            30,
-            1,
-            1,
-            30,
+            40,
+            40,
+            7,
+            0.8,
+            90,
             0,
             {
               "images/enemy_attackstun2a.png": "\nDamage **\nStun 2s",
@@ -240,11 +240,11 @@ function generateEnemy() {
           break;
         case 4:
           currentEnemy = new EnemySlow4(
-            40,
-            40,
-            1,
-            1,
-            30,
+            50,
+            50,
+            9,
+            0.8,
+            85,
             0,
             {
               "images/enemy_attackstun2a.png": "\nDamage **\nStun 2s",
@@ -258,11 +258,11 @@ function generateEnemy() {
           break;
         case 5:
           currentEnemy = new EnemySlow5(
-            50,
-            50,
-            1,
-            1,
-            30,
+            70,
+            70,
+            10,
+            0.6,
+            80,
             0,
             {
               "images/enemy_attackstun3a.png": "\nDamage ***\nStun 3s",

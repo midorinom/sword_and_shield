@@ -1,6 +1,14 @@
 "use strict";
 
 function startStage(Player, Enemy) {
+  if (currentStage != 1) {
+    clearInterval(autoPlayerActionGauge);
+    clearInterval(autoEnemyActionGauge);
+    player.actionGaugeCounter = 0;
+
+    textLog = ["", "", "", ""];
+    updateTextLog("");
+  }
   document
     .querySelector("#upgrades_submit_button")
     .removeEventListener("click", upgradesSubmitButton);
@@ -178,9 +186,9 @@ function enemyContinuousEvents(Enemy) {
   if (currentStage >= 4) {
     if (Enemy.hp / Enemy.maxHp < 0.5 && Enemy.status.berserk === false) {
       Enemy.status.berserk = true;
-      Enemy.strength += 10;
-      Enemy.armour -= 0.1;
-      Enemy.agility -= 10;
+      Enemy.strength += 5;
+      Enemy.armour -= 0.3;
+      Enemy.agility -= 20;
 
       const text = `The ${Enemy.name} has gone BERSERK and is much stronger now!`;
       updateTextLog(text);
