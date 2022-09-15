@@ -80,7 +80,7 @@ function generateEnemy() {
             65,
             7,
             0.7,
-            60,
+            65,
             0,
             {
               "images/enemy_attackstun2a.png": "\nDamage **\nStun 2s",
@@ -153,7 +153,7 @@ function generateEnemy() {
             40,
             5,
             1,
-            45,
+            50,
             0,
             {
               "images/enemy_attackstun2a.png": "\nDamage **\nStun 2s",
@@ -171,7 +171,7 @@ function generateEnemy() {
             60,
             6,
             0.8,
-            40,
+            50,
             0,
             {
               "images/enemy_attackstun2a.png": "\nDamage **\nStun 2s",

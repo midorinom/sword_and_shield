@@ -41,7 +41,7 @@ const player = new Player(
   100,
   5,
   1,
-  50,
+  40,
   0,
   { attack: false, defend: false },
   { defendStance: false, stun: false }

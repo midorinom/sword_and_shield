@@ -188,7 +188,7 @@ function enemyContinuousEvents(Enemy) {
       Enemy.status.berserk = true;
       Enemy.strength += 5;
       Enemy.armour -= 0.3;
-      Enemy.agility -= 20;
+      Enemy.agility -= 10;
 
       const text = `The ${Enemy.name} has gone BERSERK and is much stronger now!`;
       updateTextLog(text);

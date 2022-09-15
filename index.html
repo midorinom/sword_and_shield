@@ -8,10 +8,56 @@
     <title>Sword and Shield</title>
   </head>
   <body>
-    <div id="mainContainer1"><h1 id="title">Sword and Shield</h1></div>
+    <div id="mainContainer1">
+      <img src="images/title_icon.png" id="title_icon" />
+      <h1 id="title">Sword and Shield</h1>
+    </div>
     <div id="mainContainer2">
-      <h1 id="startTitle">Start Game</h1>
-      <button id="startButton"></button>
+      <div id="instructions1_container">
+        <img src="images/instructions_1.jpg" id="instructions1_image" />
+        <div class="instructions" id="instructions1">
+          Your Action Gauge. <br /><br />It fills up over time.<br /><br />
+          When one bar is full,<br /><br />
+          you can attack/defend.
+        </div>
+      </div>
+      <div id="instructions5_container">
+        <img src="images/instructions_5.jpg" id="instructions5_image" />
+        <div class="instructions" id="instructions5">
+          Enemy Action Gauge.<br /><br />When one bar is full,<br /><br />
+          the enemy attacks you.<br /><br />The icons show the<br /><br />enemy's
+          next attacks.
+        </div>
+      </div>
+      <div id="instructions2_container">
+        <img src="images/instructions_2.jpg" id="instructions2_image" />
+        <div class="instructions" id="instructions2">
+          Your Attack Button.<br /><br />Press it to attack. Breaks
+          <br /><br />you out of defend stance<br /><br />if you were defending.
+        </div>
+      </div>
+      <div id="instructions3_container">
+        <img src="images/instructions_3.jpg" id="instructions3_image" />
+        <div class="instructions" id="instructions3">
+          Your Defend Button.<br /><br />The next enemy attack<br /><br />
+          that hits you will have<br /><br />its damage reduced by<br /><br />70%.
+        </div>
+      </div>
+      <div id="instructions4_container">
+        <img src="images/instructions_4.jpg" id="instructions4_image" />
+      </div>
+      <div id="instructions6_container">
+        <img src="images/instructions_6.jpg" id="instructions6_image" />
+        <div class="instructions" id="instructions6">
+          When defending an attack, you get to play a minigame. You need to
+          either (1) press 3 keys OR (2) click 3 boxes within 1.5 secs.
+          <br /><br />If successful, you will parry the attack.
+        </div>
+      </div>
+    </div>
+
+    <div id="mainContainer3">
+      <button id="startButton">Start Game</button>
     </div>
     <script src="start.js" charset="utf-8"></script>
   </body>

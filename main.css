@@ -285,7 +285,9 @@ html {
 
 #endgame_container {
   display: none;
-  background-color: powderblue;
+  background-image: url("images/title_background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
   height: 70%;
   width: 60%;
   position: absolute;
@@ -295,6 +297,7 @@ html {
 }
 
 #endgame_title {
+  margin-top: 20%;
   text-align: center;
 }
 
