@@ -180,8 +180,8 @@ function parryMiniGame(Enemy, Player, damage) {
     const parryDamage = performDamageFomula(Player.strength, Enemy.armour);
 
     if (arrUpgrades.includes("images/stages34_upgrade1.png") === true) {
-      text = `You parried! You took no damage and counterattacked, dealing ${parryDamage} damage to the ${Enemy.name} and stunning it for 2 seconds.`;
-      enemyGotStunned(2000);
+      text = `You parried! You took no damage and counterattacked, dealing ${parryDamage} damage to the ${Enemy.name} and stunning it for 1.5 seconds.`;
+      enemyGotStunned(1500);
     } else {
       text = `You parried! You took no damage and counterattacked, dealing ${parryDamage} damage to the ${Enemy.name}.`;
       autoEnemyActionGauge = setInterval(() => {
@@ -211,7 +211,7 @@ function parryMiniGame(Enemy, Player, damage) {
 
     // Set player animation back to idle
     playerSprite.src = "images/player_idle.gif";
-    
+
     updateTextLog(text);
     Player.hp -= damage;
     updateHp(true, Player);

@@ -69,7 +69,7 @@ const upgrades = new Upgrades(
   },
   {
     "images/stages34_upgrade1.png":
-      "\nParrying will stun the enemy for 2 seconds",
+      "\nParrying will stun the enemy for 1.5 seconds",
     "images/stages34_upgrade2.png":
       "\nEach attack will have a 30% chance to deal 1.5x damage",
     "images/stages34_upgrade3.png":

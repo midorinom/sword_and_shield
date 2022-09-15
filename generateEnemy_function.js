@@ -188,9 +188,9 @@ function generateEnemy() {
             30,
             0,
             {
-              "images/enemy_attack2.webp": "Swipe:\nDamage **",
-              "images/enemy_attack3.webp": "Stomp:\nDamage ***",
-              "images/enemy_attack1.png": "Scratch:\nDamage *",
+              "images/enemy_attack2.png": "\n\nDamage **",
+              "images/enemy_attack3.png": "\n\nDamage ***",
+              "images/enemy_attack3.png": "\n\nDamage ***",
             },
             "Rat",
             "images/stage1_slow.gif"
@@ -205,9 +205,9 @@ function generateEnemy() {
             30,
             0,
             {
-              "images/enemy_attack2.webp": "Swipe:\nDamage **",
-              "images/enemy_attack3.webp": "Stomp:\nDamage ***",
-              "images/enemy_attack1.png": "Scratch:\nDamage *",
+              "images/enemy_attack2.png": "\n\nDamage **",
+              "images/enemy_attack3.png": "\n\nDamage ***",
+              "images/enemy_attack3.png": "\n\nDamage ***",
             },
             "Giant",
             "images/stage2_slow.gif"
@@ -222,9 +222,9 @@ function generateEnemy() {
             30,
             0,
             {
-              "images/enemy_attack2.webp": "Swipe:\nDamage **",
-              "images/enemy_attack3.webp": "Stomp:\nDamage ***",
-              "images/enemy_attack1.png": "Scratch:\nDamage *",
+              "images/enemy_attackstun2a.png": "\n\nDamage **\nStun 2s",
+              "images/enemy_attack3.png": "\n\nDamage ***",
+              "images/enemy_attackstun2b.png": "\n\nDamage **\nStun 2s",
             },
             "Ogre",
             "images/stage3_slow.gif"
@@ -239,9 +239,9 @@ function generateEnemy() {
             30,
             0,
             {
-              "images/enemy_attack2.webp": "Swipe:\nDamage **",
-              "images/enemy_attack3.webp": "Stomp:\nDamage ***",
-              "images/enemy_attack1.png": "Scratch:\nDamage *",
+              "images/enemy_attackstun2a.png": "\n\nDamage **\nStun 2s",
+              "images/enemy_attackstun3.png": "\n\nDamage ***\nStun 3s",
+              "images/enemy_attackstun2b.png": "\n\nDamage **\nStun 2s",
             },
             "Arch Fiend",
             "images/stage4_slow.gif", {berserk: false});
@@ -255,9 +255,9 @@ function generateEnemy() {
             30,
             0,
             {
-              "images/enemy_attack2.webp": "Swipe:\nDamage **",
-              "images/enemy_attack3.webp": "Stomp:\nDamage ***",
-              "images/enemy_attack1.png": "Scratch:\nDamage *",
+              "images/enemy_attackstun3a.png": "\n\nDamage ***\nStun 3s",
+              "images/enemy_attackstun3b.png": "\n\nDamage ***\nStun 3s",
+              "images/enemy_attackstun3c.png": "\n\nDamage ***\nStun 3s",
             },
             "Golden Wyrm",
             "images/stage5_slow.gif", {berserk: false});
