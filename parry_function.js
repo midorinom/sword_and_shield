@@ -224,10 +224,10 @@ function parryMiniGame(Enemy, Player, damage, stun, stunDuration) {
       autoPlayerActionGauge = setInterval(() => {
         playerContinuousEvents(Enemy);
       }, Player.agility);
-      autoEnemyActionGauge = setInterval(() => {
-        enemyContinuousEvents(Enemy);
-      }, Enemy.agility);
-      unpause();
     }
+    autoEnemyActionGauge = setInterval(() => {
+      enemyContinuousEvents(Enemy);
+    }, Enemy.agility);
+    unpause();
   }
 }
