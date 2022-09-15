@@ -14,9 +14,9 @@ function generateEnemy() {
             30,
             0,
             {
-              "images/enemy_attack1.png": "Scratch:\nDamage *",
-              "images/enemy_attack2.webp": "Swipe:\nDamage **",
-              "images/enemy_attack3.webp": "Stomp:\nDamage ***",
+              "images/enemy_attack1a.png": "\nDamage *",
+              "images/enemy_attack2a.png": "\nDamage **",
+              "images/enemy_attack3a.png": "\nDamage ***",
             },
             "Mole",
             "images/stage1_balanced.gif"
@@ -31,9 +31,9 @@ function generateEnemy() {
             30,
             0,
             {
-              "images/enemy_attack1.png": "Scratch:\nDamage *",
-              "images/enemy_attack2.webp": "Swipe:\nDamage **",
-              "images/enemy_attack3.webp": "Stomp:\nDamage ***",
+              "images/enemy_attack1a.png": "\nDamage *",
+              "images/enemy_attack2a.png": "\nDamage **",
+              "images/enemy_attack3a.png": "\nDamage ***",
             },
             "Skull Spider",
             "images/stage2_balanced.gif"
@@ -48,9 +48,9 @@ function generateEnemy() {
             30,
             0,
             {
-              "images/enemy_attack1.png": "Scratch:\nDamage *",
-              "images/enemy_attack2.webp": "Swipe:\nDamage **",
-              "images/enemy_attack3.webp": "Stomp:\nDamage ***",
+              "images/enemy_attack2a.png": "\nDamage **",
+              "images/enemy_attackstun1a.png": "\nDamage *\nStun 1s",
+              "images/enemy_attack3a.png": "\nDamage ***",
             },
             "Warlock",
             "images/stage3_balanced.gif"
@@ -65,12 +65,14 @@ function generateEnemy() {
             30,
             0,
             {
-              "images/enemy_attack1.png": "Scratch:\nDamage *",
-              "images/enemy_attack2.webp": "Swipe:\nDamage **",
-              "images/enemy_attack3.webp": "Stomp:\nDamage ***",
+              "images/enemy_attack2a.png": "\nDamage **",
+              "images/enemy_attackstun2a.png": "\nDamage **\nStun 2s",
+              "images/enemy_attack3a.png": "\nDamage ***",
             },
             "Chimera",
-            "images/stage4_balanced.gif", {berserk: false});
+            "images/stage4_balanced.gif",
+            { berserk: false }
+          );
           break;
         case 5:
           currentEnemy = new EnemyBalancedHard(
@@ -81,12 +83,14 @@ function generateEnemy() {
             30,
             0,
             {
-              "images/enemy_attack1.png": "Scratch:\nDamage *",
-              "images/enemy_attack2.webp": "Swipe:\nDamage **",
-              "images/enemy_attack3.webp": "Stomp:\nDamage ***",
+              "images/enemy_attackstun2a.png": "\nDamage **\nStun 2s",
+              "images/enemy_attack3a.png": "\nDamage ***",
+              "images/enemy_attack3b.png": "\nDamage ***",
             },
             "Red Wyrm",
-            "images/stage5_balanced.gif", {berserk: false});
+            "images/stage5_balanced.gif",
+            { berserk: false }
+          );
       }
       break;
 
@@ -101,9 +105,9 @@ function generateEnemy() {
             30,
             0,
             {
-              "images/enemy_attack1.png": "Scratch:\nDamage *",
-              "images/enemy_attack2.webp": "Swipe:\nDamage **",
-              "images/enemy_attack3.webp": "Stomp:\nDamage ***",
+              "images/enemy_attack1a.png": "\nDamage *",
+              "images/enemy_attack2a.png": "\nDamage **",
+              "images/enemy_attack2b.png": "\nDamage **",
             },
             "Bat",
             "images/stage1_fast.gif"
@@ -118,9 +122,9 @@ function generateEnemy() {
             30,
             0,
             {
-              "images/enemy_attack1.png": "Scratch:\nDamage *",
-              "images/enemy_attack2.webp": "Swipe:\nDamage **",
-              "images/enemy_attack3.webp": "Stomp:\nDamage ***",
+              "images/enemy_attack1a.png": "\nDamage *",
+              "images/enemy_attack2a.png": "\nDamage **",
+              "images/enemy_attack2b.png": "\nDamage **",
             },
             "Night Mare",
             "images/stage2_fast.gif"
@@ -135,9 +139,9 @@ function generateEnemy() {
             30,
             0,
             {
-              "images/enemy_attack1.png": "Scratch:\nDamage *",
-              "images/enemy_attack2.webp": "Swipe:\nDamage **",
-              "images/enemy_attack3.webp": "Stomp:\nDamage ***",
+              "images/enemy_attack2a.png": "\nDamage **",
+              "images/enemy_attackstun1a.png": "\nDamage *\nStun 1s",
+              "images/enemy_attackstun1b.png": "\nDamage *\nStun 1s",
             },
             "Overlord",
             "images/stage3_fast.gif"
@@ -152,12 +156,14 @@ function generateEnemy() {
             30,
             0,
             {
-              "images/enemy_attack1.png": "Scratch:\nDamage *",
-              "images/enemy_attack2.webp": "Swipe:\nDamage **",
-              "images/enemy_attack3.webp": "Stomp:\nDamage ***",
+              "images/enemy_attackstun2a.png": "\nDamage **\nStun 2s",
+              "images/enemy_attack1a.png": "\nDamage *",
+              "images/enemy_attack3a.png": "\nDamage ***",
             },
             "Abyss Worm",
-            "images/stage4_fast.gif", {berserk: false});
+            "images/stage4_fast.gif",
+            { berserk: false }
+          );
           break;
         case 5:
           currentEnemy = new EnemyFastHard(
@@ -168,12 +174,14 @@ function generateEnemy() {
             30,
             0,
             {
-              "images/enemy_attack1.png": "Scratch:\nDamage *",
-              "images/enemy_attack2.webp": "Swipe:\nDamage **",
-              "images/enemy_attack3.webp": "Stomp:\nDamage ***",
+              "images/enemy_attackstun2a.png": "\nDamage **\nStun 2s",
+              "images/enemy_attack3a.png": "\nDamage ***",
+              "images/enemy_attackstun2b.png": "\nDamage **\nStun 2s",
             },
             "Blue Wyrm",
-            "images/stage5_fast.gif", {berserk: false});
+            "images/stage5_fast.gif",
+            { berserk: false }
+          );
       }
       break;
 
@@ -188,9 +196,9 @@ function generateEnemy() {
             30,
             0,
             {
-              "images/enemy_attack2.png": "\n\nDamage **",
-              "images/enemy_attack3.png": "\n\nDamage ***",
-              "images/enemy_attack3.png": "\n\nDamage ***",
+              "images/enemy_attack2a.png": "\nDamage **",
+              "images/enemy_attack3a.png": "\nDamage ***",
+              "images/enemy_attack3b.png": "\nDamage ***",
             },
             "Rat",
             "images/stage1_slow.gif"
@@ -205,9 +213,9 @@ function generateEnemy() {
             30,
             0,
             {
-              "images/enemy_attack2.png": "\n\nDamage **",
-              "images/enemy_attack3.png": "\n\nDamage ***",
-              "images/enemy_attack3.png": "\n\nDamage ***",
+              "images/enemy_attack2a.png": "\nDamage **",
+              "images/enemy_attack3a.png": "\nDamage ***",
+              "images/enemy_attack3b.png": "\nDamage ***",
             },
             "Giant",
             "images/stage2_slow.gif"
@@ -222,9 +230,9 @@ function generateEnemy() {
             30,
             0,
             {
-              "images/enemy_attackstun2a.png": "\n\nDamage **\nStun 2s",
-              "images/enemy_attack3.png": "\n\nDamage ***",
-              "images/enemy_attackstun2b.png": "\n\nDamage **\nStun 2s",
+              "images/enemy_attackstun2a.png": "\nDamage **\nStun 2s",
+              "images/enemy_attack3a.png": "\nDamage ***",
+              "images/enemy_attackstun2b.png": "\nDamage **\nStun 2s",
             },
             "Ogre",
             "images/stage3_slow.gif"
@@ -239,12 +247,14 @@ function generateEnemy() {
             30,
             0,
             {
-              "images/enemy_attackstun2a.png": "\n\nDamage **\nStun 2s",
-              "images/enemy_attackstun3.png": "\n\nDamage ***\nStun 3s",
-              "images/enemy_attackstun2b.png": "\n\nDamage **\nStun 2s",
+              "images/enemy_attackstun2a.png": "\nDamage **\nStun 2s",
+              "images/enemy_attackstun3a.png": "\nDamage ***\nStun 3s",
+              "images/enemy_attackstun2b.png": "\nDamage **\nStun 2s",
             },
             "Arch Fiend",
-            "images/stage4_slow.gif", {berserk: false});
+            "images/stage4_slow.gif",
+            { berserk: false }
+          );
           break;
         case 5:
           currentEnemy = new EnemySlowHard(
@@ -255,12 +265,14 @@ function generateEnemy() {
             30,
             0,
             {
-              "images/enemy_attackstun3a.png": "\n\nDamage ***\nStun 3s",
-              "images/enemy_attackstun3b.png": "\n\nDamage ***\nStun 3s",
-              "images/enemy_attackstun3c.png": "\n\nDamage ***\nStun 3s",
+              "images/enemy_attackstun3a.png": "\nDamage ***\nStun 3s",
+              "images/enemy_attackstun3b.png": "\nDamage ***\nStun 3s",
+              "images/enemy_attackstun3c.png": "\nDamage ***\nStun 3s",
             },
             "Golden Wyrm",
-            "images/stage5_slow.gif", {berserk: false});
+            "images/stage5_slow.gif",
+            { berserk: false }
+          );
       }
   }
 }

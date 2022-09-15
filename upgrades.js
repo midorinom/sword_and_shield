@@ -108,7 +108,7 @@ function determineTwoRandomUpgrades() {
       }
       randomUpgrade2 = poolOfUpgrades[Math.floor(Math.random() * 3)];
     }
-    upgradesDescription2.style.color = "peachpuff";
+    upgradesDescription2.style.color = "yellow";
   }
   // Update the images
   upgradesImage1.src = randomUpgrade1;

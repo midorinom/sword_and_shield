@@ -175,14 +175,14 @@ function enemyContinuousEvents(Enemy) {
   fillEnemyActionGauge(Enemy);
   updateEnemyAttackDescriptions(Enemy);
 
-  if (currentStage >= 4){
-    if (((Enemy.hp / Enemy.maxHp) < 0.5) && Enemy.status.berserk === false) {
+  if (currentStage >= 4) {
+    if (Enemy.hp / Enemy.maxHp < 0.5 && Enemy.status.berserk === false) {
       Enemy.status.berserk = true;
       Enemy.strength += 10;
       Enemy.armour -= 0.1;
       Enemy.agility -= 10;
 
-      const text = `The ${Enemy.name} has gone BERSERK and is much stronger now!`
+      const text = `The ${Enemy.name} has gone BERSERK and is much stronger now!`;
       updateTextLog(text);
     }
   }
@@ -198,6 +198,10 @@ function enemyContinuousEvents(Enemy) {
 
 function stageLoop() {
   pause();
+  // Clear enemy queue
+  for (let i = 0; i < 3; i++) {
+    arrEnemyQueue.pop();
+  }
   // Show Upgrade Screen
   upgradesContainer.style.display = "block";
   // Pick 2 random upgrades

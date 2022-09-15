@@ -104,6 +104,7 @@ html {
   height: 70%;
   width: 12%;
   margin-top: 2.5%;
+  border-color: white;
   border-radius: 1em;
 }
 
@@ -143,11 +144,10 @@ html {
 }
 
 #player {
-  height: 15em;
+  height: 20em;
   width: 20%;
   position: relative;
   left: 10%;
-  margin-top: 2.7em;
   image-rendering: pixelated;
 }
 
@@ -168,7 +168,7 @@ html {
   margin-top: 1em;
   margin-left: 4em;
   border-style: solid;
-  border-color: black;
+  border-color: pink;
   border-width: medium;
   border-radius: 1em;
 }
@@ -179,22 +179,19 @@ html {
 .enemy_queue23_container {
   height: 8em;
   width: 100%;
+  border-style: solid;
+  border-color: pink;
+  border-width: medium;
   border-radius: 1em;
 }
 
 #enemy_queue2_container {
   margin-top: 0.5em;
-  border-style: solid;
-  border-color: black;
-  border-width: medium;
 }
 
 #enemy_queue3_container {
   margin-top: 1.5em;
   margin-bottom: 1em;
-  border-style: solid;
-  border-color: black;
-  border-width: medium;
 }
 
 .enemy_queue_images {
@@ -211,9 +208,11 @@ html {
   position: absolute;
   width: 100%;
   height: 100%;
-  font-size: xx-large;
+  font-size: x-large;
+  text-align: center;
   margin-left: 0.2em;
   display: none;
+  color: white;
 }
 
 #upgrades_container {
@@ -269,10 +268,10 @@ html {
   position: absolute;
   width: 100%;
   height: 100%;
-  font-size: xx-large;
+  font-size: x-large;
   font-weight: bold;
   display: none;
-  color: black;
+  color: greenyellow;
 }
 
 #endgame_container {
