@@ -105,7 +105,7 @@ function generateEnemy() {
             {
               "images/enemy_attack1.png": "Scratch:\nDamage *",
               "images/enemy_attack2.webp": "Swipe:\nDamage **",
-              "images/enemy_attack1.png": "Scratch:\nDamage *",
+              "images/enemy_attack3.webp": "Stomp:\nDamage ***",
             },
             "Bat",
             "images/stage1_fast.gif"
@@ -122,7 +122,7 @@ function generateEnemy() {
             {
               "images/enemy_attack1.png": "Scratch:\nDamage *",
               "images/enemy_attack2.webp": "Swipe:\nDamage **",
-              "images/enemy_attack1.png": "Scratch:\nDamage *",
+              "images/enemy_attack3.webp": "Stomp:\nDamage ***",
             },
             "Night Mare",
             "images/stage2_fast.gif"
@@ -139,7 +139,7 @@ function generateEnemy() {
             {
               "images/enemy_attack1.png": "Scratch:\nDamage *",
               "images/enemy_attack2.webp": "Swipe:\nDamage **",
-              "images/enemy_attack1.png": "Scratch:\nDamage *",
+              "images/enemy_attack3.webp": "Stomp:\nDamage ***",
             },
             "Abyss Worm",
             "images/stage3_fast.gif"
@@ -156,7 +156,7 @@ function generateEnemy() {
             {
               "images/enemy_attack1.png": "Scratch:\nDamage *",
               "images/enemy_attack2.webp": "Swipe:\nDamage **",
-              "images/enemy_attack1.png": "Scratch:\nDamage *",
+              "images/enemy_attack3.webp": "Stomp:\nDamage ***",
             },
             "Poison Drake",
             "images/stage4_fast.gif"
@@ -173,7 +173,7 @@ function generateEnemy() {
             {
               "images/enemy_attack1.png": "Scratch:\nDamage *",
               "images/enemy_attack2.webp": "Swipe:\nDamage **",
-              "images/enemy_attack1.png": "Scratch:\nDamage *",
+              "images/enemy_attack3.webp": "Stomp:\nDamage ***",
             },
             "Poison Drake",
             "images/stage4_fast.gif"
@@ -194,7 +194,7 @@ function generateEnemy() {
             {
               "images/enemy_attack2.webp": "Swipe:\nDamage **",
               "images/enemy_attack3.webp": "Stomp:\nDamage ***",
-              "images/enemy_attack2.webp": "Swipe:\nDamage **",
+              "images/enemy_attack1.png": "Scratch:\nDamage *",
             },
             "Rat",
             "images/stage1_slow.gif"
@@ -211,7 +211,7 @@ function generateEnemy() {
             {
               "images/enemy_attack2.webp": "Swipe:\nDamage **",
               "images/enemy_attack3.webp": "Stomp:\nDamage ***",
-              "images/enemy_attack2.webp": "Swipe:\nDamage **",
+              "images/enemy_attack1.png": "Scratch:\nDamage *",
             },
             "Giant",
             "images/stage2_slow.gif"
@@ -228,7 +228,7 @@ function generateEnemy() {
             {
               "images/enemy_attack2.webp": "Swipe:\nDamage **",
               "images/enemy_attack3.webp": "Stomp:\nDamage ***",
-              "images/enemy_attack2.webp": "Swipe:\nDamage **",
+              "images/enemy_attack1.png": "Scratch:\nDamage *",
             },
             "Overlord",
             "images/stage3_slow.gif"
@@ -245,7 +245,7 @@ function generateEnemy() {
             {
               "images/enemy_attack2.webp": "Swipe:\nDamage **",
               "images/enemy_attack3.webp": "Stomp:\nDamage ***",
-              "images/enemy_attack2.webp": "Swipe:\nDamage **",
+              "images/enemy_attack1.png": "Scratch:\nDamage *",
             },
             "Golden Wyrm",
             "images/stage4_slow.gif"
@@ -262,7 +262,7 @@ function generateEnemy() {
             {
               "images/enemy_attack2.webp": "Swipe:\nDamage **",
               "images/enemy_attack3.webp": "Stomp:\nDamage ***",
-              "images/enemy_attack2.webp": "Swipe:\nDamage **",
+              "images/enemy_attack1.png": "Scratch:\nDamage *",
             },
             "Golden Wyrm",
             "images/stage4_slow.gif"

@@ -35,6 +35,7 @@ class EnemyBalancedEasy {
   attack(Player) {
     // Determine what is next up in the enemyQueue array and execute the attack. Modify strength accordingly.
     let attackPower = this.strength;
+    playerIsStunned(5000);
     if (arrEnemyQueue[0] === Object.keys(this.attacks)[1]) {
       attackPower += 1;
     } else if (arrEnemyQueue[0] === Object.keys(this.attacks)[2]) {
@@ -73,6 +74,7 @@ class EnemyFastEasy extends EnemyBalancedEasy {
   attack(Player) {
     // Determine what is next up in the enemyQueue array and execute the attack. Modify strength accordingly.
     let attackPower = this.strength;
+    playerIsStunned(5000);
     if (arrEnemyQueue[0] === Object.keys(this.attacks)[0]) {
       attackPower += 1;
     } else if (arrEnemyQueue[0] === Object.keys(this.attacks)[1]) {
@@ -112,6 +114,7 @@ class EnemySlowEasy extends EnemyBalancedEasy {
   attack(Player) {
     // Determine what is next up in the enemyQueue array and execute the attack. Modify strength accordingly.
     let attackPower = this.strength;
+    playerIsStunned(5000);
     if (arrEnemyQueue[0] === Object.keys(this.attacks)[0]) {
       attackPower += 2;
     } else if (arrEnemyQueue[0] === Object.keys(this.attacks)[1]) {

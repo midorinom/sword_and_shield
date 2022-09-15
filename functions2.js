@@ -38,6 +38,7 @@ function moveEnemyQueueAlong(Enemy) {
   }
   // Push into the array
   arrEnemyQueue.push(randomAttack);
+  console.log(Enemy.attacks);
   // Update the description
   updateEnemyAttackDescriptions(Enemy);
 }
@@ -169,4 +170,22 @@ function hideEnemyAttackDescription2() {
 }
 function hideEnemyAttackDescription3() {
   hideEnemyAttackDescription(2);
+}
+
+function playerIsStunned(duration) {
+  clearInterval(autoPlayerActionGauge);
+  setTimeout(() => {
+    autoPlayerActionGauge = setInterval(() => {
+      playerContinuousEvents(currentEnemy);
+    }, player.agility);
+  }, duration);
+}
+
+function enemyIsStunned(duration) {
+  clearInterval(autoEnemyActionGauge);
+  setTimeout(() => {
+    autoEnemyActionGauge = setInterval(() => {
+      enemyContinuousEvents(currentEnemy);
+    }, currentEnemy.agility);
+  }, duration);
 }
