@@ -102,7 +102,18 @@ function enemyAttackMegaChecker(Enemy, Player, attackPower) {
     parryMiniGame(Enemy, Player, damage);
   } // Player is not defending
   else {
-    const text = `The ${Enemy.name} dealt ${damage} damage to you.`;
+    let text = "";
+    // If player has Lucky Block
+    if (arrUpgrades.includes("images/stages34_upgrade4.png") === true) {
+      if (Math.round(Math.random()) === 0) {
+        damage = Math.round(damage * 0.3);
+        text = `Lucky block! The ${Enemy.name} only dealt ${damage} damage to you.`;
+      } else {
+        text = `The ${Enemy.name} dealt ${damage} damage to you.`;
+      }
+    } else {
+      text = `The ${Enemy.name} dealt ${damage} damage to you.`;
+    }
     updateTextLog(text);
     Player.hp -= damage;
     updateHp(true, Player);
