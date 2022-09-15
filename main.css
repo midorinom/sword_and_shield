@@ -90,7 +90,7 @@ html {
   width: 60%;
   height: 10em;
   position: relative;
-  left: 10%;
+  left: 15%;
   text-align: center;
 }
 
@@ -139,6 +139,7 @@ html {
   position: relative;
   left: 27%;
   margin-top: 2.7em;
+  image-rendering: pixelated;
 }
 
 #enemy_queue1_container {
