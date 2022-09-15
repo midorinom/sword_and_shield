@@ -42,6 +42,7 @@ const backgroundImages = [
 ];
 const upgradesDescription1 = document.querySelector("#upgrades_description1");
 const upgradesDescription2 = document.querySelector("#upgrades_description2");
+const playerSprite = document.querySelector("#player");
 
 // Create Player class
 class Player {
@@ -86,6 +87,8 @@ class Player {
       }
       // If the player has Double Hit
       if (arrUpgrades.includes("images/stages34_upgrade3.png") === true) {
+        let crit = false;
+
         for (let i = 0; i < 2; i++) {
           damage = Math.round(
             0.55 * performDamageFomula(this.strength, Enemy.armour)
@@ -95,6 +98,7 @@ class Player {
             if (Math.floor(Math.random() * 100) < 30) {
               damage = Math.round(damage * 1.5);
               text = `Critical hit! You dealt ${damage} damage to the ${Enemy.name}.`;
+              crit = true;
             } else {
               text = `You dealt ${damage} damage to the ${Enemy.name}.`;
             }
@@ -108,17 +112,32 @@ class Player {
             updateHp(false, Enemy);
           }
         }
+        if (crit === true) {
+        playerSprite.src = "images/player_crit.gif";
+        setPlayerToIdle(1000);
+        } else {
+        playerSprite.src = "images/player_doublehit.gif";
+        setPlayerToIdle(1600);
+        }
+
+        // No Double Hit
       } else {
         damage = performDamageFomula(this.strength, Enemy.armour);
         // If the player has Crit
         if (arrUpgrades.includes("images/stages34_upgrade2.png") === true) {
           if (Math.floor(Math.random() * 100) < 30) {
+            playerSprite.src = "images/player_crit.gif";
+            setPlayerToIdle(1000);
             damage = Math.round(damage * 1.5);
             text = `Critical hit! You dealt ${damage} damage to the ${Enemy.name}.`;
           } else {
+            playerSprite.src = "images/player_attack.gif";
+            setPlayerToIdle(1100);
             text = `You dealt ${damage} damage to the ${Enemy.name}.`;
           }
         } else {
+          playerSprite.src = "images/player_attack.gif";
+          setPlayerToIdle(1100);
           text = `You dealt ${damage} damage to the ${Enemy.name}.`;
         }
         updateTextLog(text);
@@ -131,6 +150,8 @@ class Player {
   defend() {
     // Check first if there is at least 1 full bar of Action Gauge before executing the function
     if (this.actionGaugeCounter >= 100) {
+      // Play animation
+      playerSprite.src = "images/player_defend.gif"
       // set ActionSelected back to false, set defendStance to true, downsize the defend button back to its original size
       this.actionSelected.defend = false;
       this.status.defendStance = true;

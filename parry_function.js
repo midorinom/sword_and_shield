@@ -188,6 +188,9 @@ function parryMiniGame(Enemy, Player, damage) {
         enemyContinuousEvents(Enemy);
       }, Enemy.agility);
     }
+    // Set player animation back to idle
+    playerSprite.src = "images/player_idle.gif";
+
     updateTextLog(text);
     Enemy.hp -= parryDamage;
     updateHp(false, Enemy);
@@ -205,6 +208,10 @@ function parryMiniGame(Enemy, Player, damage) {
 
     const reducedDamage = Math.round(damage * 0.3);
     const text = `You defended! The ${Enemy.name} only dealt ${reducedDamage} damage to you.`;
+
+    // Set player animation back to idle
+    playerSprite.src = "images/player_idle.gif";
+    
     updateTextLog(text);
     Player.hp -= damage;
     updateHp(true, Player);

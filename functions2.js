@@ -115,6 +115,7 @@ function enemyAttackMegaChecker(Enemy, Player, attackPower) {
     } else {
       text = `The ${Enemy.name} dealt ${damage} damage to you.`;
     }
+    // Set player animation back
     updateTextLog(text);
     Player.hp -= damage;
     updateHp(true, Player);
@@ -194,4 +195,10 @@ function enemyGotStunned(stunDuration) {
       enemyContinuousEvents(currentEnemy);
     }, currentEnemy.agility);
   }, stunDuration);
+}
+
+function setPlayerToIdle(delay){
+  setTimeout(()=>{
+    playerSprite.src = "images/player_idle.gif";
+  }, delay);
 }
