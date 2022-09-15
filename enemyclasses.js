@@ -133,7 +133,8 @@ class EnemyBalancedHard extends EnemyBalancedEasy {
     actionGaugeCounter = 0,
     attacks = {},
     name,
-    image
+    image,
+    status = {}
   ) {
     super(
       maxHp,
@@ -145,7 +146,7 @@ class EnemyBalancedHard extends EnemyBalancedEasy {
       attacks,
       name,
       image
-    );
+    ), (this.status = status);
   }
 }
 
@@ -159,7 +160,8 @@ class EnemyFastHard extends EnemyFastEasy {
     actionGaugeCounter = 0,
     attacks = {},
     name,
-    image
+    image,
+    status = {}
   ) {
     super(
       maxHp,
@@ -171,7 +173,7 @@ class EnemyFastHard extends EnemyFastEasy {
       attacks,
       name,
       image
-    );
+    ), (this.status = status);
   }
 }
 
@@ -185,7 +187,7 @@ class EnemySlowHard extends EnemySlowEasy {
     actionGaugeCounter = 0,
     attacks = {},
     name,
-    image
+    image, status = {}
   ) {
     super(
       maxHp,
@@ -197,6 +199,6 @@ class EnemySlowHard extends EnemySlowEasy {
       attacks,
       name,
       image
-    );
+    ), (this.status = status);
   }
 }

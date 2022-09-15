@@ -174,6 +174,19 @@ function playerContinuousEvents(Enemy) {
 function enemyContinuousEvents(Enemy) {
   fillEnemyActionGauge(Enemy);
   updateEnemyAttackDescriptions(Enemy);
+
+  if (currentStage >= 4){
+    if (((Enemy.hp / Enemy.maxHp) < 0.5) && Enemy.status.berserk === false) {
+      Enemy.status.berserk = true;
+      Enemy.strength += 10;
+      Enemy.armour -= 0.1;
+      Enemy.agility -= 10;
+
+      const text = `The ${Enemy.name} has gone BERSERK and is much stronger now!`
+      updateTextLog(text);
+    }
+  }
+
   if (Enemy.hp <= 0) {
     if (currentStage === 5) {
       endgameScreen(true);

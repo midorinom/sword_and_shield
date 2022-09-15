@@ -38,7 +38,7 @@ const backgroundImages = [
   "url('images/background2.png')",
   "url('images/background3.png')",
   "url('images/background4.png')",
-  "url('images/background4.png')",
+  "url('images/background5.png')"
 ];
 const upgradesDescription1 = document.querySelector("#upgrades_description1");
 const upgradesDescription2 = document.querySelector("#upgrades_description2");

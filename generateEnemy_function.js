@@ -52,7 +52,7 @@ function generateEnemy() {
               "images/enemy_attack2.webp": "Swipe:\nDamage **",
               "images/enemy_attack3.webp": "Stomp:\nDamage ***",
             },
-            "Arch Fiend",
+            "Warlock",
             "images/stage3_balanced.gif"
           );
           break;
@@ -69,9 +69,8 @@ function generateEnemy() {
               "images/enemy_attack2.webp": "Swipe:\nDamage **",
               "images/enemy_attack3.webp": "Stomp:\nDamage ***",
             },
-            "Red Wyrm",
-            "images/stage4_balanced.gif"
-          );
+            "Chimera",
+            "images/stage4_balanced.gif", {berserk: false});
           break;
         case 5:
           currentEnemy = new EnemyBalancedHard(
@@ -87,8 +86,7 @@ function generateEnemy() {
               "images/enemy_attack3.webp": "Stomp:\nDamage ***",
             },
             "Red Wyrm",
-            "images/stage4_balanced.gif"
-          );
+            "images/stage5_balanced.gif", {berserk: false});
       }
       break;
 
@@ -141,7 +139,7 @@ function generateEnemy() {
               "images/enemy_attack2.webp": "Swipe:\nDamage **",
               "images/enemy_attack3.webp": "Stomp:\nDamage ***",
             },
-            "Abyss Worm",
+            "Overlord",
             "images/stage3_fast.gif"
           );
           break;
@@ -158,9 +156,8 @@ function generateEnemy() {
               "images/enemy_attack2.webp": "Swipe:\nDamage **",
               "images/enemy_attack3.webp": "Stomp:\nDamage ***",
             },
-            "Poison Drake",
-            "images/stage4_fast.gif"
-          );
+            "Abyss Worm",
+            "images/stage4_fast.gif", {berserk: false});
           break;
         case 5:
           currentEnemy = new EnemyFastHard(
@@ -175,9 +172,8 @@ function generateEnemy() {
               "images/enemy_attack2.webp": "Swipe:\nDamage **",
               "images/enemy_attack3.webp": "Stomp:\nDamage ***",
             },
-            "Poison Drake",
-            "images/stage4_fast.gif"
-          );
+            "Blue Wyrm",
+            "images/stage5_fast.gif", {berserk: false});
       }
       break;
 
@@ -230,7 +226,7 @@ function generateEnemy() {
               "images/enemy_attack3.webp": "Stomp:\nDamage ***",
               "images/enemy_attack1.png": "Scratch:\nDamage *",
             },
-            "Overlord",
+            "Ogre",
             "images/stage3_slow.gif"
           );
           break;
@@ -247,9 +243,8 @@ function generateEnemy() {
               "images/enemy_attack3.webp": "Stomp:\nDamage ***",
               "images/enemy_attack1.png": "Scratch:\nDamage *",
             },
-            "Golden Wyrm",
-            "images/stage4_slow.gif"
-          );
+            "Arch Fiend",
+            "images/stage4_slow.gif", {berserk: false});
           break;
         case 5:
           currentEnemy = new EnemySlowHard(
@@ -265,8 +260,7 @@ function generateEnemy() {
               "images/enemy_attack1.png": "Scratch:\nDamage *",
             },
             "Golden Wyrm",
-            "images/stage4_slow.gif"
-          );
+            "images/stage5_slow.gif", {berserk: false});
       }
   }
 }
