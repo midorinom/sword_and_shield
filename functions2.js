@@ -31,7 +31,7 @@ function moveEnemyQueueAlong(Enemy) {
   let randomNumber = Math.floor(Math.random() * 100);
   if (randomNumber < 10) {
     randomAttack = Object.keys(Enemy.attacks)[2];
-  } else if (randomNumber < 30 && randomNumber >= 10) {
+  } else if (randomNumber < 40 && randomNumber >= 10) {
     randomAttack = Object.keys(Enemy.attacks)[1];
   } else {
     randomAttack = Object.keys(Enemy.attacks)[0];
