@@ -189,8 +189,8 @@ function generateEnemy() {
       switch (currentStage) {
         case 1:
           currentEnemy = new EnemySlowEasy(
-            25,
-            25,
+            30,
+            30,
             5,
             0.8,
             100,
@@ -206,8 +206,8 @@ function generateEnemy() {
           break;
         case 2:
           currentEnemy = new EnemySlowEasy(
-            30,
-            30,
+            35,
+            35,
             6,
             0.8,
             95,
@@ -223,8 +223,8 @@ function generateEnemy() {
           break;
         case 3:
           currentEnemy = new EnemySlow3(
-            40,
-            40,
+            45,
+            45,
             7,
             0.8,
             90,
@@ -240,8 +240,8 @@ function generateEnemy() {
           break;
         case 4:
           currentEnemy = new EnemySlow4(
-            50,
-            50,
+            55,
+            55,
             9,
             0.8,
             85,
@@ -258,8 +258,8 @@ function generateEnemy() {
           break;
         case 5:
           currentEnemy = new EnemySlow5(
-            70,
-            70,
+            75,
+            75,
             10,
             0.6,
             80,

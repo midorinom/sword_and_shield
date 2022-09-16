@@ -91,12 +91,12 @@ class Player {
 
         for (let i = 0; i < 2; i++) {
           damage = Math.round(
-            0.55 * performDamageFomula(this.strength, Enemy.armour)
+            0.65 * performDamageFomula(this.strength, Enemy.armour)
           );
           // If the player has Crit
           if (arrUpgrades.includes("images/stages34_upgrade2.png") === true) {
             if (Math.floor(Math.random() * 100) < 30) {
-              damage = Math.round(damage * 1.5);
+              damage = Math.round(damage * 2);
               text = `Critical hit! You dealt ${damage} damage to the ${Enemy.name}.`;
               crit = true;
             } else {
@@ -124,7 +124,7 @@ class Player {
           if (Math.floor(Math.random() * 100) < 30) {
             playerSprite.src = "images/player_crit.gif";
             setPlayerToIdle(1000);
-            damage = Math.round(damage * 1.5);
+            damage = Math.round(damage * 2);
             text = `Critical hit! You dealt ${damage} damage to the ${Enemy.name}.`;
           } else {
             playerSprite.src = "images/player_attack.gif";

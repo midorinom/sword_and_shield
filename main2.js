@@ -23,14 +23,14 @@ class Upgrades {
 
   activateUpgrade(imageLink, Player) {
     if (imageLink === Object.keys(this.stages12Upgrades)[0]) {
-      Player.agility -= 10;
+      Player.agility -= 6;
     } else if (imageLink === Object.keys(this.stages12Upgrades)[1]) {
-      Player.strength += 3;
+      Player.strength += 1;
     } else if (imageLink === Object.keys(this.stages12Upgrades)[2]) {
       Player.hp += 50;
       Player.maxHp += 50;
     } else if (imageLink === Object.keys(this.stages12Upgrades)[3]) {
-      Player.armour -= 0.25;
+      Player.armour -= 0.22;
     }
   }
 }
@@ -59,9 +59,9 @@ const upgrades = new Upgrades(
     "images/stages34_upgrade1.png":
       "\n\nParrying will stun the enemy for 1.5 seconds",
     "images/stages34_upgrade2.png":
-      "\n\nEach attack will\nhave a 30%\nchance to deal\n1.5x damage",
+      "\n\nEach attack will\nhave a 30%\nchance to deal\n2x damage",
     "images/stages34_upgrade3.png":
-      "\n\nAttacks will now hit twice, each attack does 55% damage",
+      "\n\nAttacks will now hit twice, each attack does 65% damage",
     "images/stages34_upgrade4.png":
       "\n\nWhen you are attacked, there is a 50% chance to defend",
   }
