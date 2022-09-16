@@ -84,7 +84,7 @@ class EnemyBalanced4 extends EnemyBalancedEasy {
     } else if (arrEnemyQueue[0] === Object.keys(this.attacks)[1]) {
       attackPower += 2;
       stun = true;
-      duration = 2000;
+      duration = 1500;
     } else if (arrEnemyQueue[0] === Object.keys(this.attacks)[2]) {
       attackPower += 3;
     }
@@ -128,7 +128,7 @@ class EnemyBalanced5 extends EnemyBalancedEasy {
     if (arrEnemyQueue[0] === Object.keys(this.attacks)[0]) {
       attackPower += 2;
       stun = true;
-      duration = 2000;
+      duration = 1500;
     } else if (arrEnemyQueue[0] === Object.keys(this.attacks)[1]) {
       attackPower += 3;
     } else if (arrEnemyQueue[0] === Object.keys(this.attacks)[2]) {

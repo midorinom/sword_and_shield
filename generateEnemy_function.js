@@ -66,7 +66,7 @@ function generateEnemy() {
             0,
             {
               "images/enemy_attack2a.png": "\nDamage **",
-              "images/enemy_attackstun2a.png": "\nDamage **\nStun 2s",
+              "images/enemy_attackstun2a.png": "\nDamage **\nStun 1.5s",
               "images/enemy_attack3a.png": "\nDamage ***",
             },
             "Chimera",
@@ -83,7 +83,7 @@ function generateEnemy() {
             65,
             0,
             {
-              "images/enemy_attackstun2a.png": "\nDamage **\nStun 2s",
+              "images/enemy_attackstun2a.png": "\nDamage **\nStun 1.5s",
               "images/enemy_attack3a.png": "\nDamage ***",
               "images/enemy_attack3b.png": "\nDamage ***",
             },
@@ -156,7 +156,7 @@ function generateEnemy() {
             50,
             0,
             {
-              "images/enemy_attackstun2a.png": "\nDamage **\nStun 2s",
+              "images/enemy_attackstun2a.png": "\nDamage **\nStun 1.5s",
               "images/enemy_attack1a.png": "\nDamage *",
               "images/enemy_attack3a.png": "\nDamage ***",
             },
@@ -174,9 +174,9 @@ function generateEnemy() {
             50,
             0,
             {
-              "images/enemy_attackstun2a.png": "\nDamage **\nStun 2s",
+              "images/enemy_attackstun2a.png": "\nDamage **\nStun 1.5s",
               "images/enemy_attack3a.png": "\nDamage ***",
-              "images/enemy_attackstun2b.png": "\nDamage **\nStun 2s",
+              "images/enemy_attackstun2b.png": "\nDamage **\nStun 1.5s",
             },
             "Blue Wyrm",
             "images/stage5_fast.gif",
@@ -230,9 +230,9 @@ function generateEnemy() {
             90,
             0,
             {
-              "images/enemy_attackstun2a.png": "\nDamage **\nStun 2s",
+              "images/enemy_attackstun2a.png": "\nDamage **\nStun 1.5s",
               "images/enemy_attack3a.png": "\nDamage ***",
-              "images/enemy_attackstun2b.png": "\nDamage **\nStun 2s",
+              "images/enemy_attackstun2b.png": "\nDamage **\nStun 1.5s",
             },
             "Ogre",
             "images/stage3_slow.gif"
@@ -247,9 +247,9 @@ function generateEnemy() {
             85,
             0,
             {
-              "images/enemy_attackstun2a.png": "\nDamage **\nStun 2s",
-              "images/enemy_attackstun3a.png": "\nDamage ***\nStun 3s",
-              "images/enemy_attackstun2b.png": "\nDamage **\nStun 2s",
+              "images/enemy_attackstun2a.png": "\nDamage **\nStun 1.5s",
+              "images/enemy_attackstun3a.png": "\nDamage ***\nStun 2s",
+              "images/enemy_attackstun2b.png": "\nDamage **\nStun 1.5s",
             },
             "Arch Fiend",
             "images/stage4_slow.gif",
@@ -265,9 +265,9 @@ function generateEnemy() {
             80,
             0,
             {
-              "images/enemy_attackstun3a.png": "\nDamage ***\nStun 3s",
-              "images/enemy_attackstun3b.png": "\nDamage ***\nStun 3s",
-              "images/enemy_attackstun3c.png": "\nDamage ***\nStun 3s",
+              "images/enemy_attackstun3a.png": "\nDamage ***\nStun 2s",
+              "images/enemy_attackstun3b.png": "\nDamage ***\nStun 2s",
+              "images/enemy_attackstun3c.png": "\nDamage ***\nStun 2s",
             },
             "Golden Wyrm",
             "images/stage5_slow.gif",

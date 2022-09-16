@@ -36,13 +36,13 @@ class EnemySlow3 extends EnemySlowEasy {
     if (arrEnemyQueue[0] === Object.keys(this.attacks)[0]) {
       attackPower += 2;
       stun = true;
-      duration = 2000;
+      duration = 1500;
     } else if (arrEnemyQueue[0] === Object.keys(this.attacks)[1]) {
       attackPower += 3;
     } else if (arrEnemyQueue[0] === Object.keys(this.attacks)[2]) {
       attackPower += 2;
       stun = true;
-      duration = 2000;
+      duration = 1500;
     }
     enemyAttackMegaChecker(this, Player, attackPower, stun, duration);
   }
@@ -84,15 +84,15 @@ class EnemySlow4 extends EnemySlowEasy {
     if (arrEnemyQueue[0] === Object.keys(this.attacks)[0]) {
       attackPower += 2;
       stun = true;
-      duration = 2000;
+      duration = 1500;
     } else if (arrEnemyQueue[0] === Object.keys(this.attacks)[1]) {
       attackPower += 3;
       stun = true;
-      duration = 3000;
+      duration = 2000;
     } else if (arrEnemyQueue[0] === Object.keys(this.attacks)[2]) {
       attackPower += 2;
       stun = true;
-      duration = 2000;
+      duration = 1500;
     }
     enemyAttackMegaChecker(this, Player, attackPower, stun, duration);
   }
@@ -133,7 +133,7 @@ class EnemySlow5 extends EnemySlowEasy {
 
     attackPower += 3;
     stun = true;
-    duration = 3000;
+    duration = 2000;
 
     enemyAttackMegaChecker(this, Player, attackPower, stun, duration);
   }
