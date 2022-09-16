@@ -5,6 +5,8 @@ function startStage(Player, Enemy) {
     clearInterval(autoPlayerActionGauge);
     clearInterval(autoEnemyActionGauge);
     player.actionGaugeCounter = 0;
+    playerActionGauge1.style.height = 0;
+    playerActionGauge2.style.height = 0;
 
     textLog = ["", "", "", ""];
     updateTextLog("");

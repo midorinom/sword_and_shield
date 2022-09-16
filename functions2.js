@@ -38,7 +38,6 @@ function moveEnemyQueueAlong(Enemy) {
   }
   // Push into the array
   arrEnemyQueue.push(randomAttack);
-  console.log(Enemy.attacks);
   // Update the description
   updateEnemyAttackDescriptions(Enemy);
 }
