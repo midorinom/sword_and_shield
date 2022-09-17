@@ -238,7 +238,7 @@ function endgameScreen(won = false) {
   if (won === false) {
     document.querySelector("#endgame_title").innerText = "You lost";
   } else {
-    document.querySelector("#endgame_title").innerText = "You beat the game!";
+    document.querySelector("#endgame_title").innerText = "Congratulations, you beat the game!";
   }
 }
 

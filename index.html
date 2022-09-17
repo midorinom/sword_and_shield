@@ -8,57 +8,65 @@
     <title>Sword and Shield</title>
   </head>
   <body>
-    <div id="mainContainer1">
+    <header>
       <img src="images/title_icon.png" id="title_icon" />
-      <h1 id="title">Sword and Shield</h1>
-    </div>
-    <div id="mainContainer2">
-      <div id="instructions1_container">
-        <img src="images/instructions_1.jpg" id="instructions1_image" />
-        <div class="instructions" id="instructions1">
-          Your Action Gauge. <br /><br />It fills up over time.<br /><br />
-          When one bar is full,<br /><br />
-          you can attack/defend.
-        </div>
+      <div id ="title_container">
+        <h1 id="title">Sword and Shield</h1>
       </div>
-      <div id="instructions5_container">
-        <img src="images/instructions_5.jpg" id="instructions5_image" />
-        <div class="instructions" id="instructions5">
-          Enemy Action Gauge.<br /><br />When one bar is full,<br /><br />
-          the enemy attacks you.<br /><br />The icons show the<br /><br />enemy's
-          next attacks.
-        </div>
-      </div>
-      <div id="instructions2_container">
-        <img src="images/instructions_2.jpg" id="instructions2_image" />
-        <div class="instructions" id="instructions2">
-          Your Attack Button.<br /><br />Press it to attack. Breaks
-          <br /><br />you out of defend stance<br /><br />if you were defending.
-        </div>
-      </div>
-      <div id="instructions3_container">
-        <img src="images/instructions_3.jpg" id="instructions3_image" />
-        <div class="instructions" id="instructions3">
-          Your Defend Button.<br /><br />The next enemy attack<br /><br />
-          that hits you will have<br /><br />its damage reduced by<br /><br />70%.
-        </div>
-      </div>
-      <div id="instructions4_container">
-        <img src="images/instructions_4.jpg" id="instructions4_image" />
-      </div>
-      <div id="instructions6_container">
-        <img src="images/instructions_6.jpg" id="instructions6_image" />
-        <div class="instructions" id="instructions6">
-          When defending an attack, you get to play a minigame. You need to
-          either (1) press 3 keys OR (2) click 3 boxes within 1.5 secs.
-          <br /><br />If successful, you will parry the attack.
-        </div>
-      </div>
-    </div>
+    </header>
 
-    <div id="mainContainer3">
-      <button id="startButton">Start Game</button>
+    <main>    
+      <div id ="top_container">
+      <div class = "top_instructions_containers" id="instructions1_container">
+        <img src="images/instructions_1.jpg" class="instructions_image" id="instructions1_image" />
+        <div class="instructions" id="instructions1">
+          <span>[Your Action Gauge] <br></span>It fills up over time. You can consume 1 bar of Action Gauge to either attack or defend.
+        </div>
+      </div>
+      <div class = "top_instructions_containers" id="instructions2_container">
+        <img src="images/instructions_2.jpg" class="instructions_image" id="instructions2_image" />
+        <div class="instructions" id="instructions2">
+          <span>[Attack Button] <br></span> Press it to attack. If you were defending, attacking will break you out of the defend stance.
+        </div>
+      </div>
+      <div class = "top_instructions_containers" id="instructions3_container">
+        <img src="images/instructions_3.jpg" class="instructions_image" id="instructions3_image" />
+        <div class="instructions" id="instructions3">
+          <span>[Defend Button] <br></span> Press it to defend. If an enemy attacks you while you are defending, you get to play a minigame for a chance to parry the attack. If you fail the parry, your defence will still mitigate 70% of the damage.
+        </div>
+      </div>
     </div>
+    <div id = "bot_container">
+      <div id ="botleft_container">
+        <div class = "botleft_containers" id="instructions46_container">
+          <img src="images/instructions_6.jpg" class="instructions_46image" id="instructions6_image" />
+          <div class="instructions" id="instructions6">
+            <span>[Parry] <br></span>Whenever you attempt a parry, you will play one out of these two minigames. One minigame requires the mouse, you have to click 3 green boxes that appear at random spots on the screen. The other minigame requires the keyboard, you are shown 3 random characters in the center of the screen and you will have to press those keys. If you successfully clear the minigame within the time limit, you will block the enemy's attack entirely and land a counterattack of your own.
+          </div>
+          <img src="images/instructions_4.jpg" class="instructions_46image" id="instructions4_image" />
+          </div>
+        <div class = "botleft_containers">
+          <div id="instructions5_container">
+            <img src="images/instructions_5.jpg" class="instructions_image" id="instructions5_image" />
+            <div class="instructions" id="instructions5">
+              <span>[Enemy Attacks] <br></span> The enemy also has an Action Gauge that fills over time and it will automatically attack when the gauge is full. The enemy chooses from various attacks, with its next attacks being queued up to the right of the Action Gauge. Enemies in later stages can use attacks that stun you, which stops your Action Gauge from filling. Parrying these attacks will prevent you from being stunned.
+            </div>
+          </div>
+          <img src="images/damage_chart.jpg" id="damage_chart" />
+          </div>
+            
+      </div>
+      <div id = "botright_container">
+        <div id="start_button_container">
+          <button id="start_button">Start Game</button>
+        </div>
+        <div id="misc_buttons_container">
+          <button class = "misc_buttons" id="github_repo_button">Github Repo</button>
+          <button class = "misc_buttons" id="asset_credits_button">Asset Credits</button>
+        </div>
+      </div>
+    </div>
+  </main>
     <script src="start.js" charset="utf-8"></script>
   </body>
 </html>
