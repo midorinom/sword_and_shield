@@ -161,7 +161,8 @@ main {
 button {
   border-radius: 1em;
   background-color: lightcoral;
-  font-weight: bolder;
+  font-weight: bold;
+  font-size: 2vh;
 }
 
 span {

@@ -1,0 +1,65 @@
+=======
+Sprites
+=======
+[Player] - Generic Character Asset v 0.2
+brullov: https://brullov.itch.io/generic-char-asset
+
+[All Stage 1 Enemies, Stage 2 Balanced Enemy, Stage 4 Fast Enemy] - Vermin Asset Pack
+Deep Dive Game Studio: https://deepdivegamestudio.itch.io/vermin-asset-pack
+
+[Stage 2 Fast Enemy, Stage 2 Slow Enemy] - Monster & Giant Asset Pack
+Deep Dive Game Studio: https://deepdivegamestudio.itch.io/monstergiantassetpack
+
+[Stage 3 Slow Enemy] - Humanoid Asset Pack
+Deep Dive Game Studio: https://deepdivegamestudio.itch.io/humanoid-asset-pack
+
+[Stage 3 Balanced Enemy, Stage 4 Balanced Enemy] - Magical Asset Pack
+Deep Dive Game Studio: https://deepdivegamestudio.itch.io/magical-asset-pack
+
+[Stage 3 Fast Enemy, Stage 4 Slow Enemy] - Demon Asset Pack
+Deep Dive Game Studio: https://deepdivegamestudio.itch.io/demon-sprite-pack
+
+[All Stage 5 Enemies] - Dragon Asset Pack
+Deep Dive Game Studio: https://deepdivegamestudio.itch.io/dragon-asset-pack
+
+=====
+Icons
+=====
+[Title] - Rpg Game free icon
+Freepik: https://www.flaticon.com/free-icon/rpg-game_119702?term=rpg%20game&page=1&position=5
+
+[Attack Button] - Attack Icon in Colored Outline Style
+Maxicons: https://iconscout.com/icon-pack/role-playing-game-1
+
+[Defend Button] - Shield free icon
+kmg design: https://www.flaticon.com/free-icon/shield_3177429
+
+[All Enemy Attacks] - Swordtember 2020 & Swordtember 2021
+TheWiseHedgehog: https://thewisehedgehog.itch.io/hs2020, https://thewisehedgehog.itch.io/hs2021
+
+[Upgrades (Strength+, ActionGaugeSpeed+, Health+, Armour+, CriticalHit)] - [Verboten Arcane Stash] Basic Skills and Buffs
+Atelier Pixerelia: https://pixerelia.itch.io/vas-basic-spells-and-buffs
+
+[Upgrades (ParryStun, DoubleHit, LuckyBlock)] - 48 Free Swordsman Skills Icons Pixel Art
+Craftpix: https://free-game-assets.itch.io/48-free-swordsman-skills-icons-pixel-art?download
+
+===========
+Backgrounds
+===========
+[Title Screen & Endgame Screen] - Cyrodiil Pixel Art Wallpaper
+Cyrodiil: https://wallpapersden.com/cyrodiil-pixel-art-wallpaper/
+
+[Stage 1] - Fantasy Forest Backgrounds
+Lornn: https://lornn.itch.io/fantasy-forest-backgrounds
+
+[Stage 2 & Stage 3] - Free Pixel Art Hill by edermunizz
+edermunizz: https://www.pinterest.com/pin/399553798188994813/
+
+[Stage 4] - Mountain Dusk Parallax Background
+ansimuz - https://ansimuz.itch.io/mountain-dusk-parallax-background
+
+[Stage 5] - Glacial Mountains: Parallax Background
+vnitti - https://vnitti.itch.io/glacial-mountains-parallax-background
+
+[Upgrade Screen] - Gravity Falls - Pixel Art: Mystery Shack
+Marie Sivignon - https://sivart.artstation.com/projects/dLvRe
