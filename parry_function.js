@@ -162,7 +162,7 @@ function parryMiniGame(Enemy, Player, damage, stun, stunDuration) {
       if (timerCounter > 0 && arrKeys.length === 6) {
         success(timerInterval);
       } // Failure
-      else if (timerCounter <= 0 && arrKeys.length < 6) {
+      else if (timerCounter <= 0) {
         for (let i = 0; i < 3; i++) {
           arrKeys[i].remove();
         }

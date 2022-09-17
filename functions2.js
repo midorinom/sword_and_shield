@@ -101,9 +101,9 @@ function enemyAttackMegaChecker(
   // Perform the damage formula
   let damage = performDamageFomula(attackPower, Player.armour);
   // Check if player is defending
-  if (player.status.defendStance === true) {
+  if (Player.status.defendStance === true) {
     // Set defendStance back to false
-    player.status.defendStance = false;
+    Player.status.defendStance = false;
     // Play the Parry minigame
     parryMiniGame(Enemy, Player, damage, stun, stunDuration);
   } // Player is not defending
