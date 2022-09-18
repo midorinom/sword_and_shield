@@ -249,3 +249,62 @@ function restartButton() {
 function homeButton() {
   location.href = "index.html";
 }
+
+function changeParryTimer(){
+  pause();
+  document.querySelector("#change_parry_timer_container").style.display = "flex";
+  document.querySelector("#change_parry_timer_setting_button1").addEventListener("click", setParryTimerClassic);
+  document.querySelector("#change_parry_timer_setting_button2").addEventListener("click", setParryTimerNormal);
+  document.querySelector("#change_parry_timer_setting_button3").addEventListener("click", setParryTimerEasy);
+}
+
+function setParryTimerClassic(){
+  parryTimerSetting = "classic";
+
+  removeSetParryTimerEvents();
+  document.querySelector("#change_parry_timer_container").style.display = "none";
+
+  unpause();
+  autoPlayerActionGauge = setInterval(() => {
+    playerContinuousEvents(currentEnemy);
+  }, player.agility);
+  autoEnemyActionGauge = setInterval(() => {
+    enemyContinuousEvents(currentEnemy);
+  }, currentEnemy.agility);
+}
+
+function setParryTimerNormal(){
+  parryTimerSetting = "normal";
+
+  removeSetParryTimerEvents();
+  document.querySelector("#change_parry_timer_container").style.display = "none";
+
+  unpause();
+  autoPlayerActionGauge = setInterval(() => {
+    playerContinuousEvents(currentEnemy);
+  }, player.agility);
+  autoEnemyActionGauge = setInterval(() => {
+    enemyContinuousEvents(currentEnemy);
+  }, currentEnemy.agility);
+}
+
+function setParryTimerEasy(){
+  parryTimerSetting = "easy";
+
+  removeSetParryTimerEvents();
+  document.querySelector("#change_parry_timer_container").style.display = "none";
+
+  unpause();
+  autoPlayerActionGauge = setInterval(() => {
+    playerContinuousEvents(currentEnemy);
+  }, player.agility);
+  autoEnemyActionGauge = setInterval(() => {
+    enemyContinuousEvents(currentEnemy);
+  }, currentEnemy.agility);
+}
+
+function removeSetParryTimerEvents(){
+  document.querySelector("#change_parry_timer_setting_button1").removeEventListener("click", setParryTimerClassic);
+  document.querySelector("#change_parry_timer_setting_button2").removeEventListener("click", setParryTimerNormal);
+  document.querySelector("#change_parry_timer_setting_button3").removeEventListener("click", setParryTimerEasy);
+}

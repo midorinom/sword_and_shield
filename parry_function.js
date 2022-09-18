@@ -1,6 +1,6 @@
 "use strict";
 
-function parryMiniGame(Enemy, Player, damage, stun, stunDuration) {
+function parryMiniGame(Enemy, Player, damage, stun, stunDuration, parryTimerSetting) {
   pause();
 
   // Create an array for the boxes that need to be pressed/clicked
@@ -31,7 +31,7 @@ function parryMiniGame(Enemy, Player, damage, stun, stunDuration) {
   if (Math.round(Math.random()) === 0) {
     // Create container for the keys that will appear on screen
     const container = document.createElement("div");
-    container.style.height = "8em";
+    container.style.height = "15%";
     container.style.width = "40%";
     container.style.position = "absolute";
     container.style.top = "50%";
@@ -120,7 +120,16 @@ function parryMiniGame(Enemy, Player, damage, stun, stunDuration) {
     });
 
     const timerInterval = setInterval(() => {
-      timerCounter -= 0.625;
+      switch (parryTimerSetting) {
+        case "classic":
+          timerCounter -= 0.625;
+          break;
+        case "normal":
+          timerCounter -= 0.32;
+          break;
+        case "easy":
+          timerCounter -= 0.2;
+      }
       timer.style.width = timerCounter + "%";
       // Success
       if (timerCounter > 0 && arrKeys.length === 6) {
@@ -138,15 +147,15 @@ function parryMiniGame(Enemy, Player, damage, stun, stunDuration) {
     // ==============
     for (let i = 0; i < 3; i++) {
       const clickBox = document.createElement("div");
-      clickBox.style.height = "8em";
+      clickBox.style.height = "15%";
       clickBox.style.width = "10%";
       clickBox.style.backgroundColor = "lightgreen";
       clickBox.style.borderColor = "orange";
       clickBox.style.borderStyle = "solid";
       clickBox.style.borderWidth = "thick";
       clickBox.style.position = "absolute";
-      clickBox.style.top = Math.floor(Math.random() * 90) + "%";
-      clickBox.style.left = Math.floor(Math.random() * 90) + "%";
+      clickBox.style.top = Math.floor(Math.random() * 80) + "%";
+      clickBox.style.left = Math.floor(Math.random() * 85) + "%";
       arrKeys.push(clickBox);
       clickBox.addEventListener("click", () => {
         clickBox.remove();
@@ -156,7 +165,16 @@ function parryMiniGame(Enemy, Player, damage, stun, stunDuration) {
     }
 
     const timerInterval = setInterval(() => {
-      timerCounter -= 0.625;
+      switch (parryTimerSetting){
+        case "classic":
+          timerCounter -= 0.625;
+          break;
+        case "normal":
+          timerCounter -= 0.32;
+          break;
+        case "easy":
+          timerCounter -= 0.2;
+      }
       timer.style.width = timerCounter + "%";
       // Success
       if (timerCounter > 0 && arrKeys.length === 6) {

@@ -61,13 +61,13 @@ function updateEnemyAttackDescriptions(Enemy) {
 
 function showEnemyAttackDescription(enemyQueueIndex) {
   if (enemyQueueIndex === 0) {
-    document.querySelector("#enemy_queue1_description").style.display = "block";
+    document.querySelector("#enemy_queue1_description").style.display = "flex";
     document.querySelector("#enemy_queue1").style.display = "none";
   } else if (enemyQueueIndex === 1) {
-    document.querySelector("#enemy_queue2_description").style.display = "block";
+    document.querySelector("#enemy_queue2_description").style.display = "flex";
     document.querySelector("#enemy_queue2").style.display = "none";
   } else if (enemyQueueIndex === 2) {
-    document.querySelector("#enemy_queue3_description").style.display = "block";
+    document.querySelector("#enemy_queue3_description").style.display = "flex";
     document.querySelector("#enemy_queue3").style.display = "none";
   }
 }
@@ -105,7 +105,7 @@ function enemyAttackMegaChecker(
     // Set defendStance back to false
     Player.status.defendStance = false;
     // Play the Parry minigame
-    parryMiniGame(Enemy, Player, damage, stun, stunDuration);
+    parryMiniGame(Enemy, Player, damage, stun, stunDuration, parryTimerSetting);
   } // Player is not defending
   else {
     if (stun === true) {
@@ -139,6 +139,8 @@ function unpause() {
   attackButton.addEventListener("click", attackButtonSelected);
   defendButton.addEventListener("click", defendButtonSelected);
 
+  changeParryTimerButton.addEventListener("click", changeParryTimer);
+
   enemyQueue1.addEventListener("mouseover", showEnemyAttackDescription1);
   enemyQueue2.addEventListener("mouseover", showEnemyAttackDescription2);
   enemyQueue3.addEventListener("mouseover", showEnemyAttackDescription3);
@@ -159,6 +161,8 @@ function pause() {
 
   attackButton.removeEventListener("click", attackButtonSelected);
   defendButton.removeEventListener("click", defendButtonSelected);
+
+  changeParryTimerButton.removeEventListener("click", changeParryTimer);
 
   enemyQueue1.removeEventListener("mouseover", showEnemyAttackDescription1);
   enemyQueue2.removeEventListener("mouseover", showEnemyAttackDescription2);
