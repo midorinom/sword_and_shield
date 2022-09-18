@@ -49,6 +49,8 @@ function parryMiniGame(
     container.style.left = "50%";
     container.style.transform = `translate(-50%, -50%)`;
     container.style.textAlign = "center";
+    container.style.display = "flex";
+    container.style.justifyContent = "space-around";
     document.querySelector("body").append(container);
 
     // All the possible keys that will appear
@@ -101,12 +103,11 @@ function parryMiniGame(
       newKey.style.borderColor = "red";
       newKey.style.borderStyle = "solid";
       newKey.style.borderWidth = "thick";
-      newKey.style.fontSize = "2em";
-      newKey.style.textAlign = "center";
-      newKey.style.lineHeight = "4em";
-      newKey.style.marginRight = "1em";
+      newKey.style.fontSize = "2rem";
+      newKey.style.display = "flex";
+      newKey.style.justifyContent = "center";
+      newKey.style.alignItems = "center";
       newKey.style.color = "black";
-      newKey.style.float = "left";
       // Randomly assign a key and making the text appear by appending the key to the container
       const randomNumber = Math.floor(Math.random() * allPossibleKeys.length);
       newKey.innerText = allPossibleKeys[randomNumber];
