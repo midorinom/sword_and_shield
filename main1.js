@@ -1,6 +1,8 @@
 "use strict";
 
-// Define variables
+// =======================
+// Define Global Variables
+// =======================
 let currentStage = 1;
 const playerActionGauge1 = document.querySelector(
   "#player_action_gauge1_progress"
@@ -40,7 +42,12 @@ const playerSprite = document.querySelector("#player");
 const changeParryTimerButton = document.querySelector("#change_parry_timer_button");
 let parryTimerSetting = "classic";
 
-// Create Player class
+// ===================
+// Create Player Class
+// ===================
+/* 
+
+*/
 class Player {
   constructor(
     maxHp,
