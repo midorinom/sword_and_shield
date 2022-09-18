@@ -1,0 +1,142 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100vh;
+  width: 100vw;
+  caret-color: rgba(0, 0, 0, 0);
+  user-select: none;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#background {
+  height: 75%;
+  width: 100%;
+  padding-bottom: 1em;
+}
+
+#hp_bars {
+  height: 12.5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#left_hp_container, #right_hp_container {
+  height: 100%;
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  right: 4.5%;
+}
+
+.hp_bar_container {
+  height: 45%;
+  width: 75%;
+  border-style: solid;
+  border-color: black;
+  border-width: medium;
+  position: relative;
+}
+
+.hp_bar {
+  height: 100%;
+  position: absolute;
+}
+
+.hp_value {
+  width: 10%;
+  color: palevioletred;
+  text-align: center;
+  font-size: 4vmin;
+  position: relative;
+  bottom: 1%;
+}
+
+#main_container {
+  height: 55.5%;;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#player_action_gauges {
+  height: 100%;
+  width: 7%;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  align-items: center;
+  left: 2%;
+}
+
+.player_action_gauge_container {
+  background-color: grey;
+  height: 95%;
+  width: 42%;
+  position: relative;
+}
+
+.action_gauge_progress_bar {
+  background-color: yellow;
+  height: 0%;
+  width: 100%;
+  position: absolute;
+  bottom: 0%;
+}
+
+#player {
+  height: 130%;
+  width: 20%;
+  image-rendering: pixelated;
+  position: relative;
+  bottom: 23%;
+  left: 1%;
+}
+
+#enemy {
+  height: 80%;
+  width: 20%;
+  image-rendering: pixelated;
+  position: relative;
+  left: 6%;
+}
+
+#enemy_action_gauge1_container {
+  background-color: grey;
+  height: 95%;
+  width: 3%;
+  position: relative;
+  left: 5%;
+}
+
+#enemy_queue23_containers {
+  height: 100%;
+  width: 11.5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: relative;
+  right: 2%;
+}  
+
+.enemy_queue23_container {
+  height: 45%;
+  width: 100%;
+  border-style: solid;
+  border-color: pink;
+  border-width: medium;
+  border-radius: 1em;
+}
