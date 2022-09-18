@@ -1,6 +1,10 @@
 "use strict";
 
+// ====================================
+// Function that Creates Enemy Instance
+// ====================================
 function generateEnemy() {
+  // Chooses between 1 of 3 enemy types (Balanced, Fast, Slow), then checks for the currentStage and generate the corresponding enemy
   const randomNumber = Math.floor(Math.random() * 3);
   switch (randomNumber) {
     case 0:

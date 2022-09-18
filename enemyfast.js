@@ -1,5 +1,8 @@
 "use strict";
 
+// =================================
+// Create Fast Enemy Class (Stage 3)
+// =================================
 class EnemyFast3 extends EnemyFastEasy {
   constructor(
     maxHp,
@@ -10,8 +13,7 @@ class EnemyFast3 extends EnemyFastEasy {
     actionGaugeCounter = 0,
     attacks = {},
     name,
-    image,
-    status = {}
+    image
   ) {
     super(
       maxHp,
@@ -23,16 +25,19 @@ class EnemyFast3 extends EnemyFastEasy {
       attacks,
       name,
       image
-    ),
-      (this.status = status);
+    );
   }
 
+  // --- Attack Function ---
   attack(Player) {
-    // Determine what is next up in the enemyQueue array and execute the attack. Modify strength accordingly.
+    // Initialise variables to be modified later
     let attackPower = this.strength;
     let stun = false;
     let duration = 0;
 
+    // Determine what is next up in the enemyQueue array and execute the attack. Modify the damage accordingly.
+    // This section is the only difference between each enemy class. It is the configuration for this Enemy Class's
+    // 3 attacks: the damage of each attack and how long it stuns (if it does).
     if (arrEnemyQueue[0] === Object.keys(this.attacks)[0]) {
       attackPower += 2;
     } else if (arrEnemyQueue[0] === Object.keys(this.attacks)[1]) {
@@ -48,7 +53,11 @@ class EnemyFast3 extends EnemyFastEasy {
   }
 }
 
+// =================================
+// Create Fast Enemy Class (Stage 4)
+// =================================
 class EnemyFast4 extends EnemyFastEasy {
+  // Stage 4 and 5 Enemies have the status parameter to enable Berserk
   constructor(
     maxHp,
     hp,
@@ -75,12 +84,16 @@ class EnemyFast4 extends EnemyFastEasy {
       (this.status = status);
   }
 
+  // --- Attack Function ---
   attack(Player) {
-    // Determine what is next up in the enemyQueue array and execute the attack. Modify strength accordingly.
+    // Initialise variables to be modified later
     let attackPower = this.strength;
     let stun = false;
     let duration = 0;
 
+    // Determine what is next up in the enemyQueue array and execute the attack. Modify the damage accordingly.
+    // This section is the only difference between each enemy class. It is the configuration for this Enemy Class's
+    // 3 attacks: the damage of each attack and how long it stuns (if it does).
     if (arrEnemyQueue[0] === Object.keys(this.attacks)[0]) {
       attackPower += 2;
       stun = true;
@@ -94,7 +107,11 @@ class EnemyFast4 extends EnemyFastEasy {
   }
 }
 
+// =================================
+// Create Fast Enemy Class (Stage 5)
+// =================================
 class EnemyFast5 extends EnemyFastEasy {
+  // Stage 4 and 5 Enemies have the status parameter to enable Berserk
   constructor(
     maxHp,
     hp,
@@ -121,12 +138,16 @@ class EnemyFast5 extends EnemyFastEasy {
       (this.status = status);
   }
 
+  // --- Attack Function ---
   attack(Player) {
-    // Determine what is next up in the enemyQueue array and execute the attack. Modify strength accordingly.
+    // Initialise variables to be modified later
     let attackPower = this.strength;
     let stun = false;
     let duration = 0;
 
+    // Determine what is next up in the enemyQueue array and execute the attack. Modify the damage accordingly.
+    // This section is the only difference between each enemy class. It is the configuration for this Enemy Class's
+    // 3 attacks: the damage of each attack and how long it stuns (if it does).
     if (arrEnemyQueue[0] === Object.keys(this.attacks)[0]) {
       attackPower += 2;
       stun = true;

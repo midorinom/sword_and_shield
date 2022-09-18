@@ -1,6 +1,8 @@
 "use strict";
 
-// Create class for upgrades
+// =====================
+// Create Upgrades Class
+// =====================
 class Upgrades {
   constructor(stages12Upgrades = {}, stages34Upgrades = {}) {
     (this.stages12Upgrades = stages12Upgrades),
@@ -35,7 +37,9 @@ class Upgrades {
   }
 }
 
-// Create instances for player
+// ========================================
+// Create instances for player and upgrades
+// ========================================
 const player = new Player(
   100,
   100,
@@ -47,7 +51,6 @@ const player = new Player(
   { defendStance: false, stun: false }
 );
 
-// Create instance for upgrades
 const upgrades = new Upgrades(
   {
     "images/stages12_upgrade1.png": "Action Gauge Speed +",
@@ -67,6 +70,9 @@ const upgrades = new Upgrades(
   }
 );
 
+// ==================
+// Setting up Stage 1
+// ==================
 // Randomly select an enemy and create instance
 generateEnemy();
 
@@ -78,4 +84,5 @@ let autoEnemyActionGauge = setInterval(() => {
   enemyContinuousEvents(currentEnemy);
 }, currentEnemy.agility);
 
+// Start the Stage
 startStage(player, currentEnemy);

@@ -39,15 +39,14 @@ const backgroundImages = [
 const upgradesDescription1 = document.querySelector("#upgrades_description1");
 const upgradesDescription2 = document.querySelector("#upgrades_description2");
 const playerSprite = document.querySelector("#player");
-const changeParryTimerButton = document.querySelector("#change_parry_timer_button");
+const changeParryTimerButton = document.querySelector(
+  "#change_parry_timer_button"
+);
 let parryTimerSetting = "classic";
 
 // ===================
 // Create Player Class
 // ===================
-/* 
-
-*/
 class Player {
   constructor(
     maxHp,
@@ -69,14 +68,18 @@ class Player {
       (this.status = status);
   }
 
+  // --- Attack Function ---
   attack(Enemy) {
-    let text = "";
-    let damage;
-    // Check first if there is at least 1 full bar of Action Gauge before executing the function
+    // First check if the player has at least 1 bar of Action Gauge before executing the function.
     if (this.actionGaugeCounter >= 100) {
-      // setActionSelected and defendStance to false, downsize the attack button back to its original size
+      // Initialise text and damage variables, they will be modified later
+      let text = "";
+      let damage;
+      // Set actionSelected.attack to false to prevent the player.attack function from getting triggered again by playerContinuousEvents
       this.actionSelected.attack = false;
+      // Set status.defendStance to false in the event that the player was defending, the player will break out of the defend stance
       this.status.defendStance = false;
+      // Downsize the attack button back to its original size
       attackButton.style.height = 70 + "%";
       attackButton.style.width = 12 + "%";
       // Subtract from the counter and adjust height of the bars to reflect the deduction
@@ -92,11 +95,13 @@ class Player {
       if (arrUpgrades.includes("images/stages34_upgrade3.png") === true) {
         let crit = false;
 
+        // Loop 2 times, one for each attack
         for (let i = 0; i < 2; i++) {
+          // Multiply the usual damage formula by 65%
           damage = Math.round(
             0.65 * performDamageFomula(this.strength, Enemy.armour)
           );
-          // If the player has Crit
+          // If the player has Crit, check to see if the player crits. Update text log accordingly.
           if (arrUpgrades.includes("images/stages34_upgrade2.png") === true) {
             if (Math.floor(Math.random() * 100) < 30) {
               damage = Math.round(damage * 2);
@@ -106,35 +111,44 @@ class Player {
               text = `You dealt ${damage} damage to the ${Enemy.name}.`;
             }
             delayEnemyTakingDamage(1300, Enemy, damage, text);
-          } else {
+          }
+          // If the player doesn't have Crit
+          else {
             text = `You dealt ${damage} damage to the ${Enemy.name}.`;
             delayEnemyTakingDamage(1300, Enemy, damage, text);
           }
         }
+        // If at least 1 attack did crit, the crit variable will be updated to true. crit animation will be shown
         if (crit === true) {
           playerSprite.src = "images/player_crit.gif";
           setPlayerToIdle(1000);
-        } else {
+        }
+        // If the player didn't crit for both hits, the Double Hit animation will be shown.
+        else {
           playerSprite.src = "images/player_doublehit.gif";
           setPlayerToIdle(1600);
         }
 
-        // No Double Hit
+        // If the player does not have Double Hit
       } else {
         damage = performDamageFomula(this.strength, Enemy.armour);
-        // If the player has Crit
+        // If the player has Crit, check to see if the player crits. Update text log accordingly and show the crit animation if the player crits.
         if (arrUpgrades.includes("images/stages34_upgrade2.png") === true) {
           if (Math.floor(Math.random() * 100) < 30) {
             playerSprite.src = "images/player_crit.gif";
             setPlayerToIdle(1000);
             damage = Math.round(damage * 2);
             text = `Critical hit! You dealt ${damage} damage to the ${Enemy.name}.`;
-          } else {
+          }
+          // If the player doesn't crit, show the default attack animation
+          else {
             playerSprite.src = "images/player_attack.gif";
             setPlayerToIdle(1100);
             text = `You dealt ${damage} damage to the ${Enemy.name}.`;
           }
-        } else {
+        }
+        // If the player does not have both Double Hit and Crit, show the default attack animation
+        else {
           playerSprite.src = "images/player_attack.gif";
           setPlayerToIdle(1100);
           text = `You dealt ${damage} damage to the ${Enemy.name}.`;
@@ -144,14 +158,17 @@ class Player {
     }
   }
 
+  // --- Defend Function ---
   defend() {
     // Check first if there is at least 1 full bar of Action Gauge before executing the function
     if (this.actionGaugeCounter >= 100) {
-      // Play animation
+      // Show the Defend animation. The player sprite will stay in the defending pose until the player gets hit or attacks
       playerSprite.src = "images/player_defend.gif";
-      // set ActionSelected back to false, set defendStance to true, downsize the defend button back to its original size
+      // Set actionSelected.defend back to false to prevent the player.defend function from getting triggered again by playerContinuousEvents
       this.actionSelected.defend = false;
+      // Set status.defendStance to true so that the enemy.attack function will recognise that the player is defending
       this.status.defendStance = true;
+      // Downsize the defend button back to its original size
       defendButton.style.height = 70 + "%";
       defendButton.style.width = 12 + "%";
       // Subtract from the counter and adjust height of the bars to reflect the deduction
