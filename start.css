@@ -16,11 +16,12 @@ body {
   background-position: center;
   height: 100%;
   width: 100%;
+  margin: 0;
 }
 
 header {
   height: 15%;
-  margin-top: 1%;
+  margin-top: 2%;
   margin-bottom: 1%;
   display: flex;
   justify-content: center;
@@ -110,6 +111,10 @@ main {
   min-width: 30%;
 }
 
+span {
+  text-align: center;
+}
+
 .instructions {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 2vmin;
@@ -126,6 +131,13 @@ main {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+}
+
+button {
+  border-radius: 1em;
+  background-color: lightcoral;
+  font-weight: bold;
+  font-size: 2vmin;
 }
 
 #start_button_container {
@@ -156,15 +168,4 @@ main {
 #start_button{
   height: 60%;
   width: 80%;
-}
-
-button {
-  border-radius: 1em;
-  background-color: lightcoral;
-  font-weight: bold;
-  font-size: 2vh;
-}
-
-span {
-  text-align: center;
 }

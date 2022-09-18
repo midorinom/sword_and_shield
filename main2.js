@@ -37,9 +37,9 @@ class Upgrades {
 
 // Create instances for player
 const player = new Player(
-  100,
-  100,
-  5,
+  10000,
+  10000,
+  50,
   1,
   40,
   0,
@@ -79,3 +79,4 @@ let autoEnemyActionGauge = setInterval(() => {
 }, currentEnemy.agility);
 
 startStage(player, currentEnemy);
+stageLoop();

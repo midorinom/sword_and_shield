@@ -4,7 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="main.css" rel="stylesheet" />
+    <link href="main1.css" rel="stylesheet" />
+    <link href="main2.css" rel="stylesheet" />
+    <link href="main3.css" rel="stylesheet" />
     <title>Sword and Shield</title>
   </head>
   <body>
@@ -29,30 +31,34 @@
         <button id = "upgrades_submit_button">OK</button>
       </div>
       <div id="hp_bars">
-        <h1 class = "hp_value" id="player_hp_value"></h1>
-        <div class = "hp_bar_container" id="player_hp_bar_container">
+        <div id = "left_hp_container">
+          <h1 class = "hp_value" id="player_hp_value"></h1>
+         <div class = "hp_bar_container" id="player_hp_bar_container">
           <div class = "hp_bar" id = "player_hp_bar"></div>
         </div>
-        <h1 class = "hp_value" id="enemy_hp_value"></h1>
+        </div>
+        <div id = "right_hp_container">
         <div class = "hp_bar_container" id="enemy_hp_bar_container">
           <div class = "hp_bar" id = "enemy_hp_bar"></div>
         </div>
+        <h1 class = "hp_value" id="enemy_hp_value"></h1>
       </div>
-      <div id="main_div">
-        <div class = "action_gauge_container" id="player_action_gauge1_container">
-          <div class = "action_gauge_progress_bar" id="player_action_gauge1_progress"></div>
+      </div>
+      <div id="main_container">
+        <div id = "player_action_gauges">
+          <div class = "player_action_gauge_container" id="player_action_gauge1_container">
+            <div class = "action_gauge_progress_bar" id="player_action_gauge1_progress"></div>
+          </div>
+          <div class = "player_action_gauge_container" id="player_action_gauge2_container">
+            <div class = "action_gauge_progress_bar" id="player_action_gauge2_progress"></div>
+          </div>
         </div>
-        <div class = "action_gauge_container" id="player_action_gauge2_container">
-          <div class = "action_gauge_progress_bar" id="player_action_gauge2_progress"></div>
-        </div>
-        <div id = "player_container">
           <img src = "images/player_idle.gif" alt = "Player" id="player">
-        </div>
         <img alt = "Enemy" id="enemy">
-        <div class = "action_gauge_container" id="enemy_action_gauge1_container">
+        <div id="enemy_action_gauge1_container">
           <div class = "action_gauge_progress_bar" id="enemy_action_gauge1_progress"></div>
         </div>
-        <div id = "enemy_queue_container">
+        <div id = "enemy_queue23_containers">
           <div class = "enemy_queue23_container" id = "enemy_queue3_container">
             <div class = "enemy_queue_description_box" id = "enemy_queue3_description"></div>
             <img class = "enemy_queue_images" id = "enemy_queue3"></img>
@@ -63,13 +69,13 @@
           </div>
         </div>
       </div>
-      <div id = "upgrades_inventory_container">
-        <img class = "upgrades_inventory_image" id = "upgrades_inventory_image1">
-        <img class = "upgrades_inventory_image" id = "upgrades_inventory_image2">
-        <img class = "upgrades_inventory_image" id = "upgrades_inventory_image3">
-        <img class = "upgrades_inventory_image" id = "upgrades_inventory_image4">
-      </div>
       <div id = "bottom_container">
+        <div id = "upgrades_inventory_container">
+          <img class = "upgrades_inventory_image" id = "upgrades_inventory_image1">
+          <img class = "upgrades_inventory_image" id = "upgrades_inventory_image2">
+          <img class = "upgrades_inventory_image" id = "upgrades_inventory_image3">
+          <img class = "upgrades_inventory_image" id = "upgrades_inventory_image4">
+        </div>
         <div id="action_buttons">
           <button class = "action_button" id="attack_button"></button>
           <button class = "action_button" id="defend_button"></button>

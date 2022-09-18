@@ -40,7 +40,7 @@ function updateBackgroundImage() {
 
 function setBackgroundOpacity(opacity) {
   document.querySelector("#hp_bars").style.opacity = opacity;
-  document.querySelector("#main_div").style.opacity = opacity;
+  document.querySelector("#main_container").style.opacity = opacity;
   document.querySelector("#bottom_container").style.opacity = opacity;
   document.querySelector("#textlog").style.opacity = opacity;
 }
