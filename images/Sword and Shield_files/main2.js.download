@@ -37,9 +37,9 @@ class Upgrades {
 
 // Create instances for player
 const player = new Player(
-  100,
-  100,
-  5,
+  10000,
+  10000,
+  50,
   1,
   40,
   0,
@@ -50,20 +50,20 @@ const player = new Player(
 // Create instance for upgrades
 const upgrades = new Upgrades(
   {
-    "images/stages12_upgrade1.png": "Action Gauge Speed +",
-    "images/stages12_upgrade2.png": "Strength +",
-    "images/stages12_upgrade3.png": "Health +",
-    "images/stages12_upgrade4.png": "Armour +",
+    "images/stages12_upgrade1.png": "\n\n\nAction Gauge\nSpeed +",
+    "images/stages12_upgrade2.png": "\n\n\nStrength +",
+    "images/stages12_upgrade3.png": "\n\n\nHealth +",
+    "images/stages12_upgrade4.png": "\n\n\nArmour +",
   },
   {
     "images/stages34_upgrade1.png":
-      "Parrying will stun the enemy for 1.5 seconds",
+      "\n\nParrying will stun the enemy for 1.5 seconds",
     "images/stages34_upgrade2.png":
-      "Each attack will now have a 30% chance to critically strike for 2x damage",
+      "\n\nEach attack will\nhave a 30%\nchance to deal\n2x damage",
     "images/stages34_upgrade3.png":
-      "Attacks will now hit twice. Each attack does 65% damage",
+      "\n\nAttacks will now hit twice, each attack does 65% damage",
     "images/stages34_upgrade4.png":
-      "When you are attacked, there is a 50% chance to automatically defend",
+      "\n\nWhen you are attacked, there is a 50% chance to defend",
   }
 );
 
@@ -79,3 +79,4 @@ let autoEnemyActionGauge = setInterval(() => {
 }, currentEnemy.agility);
 
 startStage(player, currentEnemy);
+stageLoop();

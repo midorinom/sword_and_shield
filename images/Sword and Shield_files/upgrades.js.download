@@ -2,14 +2,18 @@
 
 function showUpgradesDescription1() {
   upgradesDescription1.style.display = "flex";
+  upgradesImage1.style.display = "none";
 }
 function hideUpgradesDescription1() {
+  upgradesImage1.style.display = "block";
   upgradesDescription1.style.display = "none";
 }
 function showUpgradesDescription2() {
   upgradesDescription2.style.display = "flex";
+  upgradesImage2.style.display = "none";
 }
 function hideUpgradesDescription2() {
+  upgradesImage2.style.display = "block";
   upgradesDescription2.style.display = "none";
 }
 
@@ -27,29 +31,29 @@ function selectUpgrade1Image() {
     chosenUpgrade = randomUpgrade1;
   } else {
     hideUpgradesDescription1();
-    upgradesImage1.style.height = 30 + "%";
-    upgradesImage1.style.width = 15 + "%";
+    upgradesImage1.style.height = 50 + "%";
+    upgradesImage1.style.width = 20 + "%";
     upgrades1Selected = false;
     chosenUpgrade = "notSelected";
   }
 }
 
 function selectUpgrade2Image() {
-  upgradesImage1.style.height = 30 + "%";
-  upgradesImage1.style.width = 15 + "%";
+  upgradesImage1.style.height = 50 + "%";
+  upgradesImage1.style.width = 20 + "%";
   upgrades1Selected = false;
   hideUpgradesDescription1();
 
   if (upgrades2Selected === false) {
     showUpgradesDescription2();
-    upgradesImage2.style.height = 50 + "%";
-    upgradesImage2.style.width = 20 + "%";
+    upgradesImage2.style.height = 70 + "%";
+    upgradesImage2.style.width = 30 + "%";
     upgrades2Selected = true;
     chosenUpgrade = randomUpgrade2;
   } else {
     hideUpgradesDescription2();
-    upgradesImage2.style.height = 30 + "%";
-    upgradesImage2.style.width = 15 + "%";
+    upgradesImage2.style.height = 50 + "%";
+    upgradesImage2.style.width = 20 + "%";
     upgrades2Selected = false;
     chosenUpgrade = "notSelected";
   }
@@ -104,7 +108,8 @@ function determineTwoRandomUpgrades() {
       }
       randomUpgrade2 = poolOfUpgrades[Math.floor(Math.random() * 3)];
     }
-  } 
+    upgradesDescription2.style.color = "yellow";
+  }
   // Update the images
   upgradesImage1.src = randomUpgrade1;
   upgradesImage2.src = randomUpgrade2;
@@ -112,9 +117,13 @@ function determineTwoRandomUpgrades() {
   // Update the description
   upgradesDescription1.innerText =
     upgrades.getUpgradeDescription(randomUpgrade1);
+  upgradesDescription1.style.background = `url(${randomUpgrade1})`;
+  upgradesDescription1.style.backgroundSize = "cover";
 
   upgradesDescription2.innerText =
     upgrades.getUpgradeDescription(randomUpgrade2);
+  upgradesDescription2.style.background = `url(${randomUpgrade2})`;
+  upgradesDescription2.style.backgroundSize = "cover";
 }
 
 function upgradesSubmitButton() {
@@ -157,12 +166,12 @@ function upgradesSubmitButton() {
     // Reset the state
     hideUpgradesDescription1();
     upgrades1Selected = false;
-    upgradesImage1.style.height = 30 + "%";
-    upgradesImage1.style.width = 15 + "%";
+    upgradesImage1Container.style.height = 50 + "%";
+    upgradesImage1Container.style.width = 20 + "%";
     hideUpgradesDescription2();
     upgrades2Selected = false;
-    upgradesImage2.style.height = 30 + "%";
-    upgradesImage2.style.width = 15 + "%";
+    upgradesImage2Container.style.height = 50 + "%";
+    upgradesImage2Container.style.width = 20 + "%";
 
     chosenUpgrade = "notSelected";
 
@@ -170,8 +179,8 @@ function upgradesSubmitButton() {
 
     generateEnemy();
 
-    upgradesImage1.removeEventListener("click", selectUpgrade1Image);
-    upgradesImage2.removeEventListener("click", selectUpgrade2Image);
+    upgradesImage1Container.removeEventListener("click", selectUpgrade1Image);
+    upgradesImage2Container.removeEventListener("click", selectUpgrade2Image);
     upgradesContainer.style.display = "none";
 
     startStage(player, currentEnemy);

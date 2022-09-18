@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<!-- saved from url=(0031)http://127.0.0.1:5500/main.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./Sword and Shield_files/main1.css" rel="stylesheet">
+    <link href="./Sword and Shield_files/main2.css" rel="stylesheet">
+    <link href="./Sword and Shield_files/main3.css" rel="stylesheet">
+    <title>Sword and Shield</title>
+  </head>
+  <body>
+    <div id="background" style="background: url(&quot;images/background1.png&quot;) 0% 0% / cover;">
+      <div id="endgame_container">
+        <h1 id="endgame_title"></h1>
+        <button id="endgame_home_button">Home</button>
+        <button id="endgame_restart_button">Play Again</button>
+      </div>
+      
+      <div id="upgrades_container" style="display: flex;">
+        <h1 id="upgrades_title">You won! Pick an upgrade: </h1>
+        <div id="upgrades_choice_container">
+            <div class="upgrades_description" id="upgrades_description1" style="background: url(&quot;images/stages12_upgrade2.png&quot;) 0% 0% / cover; display: flex;"><br><br><br>Strength +</div>
+            <img class="upgrades_image" id="upgrades_image1" src="./Sword and Shield_files/stages12_upgrade2.png" style="display: none; height: 50%; width: 20%;">
+            <img class="upgrades_image" id="upgrades_image2" src="./Sword and Shield_files/stages12_upgrade4.png" style="height: 30%; width: 15%; display: block;">
+            <div class="upgrades_description" id="upgrades_description2" style="background: url(&quot;images/stages12_upgrade4.png&quot;) 0% 0% / cover; display: none;"><br><br><br>Armour +</div>
+        </div>
+        <button id="upgrades_submit_button">OK</button>
+      </div>
+
+      <div id="hp_bars" style="opacity: 0.4;">
+        <div id="left_hp_container">
+          <h1 class="hp_value" id="player_hp_value">10000</h1>
+         <div class="hp_bar_container" id="player_hp_bar_container">
+          <div class="hp_bar" id="player_hp_bar" style="width: 100%; background-color: lightblue;"></div>
+        </div>
+        </div>
+        <div id="right_hp_container">
+        <div class="hp_bar_container" id="enemy_hp_bar_container">
+          <div class="hp_bar" id="enemy_hp_bar" style="width: 100%; background-color: lightblue;"></div>
+        </div>
+        <h1 class="hp_value" id="enemy_hp_value">20</h1>
+      </div>
+      </div>
+      <div id="main_container" style="opacity: 0.4;">
+        <div id="player_action_gauges">
+          <div class="player_action_gauge_container" id="player_action_gauge1_container">
+            <div class="action_gauge_progress_bar" id="player_action_gauge1_progress"></div>
+          </div>
+          <div class="player_action_gauge_container" id="player_action_gauge2_container">
+            <div class="action_gauge_progress_bar" id="player_action_gauge2_progress"></div>
+          </div>
+        </div>
+          <img src="./Sword and Shield_files/player_idle.gif" alt="Player" id="player">
+        <img alt="Enemy" id="enemy" src="./Sword and Shield_files/stage1_balanced.gif">
+        <div id="enemy_action_gauge1_container">
+          <div class="action_gauge_progress_bar" id="enemy_action_gauge1_progress"></div>
+        </div>
+        <div id="enemy_queue23_containers">
+          <div class="enemy_queue23_container" id="enemy_queue3_container">
+            <div class="enemy_queue_description_box" id="enemy_queue3_description" style="display: none;"></div>
+            <img class="enemy_queue_images" id="enemy_queue3" src="./Sword and Shield_files/enemy_attack1a.png" style="display: block;">
+          </div>
+          <div class="enemy_queue23_container" id="enemy_queue2_container">
+            <div class="enemy_queue_description_box" id="enemy_queue2_description" style="display: none;"></div>
+            <img class="enemy_queue_images" id="enemy_queue2" src="./Sword and Shield_files/enemy_attack3a.png" style="display: block;">
+          </div>
+        </div>
+      </div>
+      <div id="bottom_container" style="opacity: 0.4;">
+        <div id="upgrades_inventory_container">
+          <img class="upgrades_inventory_image" id="upgrades_inventory_image1">
+          <img class="upgrades_inventory_image" id="upgrades_inventory_image2">
+          <img class="upgrades_inventory_image" id="upgrades_inventory_image3">
+          <img class="upgrades_inventory_image" id="upgrades_inventory_image4">
+        </div>
+        <div id="action_buttons">
+          <button class="action_button" id="attack_button"></button>
+          <button class="action_button" id="defend_button"></button>
+        </div>
+        <div id="enemy_queue1_container">
+          <div class="enemy_queue_description_box" id="enemy_queue1_description" style="display: none;"></div>
+          <img class="enemy_queue_images" id="enemy_queue1" src="./Sword and Shield_files/enemy_attack1a.png" style="display: block;">
+        </div>
+      </div>
+    </div>
+    
+    <div id="textlog" style="opacity: 0.4;">
+      <h2 class="textlog_line" id="textlog_line1"></h2>
+      <h2 class="textlog_line" id="textlog_line2"></h2>
+      <h2 class="textlog_line" id="textlog_line3"></h2>
+      <h2 class="textlog_line" id="textlog_line4"></h2>
+    </div>
+    <script src="./Sword and Shield_files/functions1.js.download" charset="utf-8"></script>
+    <script src="./Sword and Shield_files/parry_function.js.download" charset="utf-8"></script>
+    <script src="./Sword and Shield_files/functions2.js.download" charset="utf-8"></script>
+    <script src="./Sword and Shield_files/generateEnemy_function.js.download" charset="utf-8"></script>
+    <script src="./Sword and Shield_files/upgrades.js.download" charset="utf-8"></script>
+    <script src="./Sword and Shield_files/main1.js.download" charset="utf-8"></script>
+    <script src="./Sword and Shield_files/enemyeasy.js.download" charset="utf-8"></script>
+    <script src="./Sword and Shield_files/enemybalanced.js.download" charset="utf-8"></script>
+    <script src="./Sword and Shield_files/enemyfast.js.download" charset="utf-8"></script>
+    <script src="./Sword and Shield_files/enemyslow.js.download" charset="utf-8"></script>
+    <script src="./Sword and Shield_files/main2.js.download" charset="utf-8"></script>
+  <!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+
+</body></html>
