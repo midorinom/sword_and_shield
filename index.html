@@ -10,63 +10,108 @@
   <body>
     <header>
       <img src="images/title_icon.png" id="title_icon" />
-      <div id ="title_container">
+      <div id="title_container">
         <h1 id="title">Sword and Shield</h1>
       </div>
     </header>
 
-    <main>    
-      <div id ="top_container">
-      <div class = "top_instructions_containers" id="instructions1_container">
-        <img src="images/instructions_1.jpg" class="instructions_image" id="instructions1_image" />
-        <div class="instructions" id="instructions1">
-          <span>[Your Action Gauge] <br></span>It fills up over time. You can consume 1 bar of Action Gauge to either attack or defend.
-        </div>
-      </div>
-      <div class = "top_instructions_containers" id="instructions2_container">
-        <img src="images/instructions_2.jpg" class="instructions_image" id="instructions2_image" />
-        <div class="instructions" id="instructions2">
-          <span>[Attack Button] <br></span> Press it to attack. If you were defending, attacking will break you out of the defend stance.
-        </div>
-      </div>
-      <div class = "top_instructions_containers" id="instructions3_container">
-        <img src="images/instructions_3.jpg" class="instructions_image" id="instructions3_image" />
-        <div class="instructions" id="instructions3">
-          <span>[Defend Button] <br></span> Press it to defend. If an enemy attacks you while you are defending, you get to play a minigame for a chance to parry the attack. If you fail the parry, your defence will still mitigate 70% of the damage.
-        </div>
-      </div>
-    </div>
-    <div id = "bot_container">
-      <div id ="botleft_container">
-        <div class = "botleft_containers" id="instructions46_container">
-          <img src="images/instructions_6.jpg" class="instructions_46image" id="instructions6_image" />
-          <div class="instructions" id="instructions6">
-            <span>[Parry] <br></span>Whenever you attempt a parry, you will play one out of these two minigames. One minigame requires the mouse, you have to click 3 green boxes that appear at random spots on the screen. The other minigame requires the keyboard, you are shown 3 random characters in the center of the screen and you will have to press those keys. If you successfully clear the minigame within the time limit, you will block the enemy's attack entirely and land a counterattack of your own.
+    <main>
+      <div id="top_container">
+        <div class="top_instructions_containers" id="instructions1_container">
+          <img
+            src="images/instructions_1.jpg"
+            class="instructions_image"
+            id="instructions1_image"
+          />
+          <div class="instructions" id="instructions1">
+            <span>[Your Action Gauge] <br /></span>It fills up over time. You
+            can consume 1 bar of Action Gauge to either attack or defend.
           </div>
-          <img src="images/instructions_4.jpg" class="instructions_46image" id="instructions4_image" />
+        </div>
+        <div class="top_instructions_containers" id="instructions2_container">
+          <img
+            src="images/instructions_2.jpg"
+            class="instructions_image"
+            id="instructions2_image"
+          />
+          <div class="instructions" id="instructions2">
+            <span>[Attack Button] <br /></span> Press it to attack. If you were
+            defending, attacking would break you out of the defend stance.
           </div>
-        <div class = "botleft_containers">
-          <div id="instructions5_container">
-            <img src="images/instructions_5.jpg" class="instructions_image" id="instructions5_image" />
-            <div class="instructions" id="instructions5">
-              <span>[Enemy Attacks] <br></span> The enemy also has an Action Gauge that fills over time and it will automatically attack when the gauge is full. The enemy chooses from various attacks, with its next attacks being queued up to the right of the Action Gauge. Enemies in later stages can use attacks that stun you, which stops your Action Gauge from filling. Parrying these attacks will prevent you from being stunned.
+        </div>
+        <div class="top_instructions_containers" id="instructions3_container">
+          <img
+            src="images/instructions_3.jpg"
+            class="instructions_image"
+            id="instructions3_image"
+          />
+          <div class="instructions" id="instructions3">
+            <span>[Defend Button] <br /></span> Press it to defend. If an enemy
+            attacks you while you are defending, you get to play a minigame for
+            a chance to parry the attack. If you fail the parry, your defence
+            will still mitigate 70% of the damage.
+          </div>
+        </div>
+      </div>
+      <div id="bot_container">
+        <div id="botleft_container">
+          <div class="botleft_containers" id="instructions46_container">
+            <img
+              src="images/instructions_6.jpg"
+              class="instructions_46image"
+              id="instructions6_image"
+            />
+            <div class="instructions" id="instructions6">
+              <span>[Parry] <br /></span>Whenever you attempt a parry, you will
+              play one of these two minigames. One minigame requires the mouse,
+              you have to click 3 green boxes that appear at random spots on the
+              screen. The other minigame requires the keyboard, you are shown 3
+              random characters in the center of the screen and have to press
+              those keys. If you successfully clear the minigame within the time
+              limit, you would block the enemy's attack entirely as well as land
+              a counterattack of your own.
             </div>
+            <img
+              src="images/instructions_4.jpg"
+              class="instructions_46image"
+              id="instructions4_image"
+            />
           </div>
-          <img src="images/damage_chart.jpg" id="damage_chart" />
+          <div class="botleft_containers">
+            <div id="instructions5_container">
+              <img
+                src="images/instructions_5.jpg"
+                class="instructions_image"
+                id="instructions5_image"
+              />
+              <div class="instructions" id="instructions5">
+                <span>[Enemy Attacks] <br /></span> The enemy also has an Action
+                Gauge that fills over time and it will automatically attack when
+                the gauge is full. The enemy chooses from various attacks, with
+                its next attacks being queued up to the right of the Action
+                Gauge. Enemies in later stages can use attacks that stun you,
+                which stops your Action Gauge from filling. Parrying these
+                attacks will prevent you from being stunned.
+              </div>
+            </div>
+            <img src="images/damage_chart.jpg" id="damage_chart" />
           </div>
-            
-      </div>
-      <div id = "botright_container">
-        <div id="start_button_container">
-          <button id="start_button">Start Game</button>
         </div>
-        <div id="misc_buttons_container">
-          <button class = "misc_buttons" id="github_repo_button">Github Repo</button>
-          <button class = "misc_buttons" id="asset_credits_button">Asset Credits</button>
+        <div id="botright_container">
+          <div id="start_button_container">
+            <button id="start_button">Start Game</button>
+          </div>
+          <div id="misc_buttons_container">
+            <button class="misc_buttons" id="github_repo_button">
+              Github Repo
+            </button>
+            <button class="misc_buttons" id="asset_credits_button">
+              Asset Credits
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-  </main>
+    </main>
     <script src="start.js" charset="utf-8"></script>
   </body>
 </html>
