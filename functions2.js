@@ -63,7 +63,7 @@ function enemyAttackMegaChecker(
       } else {
         text = `The ${Enemy.name} dealt ${damage} damage to you.`;
       }
-    } 
+    }
     // The player does not have the lucky block upgrade
     else {
       text = `The ${Enemy.name} dealt ${damage} damage to you.`;
@@ -87,7 +87,7 @@ function playerGotStunned(stunDuration) {
     // Stop the player's continuous events
     clearInterval(autoPlayerActionGauge);
     setTimeout(() => {
-      // After a delay, which is the duration of the stun, set the player's stun status to false 
+      // After a delay, which is the duration of the stun, set the player's stun status to false
       player.status.stun = false;
 
       // Also start up the player's continuous events again after the delay

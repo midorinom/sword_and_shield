@@ -1,120 +1,119 @@
 #bottom_container {
-    height: 30%;
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    top: 2%;
-  }
+  height: 30%;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  top: 2%;
+}
 
-  #upgrades_inventory_container {
-    height: 100%;
-    width: 15%;
-    position: relative;
-    left: 0.58%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
-  
-  .upgrades_inventory_image {
-    display: none;
-    height: 40%;
-    width: 40%;
-    image-rendering: pixelated;
-  }
-  
-  #action_buttons {
-    width: 60%;
-    height: 100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    position: relative;
-  }
-  
-  .action_button {
-    height: 70%;
-    width: 12%;
-    border-color: white;
-    border-radius: 1em;
-  }
-  
-  #attack_button {
-    background-image: url("images/attack_icon.webp");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-  
-  #defend_button {
-    background-image: url("images/shield_icon.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
+#upgrades_inventory_container {
+  height: 100%;
+  width: 15%;
+  position: relative;
+  left: 0.58%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
 
-  .enemy_queue23_container, #enemy_queue1_container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-  }
+.upgrades_inventory_image {
+  display: none;
+  height: 40%;
+  width: 40%;
+  image-rendering: pixelated;
+}
 
-  #enemy_queue1_container {
-    height: 100%;
-    width: 18%;
-    right: 2%;
-    border-style: solid;
-    border-color: pink;
-    border-width: medium;
-    border-radius: 1em;
-  }
+#action_buttons {
+  width: 60%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+}
 
-  .enemy_queue_images {
-    height: 95%;
-    width: 95%;
-    image-rendering: pixelated;
-  }
-  
-  .enemy_queue_description_box {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    font-size: 3vmin;
-    text-align: center;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    background-color: antiquewhite;           
-    color: black;
-  }
+.action_button {
+  height: 70%;
+  width: 12%;
+  border-color: white;
+  border-radius: 1em;
+}
 
-  #textlog {
-    height: 24%;
-    width: 99.3%;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    top: 0.5%;
-    border-style: solid;
-    border-color: black;
-    border-width: medium;
-    border-radius: 1em;
-  }
-  
-  .textlog_line {
-    height: 25%;
-    font-size: 2.8vmin;
-    border-bottom: dotted;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-top: 0.35em;
-    padding-bottom: 0.4em;
-    padding-left: 0.4em;
-  }
-  
-  #textlog_line4 {
-    border-bottom: none;
-  }
+#attack_button {
+  background-image: url("images/attack_icon.webp");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 
-  
+#defend_button {
+  background-image: url("images/shield_icon.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.enemy_queue23_container,
+#enemy_queue1_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+#enemy_queue1_container {
+  height: 100%;
+  width: 18%;
+  right: 2%;
+  border-style: solid;
+  border-color: pink;
+  border-width: medium;
+  border-radius: 1em;
+}
+
+.enemy_queue_images {
+  height: 95%;
+  width: 95%;
+  image-rendering: pixelated;
+}
+
+.enemy_queue_description_box {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  font-size: 3vmin;
+  text-align: center;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: antiquewhite;
+  color: black;
+}
+
+#textlog {
+  height: 24%;
+  width: 99.3%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 0.5%;
+  border-style: solid;
+  border-color: black;
+  border-width: medium;
+  border-radius: 1em;
+}
+
+.textlog_line {
+  height: 25%;
+  font-size: 2.8vmin;
+  border-bottom: dotted;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0.35em;
+  padding-bottom: 0.4em;
+  padding-left: 0.4em;
+}
+
+#textlog_line4 {
+  border-bottom: none;
+}

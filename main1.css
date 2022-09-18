@@ -31,7 +31,8 @@ body {
   justify-content: center;
 }
 
-#left_hp_container, #right_hp_container {
+#left_hp_container,
+#right_hp_container {
   height: 100%;
   width: 40%;
   display: flex;
@@ -65,7 +66,7 @@ body {
 }
 
 #main_container {
-  height: 55.5%;;
+  height: 55.5%;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -130,7 +131,7 @@ body {
   justify-content: space-around;
   position: relative;
   right: 2%;
-}  
+}
 
 .enemy_queue23_container {
   height: 45%;

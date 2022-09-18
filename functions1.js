@@ -31,7 +31,7 @@ function fillEnemyActionGauge(Enemy) {
 // This function will continually run throughout the fight as long as the player is not stunned
 function playerContinuousEvents(Enemy) {
   fillPlayerActionGauge();
-  // Check if the player has attack or defend selected. If so, call the respective functions 
+  // Check if the player has attack or defend selected. If so, call the respective functions
   if (player.actionSelected.attack === true) {
     player.attack(Enemy);
   }
@@ -88,7 +88,7 @@ function attackButtonSelected() {
     }
     // Set actionSelected state in the player class to true
     player.actionSelected.attack = true;
-  } 
+  }
   // The attack button was not already selected
   else {
     // De-select the button and downsize the button again
@@ -112,7 +112,7 @@ function defendButtonSelected() {
     }
     // Set actionSelected state in the player class to true
     player.actionSelected.defend = true;
-  } 
+  }
   // The defend button was not already selected
   else {
     // De-select the button and downsize the button again
@@ -146,7 +146,7 @@ function updateHp(isPlayer, ClassName) {
   if (isPlayer === true) {
     hpValue = "#player_hp_value";
     hpBar = "#player_hp_bar";
-  } 
+  }
   // If update the hp of the enemy, use the enemy's hp elements
   else {
     hpValue = "#enemy_hp_value";
@@ -174,7 +174,7 @@ function updateHp(isPlayer, ClassName) {
 
 // Update the text log with whatever new text is to be added
 function updateTextLog(newText = "test") {
-  // Add new text into textLog[0] then remove textLog[4] so the array doesn't grow infinitely. 
+  // Add new text into textLog[0] then remove textLog[4] so the array doesn't grow infinitely.
   // Then, have the changes in the array be reflected on screen
   textLog.unshift(newText);
   textLog.pop();

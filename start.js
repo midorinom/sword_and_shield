@@ -20,8 +20,11 @@ githubRepoButton.addEventListener("click", goToGithubRepo);
 // Asset Credits Button
 const assetCreditsButton = document.querySelector("#asset_credits_button");
 
-function goToAssetCredits(){
-  window.open("https://github.com/midorinom/sword_and_shield/blob/main/asset_credits.txt", "_blank");
+function goToAssetCredits() {
+  window.open(
+    "https://github.com/midorinom/sword_and_shield/blob/main/asset_credits.txt",
+    "_blank"
+  );
 }
 
 assetCreditsButton.addEventListener("click", goToAssetCredits);

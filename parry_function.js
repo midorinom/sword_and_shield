@@ -1,6 +1,13 @@
 "use strict";
 
-function parryMiniGame(Enemy, Player, damage, stun, stunDuration, parryTimerSetting) {
+function parryMiniGame(
+  Enemy,
+  Player,
+  damage,
+  stun,
+  stunDuration,
+  parryTimerSetting
+) {
   pause();
 
   // Create an array for the boxes that need to be pressed/clicked. Will be used to check for failure/victory condition later
@@ -24,7 +31,7 @@ function parryMiniGame(Enemy, Player, damage, stun, stunDuration, parryTimerSett
   timer.style.height = "100%";
   timerContainer.append(timer);
 
-  // Create the timer counter that will be decremented later. It will also be tied to the width of the timer bar 
+  // Create the timer counter that will be decremented later. It will also be tied to the width of the timer bar
   let timerCounter = 100;
 
   // Coin Toss to decide whether to play the key pressing or the clicking game
@@ -159,7 +166,7 @@ function parryMiniGame(Enemy, Player, damage, stun, stunDuration, parryTimerSett
         fail(timerInterval);
       }
     }, 10);
-  } 
+  }
   // =================
   // Clicking Minigame
   // =================
@@ -194,7 +201,7 @@ function parryMiniGame(Enemy, Player, damage, stun, stunDuration, parryTimerSett
     // The timerCounter starts at a value of 100 which makes the timer bar start with a width of 100% accordingly
     // The interval set here is 1/100 of a second. The timer duration will be however long it takes to decrease timerCounter to 0
     const timerInterval = setInterval(() => {
-      switch (parryTimerSetting){
+      switch (parryTimerSetting) {
         // 1.6 seconds
         case "classic":
           timerCounter -= 0.625;
@@ -209,7 +216,7 @@ function parryMiniGame(Enemy, Player, damage, stun, stunDuration, parryTimerSett
       }
       // Associate the width of the timer bar to the timerCounter variable
       timer.style.width = timerCounter + "%";
-      // Success if the timer has not run out and arrKeys has 6 items (3 from the randomly generated click boxes and the 3 empty 
+      // Success if the timer has not run out and arrKeys has 6 items (3 from the randomly generated click boxes and the 3 empty
       // strings that were pushed in whenever the player successfully clicked the click boxes)
       if (timerCounter > 0 && arrKeys.length === 6) {
         success(timerInterval);
@@ -240,7 +247,7 @@ function parryMiniGame(Enemy, Player, damage, stun, stunDuration, parryTimerSett
     if (arrUpgrades.includes("images/stages34_upgrade1.png") === true) {
       text = `You parried! You took no damage and counterattacked, dealing ${parryDamage} damage to the ${Enemy.name} and stunning it for 1.5 seconds.`;
       enemyGotStunned(1500);
-    } 
+    }
     // If the player does not have the Parry Stun upgrade, update the text accordingly and start up the enemyContinuousEvents
     // Did not have to start up the enemyContinuousEvents in the previous case because the enemyGotStunned function does it already
     else {
@@ -294,7 +301,7 @@ function parryMiniGame(Enemy, Player, damage, stun, stunDuration, parryTimerSett
       playerGotStunned(stunDuration);
       const seconds = stunDuration / 1000;
       updateTextLog(`You got stunned for ${seconds} seconds.`);
-    } 
+    }
     // If the enemy's attack does not stun, start up the playerContinuousEvents
     // Did not have to start up the playerrContinuousEvents in the previous case because the playerGotStunned function does it already
     else {
