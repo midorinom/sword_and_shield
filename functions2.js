@@ -148,6 +148,10 @@ function unpause() {
 }
 
 function pause() {
+  hideEnemyAttackDescription1();
+  hideEnemyAttackDescription2();
+  hideEnemyAttackDescription3();
+
   setBackgroundOpacity(0.4);
 
   clearInterval(autoPlayerActionGauge);
