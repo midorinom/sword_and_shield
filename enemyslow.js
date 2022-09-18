@@ -86,11 +86,14 @@ class EnemySlow4 extends EnemySlowEasy {
 
   // --- Attack Function ---
   attack(Player) {
-    // Determine what is next up in the enemyQueue array and execute the attack. Modify strength accordingly.
+    // Initialise variables to be modified later
     let attackPower = this.strength;
     let stun = false;
     let duration = 0;
 
+    // Determine what is next up in the enemyQueue array and execute the attack. Modify the damage accordingly.
+    // This section is the only difference between each enemy class. It is the configuration for this Enemy Class's
+    // 3 attacks: the damage of each attack and how long it stuns (if it does).
     if (arrEnemyQueue[0] === Object.keys(this.attacks)[0]) {
       attackPower += 2;
       stun = true;
@@ -141,11 +144,14 @@ class EnemySlow5 extends EnemySlowEasy {
 
   // --- Attack Function ---
   attack(Player) {
-    // Determine what is next up in the enemyQueue array and execute the attack. Modify strength accordingly.
+    // Initialise variables to be modified later
     let attackPower = this.strength;
     let stun = false;
     let duration = 0;
 
+    // Determine what is next up in the enemyQueue array and execute the attack. Modify the damage accordingly.
+    // This section is the only difference between each enemy class. It is the configuration for this Enemy Class's
+    // 3 attacks: the damage of each attack and how long it stuns (if it does).
     attackPower += 3;
     stun = true;
     duration = 2000;

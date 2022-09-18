@@ -4,11 +4,15 @@
 // Create Upgrades Class
 // =====================
 class Upgrades {
+  // For these objects, the keys would be the image links while the values would be the description text
   constructor(stages12Upgrades = {}, stages34Upgrades = {}) {
     (this.stages12Upgrades = stages12Upgrades),
       (this.stages34Upgrades = stages34Upgrades);
   }
 
+  // --- getUpgradeDescription Function ---
+  // Checks the image link passed into the function against the keys of all the objects stored in the class.
+  // Then, return the corresponding value which would be the description text
   getUpgradeDescription(imageLink) {
     for (let i = 0; i < 4; i++) {
       if (imageLink === Object.keys(this.stages12Upgrades)[i]) {
@@ -23,6 +27,9 @@ class Upgrades {
     }
   }
 
+  // --- activateUpgrade Function ---
+  // Checks the iamge link passed into the function against the keys of the stages12Upgrades object
+  // Then, activate the upgrade's effects by adding the relevant stats to the player class's variables
   activateUpgrade(imageLink, Player) {
     if (imageLink === Object.keys(this.stages12Upgrades)[0]) {
       Player.agility -= 6;
