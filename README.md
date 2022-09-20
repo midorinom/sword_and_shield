@@ -14,7 +14,7 @@ I do not own any of the assets and images that I used in this project, I obtaine
 
 The goal of the game is to beat all 5 stages and not have health points be reduced to 0.
 
-The gameplay mainly revolves around the 2 actions of Attacking and Defending. Attacking deals damage while defending reduces the damage taken by enemy attacks. However, taking an action requires 1 bar of Action Gauge, which is a resource that naturally fills up over time. The enemy also has an Action Gauge and will automatically consumes its gauge to attack the player whenever its gauge is full.
+The gameplay mainly revolves around the 2 actions of Attacking and Defending. Attacking deals damage while defending reduces the damage taken by enemy attacks. Taking an action requires 1 bar of Action Gauge, which is a resource that naturally fills up over time. The enemy also has an Action Gauge, which it will automatically consume to attack the player whenever the gauge is full.
 
 The Defend action puts the player into a a defensive stance. If the player is attacked by the enemy while in this defensive stance, the player will get to play a quick minigame. There is a time limit for the minigame and if the player were to successfully clear the minigame, the enemy's attack would be parried entirely, with the player taking no damage and also launching a counterattack. If the player fails the minigame, the player would take only 30% of the damage (as a result of defending) but will not parry. The time limit for the parry minigame can be changed for easier/harder difficulty.
 
@@ -24,7 +24,7 @@ As the player gets stronger with each stage, so too does the enemy, with enemies
 
 The next 3 attacks to be used by the enemy are displayed in a queue on the screen, with descriptions of the attacks' damage and stun duration being shown when the enemy's attack queue is hovered over.
 
-Attacks are chosen at random, with some attacks having higher probabilities of being chosen than others. Enemies themselves are also random, with each stage having 3 possible enemies that could be encountered, for a total of 15 possible enemies in the game. Each enemy has different stats and attack pools.
+Attacks are chosen at random, with some attacks having higher probabilities of being chosen than others. Enemies themselves are also randomised, with each stage having 3 possible enemies that could be encountered, for a total of 15 possible enemies in the game. Each enemy has different stats and attack pools.
 
 Randomness is also introduced in the damage calculations, with the basic damage formula being a 80-120% damage spread. There are also upgrades which involve probability-based effects, such as critical hits.
 
@@ -32,19 +32,23 @@ The game also includes a text log at the bottom of the screen that logs every in
 
 # Game Features
 
+<<<<<<< HEAD
 My vision of the game was one that would be (1) sufficiently challenging, (2) have replayability and (3) have simple systems. These goals guided many of my game design decisions, which I will further elaborate upon when explaining all the game features. Apart from the game design aspect, I will also explain in-depth how the codes work for each feature.
+=======
+My vision of the game was one that would be (1) sufficiently challenging, (2) have replayability and (3) have simple systems. These goals guided many of my game design decisions, which I will further elaborate upon when explaining all the game features. Apart from the game design aspect, I will also briefly explain how the code works for each feature.
+>>>>>>> 6c7006a99d5881f2eb41600719e84ea8811d4fef
 
 ### Health Points
 
-The player and enemy health points are stored within their respective class instances. Whenever either side takes damage, the health points will be subtracted from the class instance and then the `updateHp` function will be called. This function updates the hp number value on the screen to reflect the post-combat hp values. The function also calculates the percentage of the `current hp` / `max hp` and then visually reflects the proportion on the hp bar. Also, this function checks for whether the hp percentage falls under the breakpoints of 75% 50% and 25% and then change the colour of the hp bar from blue > green > yellow > red.
+The player and enemy health points are stored within their respective class instances. Whenever either side takes damage, the health points will be subtracted from the class instance and then the `updateHp` function will be called. This function updates the hp number value on the screen to reflect the post-combat hp values. The function also calculates the percentage of the `current hp` / `max hp` and then visually reflects it on the hp bar with 100% being a full bar. Also, this function checks for whether the hp percentage falls under the breakpoints of 75%, 50% and 25% and then changes the colour of the hp bar from blue > green > yellow > red.
 
 ### Action Gauges & Continuous Functions
 
-The filling of the action gauges are a result of the continuous `setInterval` functions of `autoPlayerActionGauge` and `autoEnemyActionGauge`. The speed at which these intervals repeat is decided by the `agility` stat within the player/enemy class. These functions contain the `fillPlayerActionGauge` and `fillEnemyActionGauge` functions which simply increase the `actionGaugeCounter` within the player/enemy class. The height of the action gauge bar is then set to be equivalent to the `actionGaugeCounter` value, with 100 being a full gauge and 200 being 2 full gauges.
+The filling of the action gauges are a result of the continuous `setInterval` functions of `autoPlayerActionGauge` and `autoEnemyActionGauge`. The speed at which these intervals repeat is decided by the `agility` stat within the player/enemy class. These functions contain the `fillPlayerActionGauge` and `fillEnemyActionGauge` functions which simply increase the `actionGaugeCounter` within the player/enemy class. The height of the action gauge bar is then set to be equivalent to the `actionGaugeCounter` value, with 100 being a full bar and 200 being 2 full barss.
 
-The `actionGaugeCounter` within the player/enemy class is also subtracted by 100 whenever the player/enemy uses an action. The change in height of the action gauge would then be shown almost immediately due to how frequently the continuous functions repeat every second.
+To reflect 1 bar being expended, the `actionGaugeCounter` within the player/enemy class is subtracted by 100 whenever the player/enemy uses an action. The change in height of the action gauge would then be shown almost immediately due to how frequently the continuous functions repeat every second.
 
-Apart from being responsible for filling the action gauges, the continuous functions also check for whether either party is dead. If the player is dead, the loss screen will be shown whereas if the enemy is dead, either the upgrade screen or victory screen(if it is the last stage) will be shown. For stages 4 and 5, the continuous function `autoEnemyActionGauge` also checks for whether the enemy has fallen below 50% `hp` and if so, make the enemy go berserk.
+Apart from being responsible for filling the action gauges, the continuous functions also check for whether either party is dead. If the player is dead, the loss screen will be shown whileif the enemy is dead, either the upgrade screen or victory screen(if it is the last stage) will be shown. For stages 4 and 5, the continuous function `autoEnemyActionGauge` also checks for whether the enemy has fallen below 50% `hp` and if so, makes the enemy go berserk.
 
 ### Text Log
 
