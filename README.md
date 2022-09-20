@@ -32,11 +32,7 @@ The game also includes a text log at the bottom of the screen that logs every in
 
 # Game Features
 
-<<<<<<< HEAD
 My vision of the game was one that would be (1) sufficiently challenging, (2) have replayability and (3) have simple systems. These goals guided many of my game design decisions, which I will further elaborate upon when explaining all the game features. Apart from the game design aspect, I will also explain in-depth how the codes work for each feature.
-=======
-My vision of the game was one that would be (1) sufficiently challenging, (2) have replayability and (3) have simple systems. These goals guided many of my game design decisions, which I will further elaborate upon when explaining all the game features. Apart from the game design aspect, I will also briefly explain how the code works for each feature.
->>>>>>> 6c7006a99d5881f2eb41600719e84ea8811d4fef
 
 ### Health Points
 
