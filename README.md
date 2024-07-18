@@ -2,7 +2,7 @@
 
 # Introduction
 
-This game project was created as part of General Assembly's Software Engineering Immersive course. The requirement was to make a finished game using HTML, CSS and Javascript. The game is deployed <a href ="https://sword-and-shield.vercel.app" target="_blank">here</a>.
+This game project was created as part of General Assembly's Software Engineering Immersive course. The requirement was to make a finished game using HTML, CSS and Javascript. The game is deployed <a href ="https://sword-and-shield.vercel.app" target="_blank">here</a> on Vercel.
 
 When brainstorming for ideas, I figured that making some sort of RPG game would be the best approach. For a RPG game, it would be easy to think up ways of incorporating the various concepts that I have learned in the course such as classes, arrays, objects and events. In particular, a turn-based game sounded like a great idea as there would be no character movement or map generation required. The focus would be on stats and combat, which seemed manageable enough for a first-ever coding project.
 
