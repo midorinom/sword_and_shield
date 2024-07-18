@@ -33,10 +33,10 @@ I do not own any of the assets and images that I used in this project, I obtaine
 
 <a name="Pictures"></a>
 ## Pictures
-### Home Page
+#### Home Page
 <img src="/images/readme/Instructions.png" alt="Home Page" title="Home Page">
 
-### Gameplay
+#### Gameplay
 <img src="/images/readme/Gameplay.png" alt="Gameplay" title="Gameplay">
 
 <a name="Technologies"></a>
