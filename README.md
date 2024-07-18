@@ -1,6 +1,26 @@
-# sword_and_shield
+# Sword and Shield
 
-# Introduction
+## Table of Contents
+* [Introduction](#Introduction)
+* [Pictures](#Pictures)
+* [Broad Game Overview](#Overview)
+* [Game Features](#Features)
+    * [Health Points](#Health)
+    * [Action Gauges & Continuous Functions](#ActionGauge)
+    * [Text Log](#TextLog)
+    * [Player Attack](#PlayerAttack)
+    * [Player Defend](#PlayerDefend)
+    * [Enemy Attack](#EnemyAttack)
+    * [Parry](#Parry)
+    * [Enemy Queue](#EnemyQueue)
+    * [Enemy Attack Pool](#EnemyAttackPool)
+    * [Enemy Types](#EnemyTypes)
+    * [Upgrades](#Upgrades)
+    * [Pause/Unpause](#Pause)
+* [Ideas for More Content](#Ideas)
+
+<a name="Introduction"></a>
+## Introduction
 
 This game project was created as part of General Assembly's Software Engineering Immersive course. The requirement was to make a finished game using HTML, CSS and Javascript. The game is deployed <a href ="https://sword-and-shield.vercel.app" target="_blank">here</a> on Vercel.
 
@@ -10,14 +30,16 @@ In this document I will explain the rationale behind the game design of various 
 
 I do not own any of the assets and images that I used in this project, I obtained them from free sources online which I have credited in this [asset_credits.txt](asset_credits.txt) file.
 
-# Pictures
+<a name="Pictures"></a>
+## Pictures
 ### Home Page
 <img src="/images/Instructions.png" alt="Home Page" title="Home Page">
 
 ### Gameplay
 <img src="/images/Gameplay.png" alt="Gameplay" title="Gameplay">
 
-# Broad Game Overview
+<a name="Overview"></a>
+## Broad Game Overview
 
 The goal of the game is to beat all 5 stages and not have health points be reduced to 0.
 
@@ -37,14 +59,17 @@ Randomness is also introduced in the damage calculations, with the basic damage 
 
 The game also includes a text log at the bottom of the screen that logs every instance of combat. This text log displays useful information such as the damage dealt/taken by either side, successful parries, stun duration (if applicable) and when the enemy enters berserk mode.
 
-# Game Features
+<a name="Features"></a>
+## Game Features
 
 My vision of the game was one that would be (1) sufficiently challenging, (2) have replayability and (3) have simple systems. These goals guided many of my game design decisions, which I will further elaborate upon when explaining all the game features. Apart from the game design aspect, I will also explain in-depth how the codes work for each feature.
 
+<a name="Health"></a>
 ### Health Points
 
 The player and enemy health points are stored within their respective class instances. Whenever either side takes damage, the health points will be subtracted from the class instance and then the `updateHp` function will be called. This function updates the hp number value on the screen to reflect the post-combat hp values. The function also calculates the percentage of the `current hp` / `max hp` and then visually reflects it on the hp bar with 100% being a full bar. Also, this function checks for whether the hp percentage falls under the breakpoints of 75%, 50% and 25% and then changes the colour of the hp bar from blue > green > yellow > red.
 
+<a name="ActionGauge"></a>
 ### Action Gauges & Continuous Functions
 
 The filling of the action gauges are a result of the continuous `setInterval` functions of `autoPlayerActionGauge` and `autoEnemyActionGauge`. The speed at which these intervals repeat is decided by the `agility` stat within the player/enemy class. These functions contain the `fillPlayerActionGauge` and `fillEnemyActionGauge` functions which simply increase the `actionGaugeCounter` within the player/enemy class. The height of the action gauge bar is then set to be equivalent to the `actionGaugeCounter` value, with 100 being a full bar and 200 being 2 full barss.
@@ -53,28 +78,33 @@ To reflect 1 bar being expended, the `actionGaugeCounter` within the player/enem
 
 Apart from being responsible for filling the action gauges, the continuous functions also check for whether either party is dead. If the player is dead, the loss screen will be shown whileif the enemy is dead, either the upgrade screen or victory screen(if it is the last stage) will be shown. For stages 4 and 5, the continuous function `autoEnemyActionGauge` also checks for whether the enemy has fallen below 50% `hp` and if so, makes the enemy go berserk.
 
+<a name="TextLog"></a>
 ### Text Log
 
 The `updateTextLog` function displays the contents of the 4 items in the `textLog` array onto the 4 textlog lines on the screen. At the start of every stage, the `textLog` will be set to contain 4 empty strings of `""` which will display 4 empty textlog lines. Combat-related functions will `unshift` new text into the start of the array and then `pop` off the text at the end of the array. The new textlog configuration will then be displayed onto the screen with `updateTextLog` after the array is modified.
 
+<a name="PlayerAttack"></a>
 ### Player Attack
 
 The `attackButtonSelected` function is used for the `click` event listener of the attack button. When clicked on, the button is upsized if it wasn't already selected beforehand. If it was already selected, clicking on the button would instead de-select it and the button would be downsized. If the player does not have 1 bar of action gauge and thus cannot execute the attack yet, the button stays upsized and only downsizes after the attack is executed. Also, if the defend button was clicked already, clicking the attack button would downsize the defend button. To know whether either of the buttons is already clicked, the code checks for the boolean value of the `actionSelected.attack` and `actionSelected.defend` variables within the player class.
 
 The continuous function of `autoPlayerActionGauge` is what constantly checks for whether the attack button is selected and if the player has 1 bar of action gauge, the function executes the `attack` function within the player class. The `attack` function then runs through a long check for conditions such as whether the player has the doublehit or critical upgrades and whether the player rolled a critical hit on each attack. The function does all the appropriate damage calculations, playing the appropriate attack animation, update the textlog, update the enemy hp after the player's attack animation finishes and return the player back to its idle animation.
 
+<a name="PlayerDefend"></a>
 ### Player Defend
 
 The `click` event listener for the defend button works the exact same way as the attack button, just with a different function of `defendButtonSelected`. The main variable in the player class that is referred to is `actionSelected.defend`.
 
 Same with attacking, the continuous function of `autoPlayerActionGauge` checks for whether the defend button is selected and that the player has 1 bar of action gauge. It then executes the `defend` function within the player class. This `defend` function plays the defend animation to visually show the player being in a defensive stance and importantly, sets the `status.defendStance` variable within the player class to true. This boolean value is then checked by the enemy's `attack` function when the enemy attacks.
 
+<a name="EnemyAttack"></a>
 ### Enemy Attack
 
 When the enemy's action gauge is full, the `fillEnemyActionGauge` function automatically executes the `attack` function within the enemy class. The function first determines which attack is next in the queue by checking `arrEnemyQueue[0]` against the keys stored in the enemy's class `.attacks` key-value pair. The appropriate `attackPower`, `stun` and `duration` are then taken into account and passed into the `enemyAttackMegaChecker` do-all function.
 
 This `enemyAttackMegaChecker` function checks for whether the player is defending and if so, executes the `parryMiniGame` function. Otherwise, the enemy's attack will be resolved. Stuns will be applied (if any), the textlog and post-combat hp values will be updated.
 
+<a name="Parry"></a>
 ### Parry
 
 The parry mechanic is core to this game's identity as the game balance heavily revolves around it. The difficulty of the game I had in mind was for the game to be clearable only if the player presses the defend button in time for 80% of the enemy attacks and successfully clears the parry minigame 50% of the time. Parrying gains increasing importance in later stages when enemy attacks start to stun, as parrying is the only way to avoid getting stunned. Also, parrying is epecially important for getting through the stages 4 and 5 berserk phase without losing too much health.
@@ -85,6 +115,7 @@ The reason for having two minigames is to add some variety and a small extra lay
 
 The codes for the `click` event listeners for setting the parry timer are all contained within the "Change Parry Timer" heading in the [functions3.js](functions3.js) file. The only thing of note here is that the `parryTimerSetting` variable is utilised by the `parryMiniGame` function where the timer duration is then determined. As for the parry minigames themselves, the codes are self-explanatory and can easily be found as they are contained within one big `parryMiniGame` function, with an entire [parry_function.js](parry_function.js) file being dedicated to this one function as well.
 
+<a name="EnemyQueue"></a>
 ### Enemy Queue
 
 The enemy class contains a key-value pair called `.attacks` which includes in the key, the image link of the attack image, and in the value, the description text of the attack. This key-value pair is used to create the enemy queue.
@@ -95,6 +126,7 @@ The description text of the attacks are updated by the `updateEnemyAttackDescrip
 
 The enemy's queue is managed in the `enemyAttackMegaChecker` function which executes whenever the enemy attacks. Within `enemyAttackMegaChecker`, the `moveEnemyQueueAlong` function is executed which `shifts` out the first item in the `arrEnemyQueue` array as that attack had just been used by the enemy. Then, a new attack is determined randomly and then `pushed` into the array and the enemy queue images are refreshed with the `updateEnemyQueue` function.
 
+<a name="EnemyAttackPool"></a>
 ### Enemy Attack Pool
 
 For the enemy's 3 attacks in the enemy class's `.attacks` key-value pair, I have assigned the probabilities of 60% to the first attack, 30% to the second and 10% to the third. These probabilities are put into effect in the `first3EnemyAttacks` and `updateEnemyQueue` functions when determining the next attacks to be used by the enemy.
@@ -103,12 +135,14 @@ The probabilities make intuitive sense when looking at enemies that have 3 diffe
 
 This allowed me to design some interesting permutations of enemy attacks with some enemies having a 60 / 40 or 70 / 30 probability split and one enemy (stage 5 slow) even having only 1 attack, so that attack has a 100% probability of being chosen. I really liked the randomness introduced by the enemy attacks and it added good variety to the combat.
 
+<a name="EnemyTypes"></a>
 ### Enemy Types
 
 For the different enemies, I settled on a simple concept of having archetypes of "Balanced", "Fast" and "Slow" enemies. The fast enemies would be characterised by having lower health, armor and less damaging attacks but they attack fast with a fast filling action gauge. The slow enemies would be the opposite, being tankier and having heavy hitting attacks but they have a slow filling action gauge. The balanced enemies would strike a balance between the other two types. This creates different play patterns when facing different enemies, with the fight being more fast paced and intense when facing a fast enemy but slow and precise when facing a slow enemy.
 
 The enemy stats are configured in the big `generateEnemy` function found in its own file of [generateEnemy_function.js](generateEnemy_function.js). The attack pool and probabilities of each attack can also be configured here by modifying the image link and description text found in the `.attacks` key-value pair. The actual effects of each attack (attack power, whether it stuns, stun duration) are configured in the class declarations of every enemy. These enemy class declarations are all contained within their own files of [enemyeasy.js](enemyeasy.js), [enemybalanced.js](enemybalanced.js), [enemyfast.js](enemyfast.js) and [enemyslow.js](enemyslow.js).
 
+<a name="Upgrades"></a>
 ### Upgrades
 
 Upgrades are an important part of making the game replayable as the player will encounter different permutations of upgrades in every playthrough of the game, so each playthrough will be different. The fun part is that the upgrade selection is partly random and partly within the player's control as the player always has a choice between the 2 random upgrades shown.
@@ -129,6 +163,7 @@ Whenever an upgrade is selected, the image link of that upgrade is assigned to t
 
 There is a `click` event listener for the OK button which executes the `upgradesSubmitButton` function. This function locks in the `chosenUpgrade` variable and `pushes` it into the `arrUpgrades` array. The `upgradesSubmitButton` function then continues on to display the image icon of the newly selected upgrade in the upgrades inventory at the left side of the screen as well as start the next stage.
 
+<a name="Pause"></a>
 ### Pause/Unpause
 
 The `pause` and `unpause` functions are used quite often when running the parry minigame and transitioning between the combat, upgrade, loss/victory and changeParryTimer screens.
@@ -137,7 +172,8 @@ The `pause` function sets the background elements to be half-transparent, stop t
 
 The `unpause` function sets the background elements back to fully opaque and adds all event listeners again. However, the continuous events are not started up again as that may not be desired when unpausing after a parry minigame. If either the player or the enemy is stunned (the player by an enemy's stun attack after failing to parry, or the enemy by the player's ParryStun effect), the `unpause` function starting up the continuous event again would negate the stun effect.
 
-# Ideas for More Content
+<a name="Ideas"></a>
+## Ideas for More Content
 
 - Second action gauge for enemy in later stages. Also add new attacks that require 2 gauges to be full before executing.
 - Some kind of final boss. My initial idea was to have the final boss be the player's alter ego and looks identical to te player. One of the boss's attacks would be to defend, putting the boss into a defensive stance for a few seconds. If the player attacks the boss while he is in the defensive stance, the boss would parry it.
