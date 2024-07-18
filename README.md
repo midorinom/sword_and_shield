@@ -10,6 +10,13 @@ In this document I will explain the rationale behind the game design of various 
 
 I do not own any of the assets and images that I used in this project, I obtained them from free sources online which I have credited in this [asset_credits.txt](asset_credits.txt) file.
 
+# Pictures
+### Home Page
+<img src="/images/Instructions.png" alt="Home Page" title="Home Page">
+
+### Gameplay
+<img src="/images/Gameplay.png" alt="Gameplay" title="Gameplay">
+
 # Broad Game Overview
 
 The goal of the game is to beat all 5 stages and not have health points be reduced to 0.
