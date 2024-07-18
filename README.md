@@ -3,6 +3,7 @@
 ## Table of Contents
 * [Introduction](#Introduction)
 * [Pictures](#Pictures)
+* [Technologies Used](#Technologies)
 * [Broad Game Overview](#Overview)
 * [Game Features](#Features)
     * [Health Points](#Health)
@@ -33,10 +34,19 @@ I do not own any of the assets and images that I used in this project, I obtaine
 <a name="Pictures"></a>
 ## Pictures
 ### Home Page
-<img src="/images/Instructions.png" alt="Home Page" title="Home Page">
+<img src="/images/readme/Instructions.png" alt="Home Page" title="Home Page">
 
 ### Gameplay
-<img src="/images/Gameplay.png" alt="Gameplay" title="Gameplay">
+<img src="/images/readme/Gameplay.png" alt="Gameplay" title="Gameplay">
+
+<a name="Technologies"></a>
+## Technologies Used
+<div style="display:flex">
+<img src="/images/readme/Javascript.png" alt="Javascript" title="Javascript">
+<img src="/images/readme/HTML.png" alt="HTML" title="HTML">
+<img src="/images/readme/CSS.png" alt="CSS" title="CSS">
+<img src="/images/readme/Vercel.png" alt="Vercel" title="Vercel">
+</div>
 
 <a name="Overview"></a>
 ## Broad Game Overview
